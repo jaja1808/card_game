@@ -8,6 +8,8 @@ class carte:
         self.__nom_carte=nom_carte
         self.__couleur=couleur
 
+        # j'ajoute une test
+
 # 
     def get__nom_carte(self):
         return self.__nom_carte
