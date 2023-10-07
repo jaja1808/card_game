@@ -1,14 +1,5 @@
-
-
-
 import numpy as np
 import random
-
-
-
-
-
-
 
 # Définition des valeurs et des couleurs des cartes
 valeurs = ['7', '8', '9', '10', 'J', 'Q', 'K', 'A']
@@ -20,8 +11,6 @@ jeu_de_cartes = [{'valeur': valeur, 'couleur': couleur} for valeur in valeurs fo
 # Fonction pour mélanger les cartes
 def melanger_cartes(jeu):
     random.shuffle(jeu)
-
-
 
 
 def distribuer_cartes_debut(jeu, nb_joueurs):
@@ -88,5 +77,3 @@ plis = [[{'valeur': '7', 'couleur': 'Coeur'}, {'valeur': 'A', 'couleur': 'Coeur'
 # Calcul des points à la fin de la manche
 #points_manche = calculer_points_manche(plis, contrat)
 #print(points_manche)
-
-
