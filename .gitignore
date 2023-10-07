@@ -1,0 +1,4 @@
+# ignore all notebook, pdf and word
+*.ipynb
+*.pdf
+*.docx
