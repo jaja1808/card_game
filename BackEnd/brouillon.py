@@ -77,3 +77,4 @@ plis = [[{'valeur': '7', 'couleur': 'Coeur'}, {'valeur': 'A', 'couleur': 'Coeur'
 # Calcul des points à la fin de la manche
 #points_manche = calculer_points_manche(plis, contrat)
 #print(points_manche)
+# jusbfibqiybbriunfddd
