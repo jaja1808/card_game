@@ -7,8 +7,8 @@ class carte:
     def __init__(self,nom_carte,couleur):
         self.__nom_carte=nom_carte
         self.__couleur=couleur
+        
 
-        # j'ajoute une test
 
 # 
     def get__nom_carte(self):
@@ -48,5 +48,53 @@ class carte_normal(carte):
     
     def set__score(self,score):
         self.__score=score
+
+
+
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
