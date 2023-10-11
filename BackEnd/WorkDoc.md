@@ -1,5 +1,4 @@
 
-
 Classe jeux : 
 	joueurs : 
 	creation jeux : (Création 32 cartes)
@@ -10,7 +9,6 @@ Classe jeux :
 	carte sur le tapis :
 	carte remportés : 
 	
-
 Classe carte : 
 	Nom : 
 	Couleur :
