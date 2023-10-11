@@ -5,8 +5,8 @@ import random as rd
 # definition de la classe carte
 class carte:
     def __init__(self,nom_carte,couleur):
-        self.__nom_carte=nom_carte
-        self.__couleur=couleur
+        self._nom_carte=nom_carte
+        self._couleur=couleur
         
 
 
