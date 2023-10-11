@@ -6,51 +6,53 @@ import random as rd
 class Game:
     def __init__(self,player1,player2,player3,player4):
         pass
+    #def game_creation(self):
+        
 
-class carte:
-    def __init__(self,nom_carte,couleur):
-        self.__nom_carte=nom_carte
-        self.__couleur=couleur
+class Card:
+    def __init__(self,card_name,colour):
+        self._card_name=card_name
+        self._colour=colour
 
         # j'ajoute une test
 
 # 
-    def get__nom_carte(self):
-        return self.__nom_carte
+    def get_card_name(self):
+        return self._card_name
     
-    def get__couleur(self):
-        return self.__couleur
+    def get_colour(self):
+        return self._colour
    
-    def set__nom_carte(self,nom_carte):
-        self.__nom_carte=nom_carte
+    def set_card_name(self,card_name):
+        self._card_name=card_name
     
-    def set__couleur(self,couleur):
-        self.__couleur=couleur
+    def set_colour(self,colour):
+        self._colour=colour
 
 
 # définition de la classe carte  attouf
-class carte_atout(carte):
-    def __init__(self, nom_carte, couleur,score):
-        super().__init__(nom_carte, couleur)
-        self.__score=score
+class Asset_card(Card):
+    def __init__(self, card_name, colour, score):
+        super().__init__(card_name, colour)
+        self._score=score
 
-    def get__score(self):
-        return self.__score
+    def get_score(self):
+        return self._score
     
-    def set__score(self,score):
-        self.__score=score
+    def set_score(self, score):
+        self._score=score
 
 
 # définition de la classe  non attouf(normal)
-class carte_normal(carte):
-    def __init__(self, nom_carte, couleur,score):
-        super().__init__(nom_carte, couleur)
-        self.__score=score
+class Normal_card(Card):
+    def __init__(self, card_name, colour, score):
+        super().__init__(card_name, colour)
+        self._score=score
 
-    def get__score(self):
-        return self.__score
+    def get_score(self):
+        return self._score
     
-    def set__score(self,score):
-        self.__score=score
+    def set_score(self,score):
+        self._score=score
 
 
