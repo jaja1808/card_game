@@ -1,8 +1,6 @@
 
 
 Classe jeux : 
-	règle de tour normal:
-	règle de tour atout :
 	joueurs : 
 	creation jeux : (Création 32 cartes)
 	Mélange : 
@@ -12,7 +10,6 @@ Classe jeux :
 	carte sur le tapis :
 	carte remportés : 
 	
-
 
 Classe carte : 
 	Nom : 
@@ -24,8 +21,10 @@ Classe carte :
 	Classe normal(carte):
 		score : 
 
-Classe : joueur
+Classe joueur
 	Type : IA / humain
-	main : 
-	groupe : 
+	Hand : 
+	group :
+
+
  
