@@ -8,7 +8,7 @@ class Card:
         self.__nom_carte=nom_carte
         self.__couleur=couleur
 
-        # j'ajoute une test
+      ###je rajoute cela
 
 # 
     def get_card_name(self):
