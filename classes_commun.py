@@ -4,9 +4,9 @@ import random as rd
 
 # definition de la classe carte
 class Card:
-    def __init__(self,nom_carte,couleur):
-        self.__nom_carte=nom_carte
-        self.__couleur=couleur
+    def __init__(self,card_name,colour):
+        self._card_name=card_name
+        self._colour=colour
 
       ###je rajoute cela
 
@@ -76,45 +76,6 @@ class Player:
        self._groupe=group
 
 
-#ezeczeczeccez
-#fehziuebfzhebfzbfez
-#eorihreuvberuvberuvb
-#oueuberybvrebvre
-#EEERRREfefzef
-#23434343424
-
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
 
 
 
