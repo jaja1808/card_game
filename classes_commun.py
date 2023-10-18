@@ -80,7 +80,8 @@ class Player:
 #fehziuebfzhebfzbfez
 #eorihreuvberuvberuvb
 #oueuberybvrebvre
-
+#EEERRREfefzef
+#23434343424
 
 # 
 # 
