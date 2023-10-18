@@ -3,6 +3,27 @@ import random as rd
 
 
 # definition de la classe carte
+class Game:
+    def __init__(self,player1,player2,player3,player4):
+        self._joueur1=player1
+        self._joueur2=player2
+        self._joueur3=player3
+        self._joueur4=player4
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 class Card:
     def __init__(self,card_name,colour):
         self._card_name=card_name
