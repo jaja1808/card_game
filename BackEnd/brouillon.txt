@@ -1,0 +1,34 @@
+Création du repository : 
+
+git init		# Initialise le rep courant pour pouvoir utiliser git
+
+git add README.md	# Ajoute le fichier README.md au git
+
+git branch -M main      # Renommer la branche
+
+git checkout -b branchName # crée et switch sur la branche branchName
+
+git checkout branchName    # Switch sur la branche branchName
+
+git remote add origin git@github.com:Ghost-8/TP-CPP.git   # met en relation le repo local et le repo sur le server
+
+git push -u origin branchName permet de créer et de mettre en relation dans le repository la branche locale branchName
+
+git push 
+git status : Afficher le statut d'un commit.
+
+#créer le fichier .gitignore et lister à l'intérieur les fichiers à ignorer par git
+
+git branch -M main (Renommer la branche)
+
+git add file
+git commit -m "commit_name"
+
+git pull  # Toujours avant git push. Permet de télécharger ce qu'il y a sur le repo
+# S'il y a conflit alors il faut faire
+git config pull.rebase true
+# Ensuite modifier manuellement le fichier à propos duquel il y a conflit avant de faire
+git add file
+git rebase --continue
+
+git push # Update the repo through locale state and actual branch
