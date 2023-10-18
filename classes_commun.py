@@ -69,11 +69,11 @@ class Player:
     def set_name_Player(self,_name_Player):
        self._name_Player=_name_Player
     
-    def set_player(self,_player):
-        return self._player
+    def set_player(self,player):
+        self._player=player
     
-    def set_groupe(self):
-        return self._groupe
+    def set_group(self,group):
+       self._groupe=group
 
 
 #ezeczeczeccez
