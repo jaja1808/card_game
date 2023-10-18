@@ -53,8 +53,27 @@ class Normal_card(Card):
 class Player:
     def __init__(self,name_player,type_player,hand,groupe):
         self._name_Player=name_player
-        
+        self._player=hand
+        self._groupe=groupe
 
+    def get_name_Player(self):
+        return self._name_Player
+    
+    def get_player(self):
+        return self._player
+    
+    def get_groupe(self):
+        return self._groupe
+    
+
+    def set_name_Player(self,_name_Player):
+       self._name_Player=_name_Player
+    
+    def set_player(self,_player):
+        return self._player
+    
+    def set_groupe(self):
+        return self._groupe
 
 
 
