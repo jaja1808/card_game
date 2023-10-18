@@ -3,7 +3,7 @@ import random as rd
 
 
 # definition de la classe carte
-class carte:
+class Card:
     def __init__(self,nom_carte,couleur):
         self.__nom_carte=nom_carte
         self.__couleur=couleur
@@ -48,6 +48,16 @@ class Normal_card(Card):
     
     def set_score(self,score):
         self._score=score
+
+
+class Player:
+    def __init__(self,name_player,type_player,hand,groupe):
+        self._name_Player=name_player
+        
+
+
+
+
 
 
 
