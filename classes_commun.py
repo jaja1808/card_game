@@ -3,10 +3,31 @@ import random as rd
 
 
 # definition de la classe carte
+class Game:
+    def __init__(self,player1,player2,player3,player4):
+        self._joueur1=player1
+        self._joueur2=player2
+        self._joueur3=player3
+        self._joueur4=player4
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 class Card:
-    def __init__(self,nom_carte,couleur):
-        self.__nom_carte=nom_carte
-        self.__couleur=couleur
+    def __init__(self,card_name,colour):
+        self._card_name=card_name
+        self._colour=colour
 
       ###je rajoute cela
 
@@ -76,45 +97,6 @@ class Player:
        self._groupe=group
 
 
-#ezeczeczeccez
-#fehziuebfzhebfzbfez
-#eorihreuvberuvberuvb
-#oueuberybvrebvre
-#EEERRREfefzef
-#23434343424
-
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
 
 
 

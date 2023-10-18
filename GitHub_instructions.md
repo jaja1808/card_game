@@ -24,3 +24,9 @@ git branch -m master main
 
 Token for connection. (Hav to go on Github to create it. Settings, developers settings, personal access token) 
 git remote set-url origin https://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@github.com/jaja1808/card_game.git
+
+
+Je fais des modifs
+Je commit 
+Je pull 
+Je push
