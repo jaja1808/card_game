@@ -10,28 +10,15 @@ class Game:
         self._joueur3=player3
         self._joueur4=player4
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 class Card:
+    colour = ("spades","hearts","diamonds","clubs")
+    card_name = ("7","8","9","10","ace","jack","king","queen")
+    
     def __init__(self,card_name,colour):
         self._card_name=card_name
         self._colour=colour
 
-      ###je rajoute cela
-
-# 
     def get_card_name(self):
         return self._card_name
     
