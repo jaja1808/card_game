@@ -6,33 +6,45 @@ import random as rd
 class Game:
     def __init__(self):
         # Creation de l'instance Game
-        self._player1=None
-        self._player2=None
-        self._player3=None
-        self._player4=None
+        self._player1=Player()
+        self._player2=Player()
+        self._player3=Player()
+        self._player4=Player()
+
+
 
 
 # fonction de creation d'un joueur de la classe 
 # important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
-    def CreatePLayer1(self,name_player,type_player,hand,groupe):
-        self._player1=Player(name_player,type_player,hand,groupe)
+# par defaut:# par defaut:
+#joueur nom =Papi 
+#Type =True (humain)
+# main = [] (liste vide ) 
+# Groupe = [] (liste vide ) 
+    def Create_PLayer(self,player_number,name_player="Papi",type_player=True,hand=[],group=[]):
+        if player_number == 1:
+            player = self._player1
+        elif player_number == 2:
+            player = self._player2
+        elif player_number == 3:
+            player = self._player3
+        elif player_number == 4:
+            player = self._player4
+        else:
+            raise ValueError("la valeur doit etre comprise entre 1 et 4")
 
-# fonction de creation d'un joueur de la classe 
-# important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
-    def CreatePLayer2(self,name_player,type_player,hand,groupe):
-        self._player2=Player(name_player,type_player,hand,groupe)
-      
-# fonction de creation d'un joueur de la classe 
-# important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
-    def CreatePLayer3(self,name_player,type_player,hand,groupe):
-        self._player3=Player(name_player,type_player,hand,groupe)  
+        # on definit le nom du joueur
+        player.set_name_Player(name_player)
 
+        # on definit la main du joueur
+        player.set_hand(hand)
+        
+        # on definit la le type de joueur
+        player.set_type_player(type_player)
 
-# fonction de creation d'un joueur de la classe 
-# important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
-    def CreatePLayer4(self,name_player,type_player,hand,groupe):
-        self._player4=Player(name_player,type_player,hand,groupe)  
-    
+        # on definit le groupe du joueur
+        player.set_group(group)      
+
 
 
 
@@ -84,10 +96,22 @@ class Normal_card(Card):
 
 
 class Player:
-    def __init__(self,name_player,type_player,hand,groupe):
+    def __init__(self,name_player,type_player,hand,group):
+        # nom du joueur
+        # type= Chaine de caractere
         self._name_Player=name_player
-        self._player=hand
-        self._groupe=groupe
+
+        # la main du joueur
+        # type= liste
+        self._hand=hand
+
+        # le type  du joueur(bool())
+        # type= bool (true humain , False IA)
+        self._type_player=type_player
+        
+        
+        self._group=group
+
 
     def get_name_Player(self):
         return self._name_Player
@@ -95,18 +119,24 @@ class Player:
     def get_player(self):
         return self._player
     
-    def get_groupe(self):
-        return self._groupe
+    def get_type_player(self):
+        return self._type_player
+    
+    def get_group(self):
+        return self._group
     
 
     def set_name_Player(self,name_Player):
        self._name_Player=name_Player
     
-    def set_player(self,player):
-        self._player=player
+    def set_hand(self,hand):
+        self._hand=hand
+
+    def set_type_player(self,type_player):
+        self._type_player=type_player   
     
     def set_group(self,group):
-       self._groupe=group
+       self._group=group
 
 
 

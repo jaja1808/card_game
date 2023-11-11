@@ -27,9 +27,13 @@ while ETAPE!=0:
         # etape 200 creation des 4 joueurs 
 
         #creation Joueur 1
-        new_Game.CreatePLayer1("Papi",I_A)
+        new_Game.CreatePLayer(1,"Papi",True,[],[])
         #creation Joueur 2
-        new_Game.CreatePLayer("Papi",I_A)
+        new_Game.CreatePLayer(2,"Prince",False,[],[])
+        #creation Joueur 3
+        new_Game.CreatePLayer(3,"Brian",False,[],[])
+        #creation Joueur 4
+        new_Game.CreatePLayer(4,"Alain",False,[],[])
 
 
 
