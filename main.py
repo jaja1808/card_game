@@ -23,11 +23,9 @@ while ETAPE!=0:
 
         # creation de toute les cartes
         new_Game.Create_Cards()
-        new_Game.print_Cards()
-
-        # creation cartes de jeux 
-
-
+        
+        # evolution 
+        ETAPE=200
 
     elif ETAPE==200:
         # etape 200 creation des 4 joueurs 
@@ -41,6 +39,17 @@ while ETAPE!=0:
         #creation Joueur 4
         new_Game.CreatePLayer(4,"Alain",False,[],[])
 
+
+
+        # evolution 
+        ETAPE=300
+
+    elif ETAPE==300:
+        # etape  qui consiste à distribuer a chaque joueur 5 cartes 
+
+        for player in range(4):
+            new_Game.distribute(player)
+        
 
 
 
