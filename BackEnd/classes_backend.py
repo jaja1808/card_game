@@ -11,7 +11,3 @@ import classes_commun
 # nouveau_jeu=jeu (papi,prince,alain,brian)
 from classes_commun import *
 
-
-alain =Player
-
-
