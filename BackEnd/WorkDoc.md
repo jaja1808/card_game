@@ -20,6 +20,7 @@ Classe carte :
 		score : 
 
 Classe joueur
+	nom
 	Type : IA / humain
 	Hand : 
 	group :

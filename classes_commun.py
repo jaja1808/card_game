@@ -3,14 +3,22 @@ import random as rd
 
 
 # definition de la classe carte
-class carte:
-    def __init__(self,nom_carte,couleur):
-        self.__nom_carte=nom_carte
-        self.__couleur=couleur
+class Game:
+    def __init__(self,player1,player2,player3,player4):
+        self._joueur1=player1
+        self._joueur2=player2
+        self._joueur3=player3
+        self._joueur4=player4
+    
 
-        # j'ajoute une test
+class Card:
+    colour = ("spades","hearts","diamonds","clubs")
+    card_name = ("7","8","9","10","ace","jack","king","queen")
+    
+    def __init__(self,card_name,colour):
+        self._card_name=card_name
+        self._colour=colour
 
-# 
     def get_card_name(self):
         return self._card_name
     
@@ -50,39 +58,32 @@ class Normal_card(Card):
         self._score=score
 
 
+class Player:
+    def __init__(self,name_player,type_player,hand,groupe):
+        self._name_Player=name_player
+        self._player=hand
+        self._groupe=groupe
 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
-# 
+    def get_name_Player(self):
+        return self._name_Player
+    
+    def get_player(self):
+        return self._player
+    
+    def get_groupe(self):
+        return self._groupe
+    
+
+    def set_name_Player(self,name_Player):
+       self._name_Player=name_Player
+    
+    def set_player(self,player):
+        self._player=player
+    
+    def set_group(self,group):
+       self._groupe=group
+
+
 
 
 
