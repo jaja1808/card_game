@@ -2,6 +2,11 @@ import numpy as np
 import random as rd
 
 
+colours = ("spades","hearts","diamonds","clubs")
+card_names = ("7","8","9","10","ace","jack","king","queen")
+
+
+
 # definition de la classe carte
 class Game:
     def __init__(self):
@@ -10,7 +15,7 @@ class Game:
         self._player2=Player()
         self._player3=Player()
         self._player4=Player()
-
+        self._Cards=[]
 
 
 
@@ -46,11 +51,18 @@ class Game:
         player.set_group(group)      
 
 
+    def Create_Cards(self):
+        for colour in colours:
+            for  name in card_names:
+                card =Card(name,colour)
+                self._Cards.append(card)
 
+    def print_Cards(self):
+        for Card in self._Cards:
+            print(Card.get_colour())
+        
 
 class Card:
-    colour = ("spades","hearts","diamonds","clubs")
-    card_name = ("7","8","9","10","ace","jack","king","queen")
     
     def __init__(self,card_name,colour):
         self._card_name=card_name
@@ -109,9 +121,7 @@ class Player:
         # type= bool (true humain , False IA)
         self._type_player=type_player
         
-        
         self._group=group
-
 
     def get_name_Player(self):
         return self._name_Player

@@ -21,6 +21,8 @@ while ETAPE!=0:
         # creation d'une instance game()
         new_Game=Game()
 
+        # creation cartes de jeux 
+
 
 
     elif ETAPE==200:
