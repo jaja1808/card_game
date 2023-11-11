@@ -4,12 +4,37 @@ import random as rd
 
 # definition de la classe carte
 class Game:
-    def __init__(self,player1,player2,player3,player4):
-        self._joueur1=player1
-        self._joueur2=player2
-        self._joueur3=player3
-        self._joueur4=player4
+    def __init__(self):
+        # Creation de l'instance Game
+        self._player1=None
+        self._player2=None
+        self._player3=None
+        self._player4=None
+
+
+# fonction de creation d'un joueur de la classe 
+# important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
+    def CreatePLayer1(self,name_player,type_player,hand,groupe):
+        self._player1=Player(name_player,type_player,hand,groupe)
+
+# fonction de creation d'un joueur de la classe 
+# important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
+    def CreatePLayer2(self,name_player,type_player,hand,groupe):
+        self._player2=Player(name_player,type_player,hand,groupe)
+      
+# fonction de creation d'un joueur de la classe 
+# important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
+    def CreatePLayer3(self,name_player,type_player,hand,groupe):
+        self._player3=Player(name_player,type_player,hand,groupe)  
+
+
+# fonction de creation d'un joueur de la classe 
+# important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
+    def CreatePLayer4(self,name_player,type_player,hand,groupe):
+        self._player4=Player(name_player,type_player,hand,groupe)  
     
+
+
 
 class Card:
     colour = ("spades","hearts","diamonds","clubs")
