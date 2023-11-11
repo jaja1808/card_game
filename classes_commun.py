@@ -11,10 +11,10 @@ card_names = ("7","8","9","10","ace","jack","king","queen")
 class Game:
     def __init__(self):
         # Creation de l'instance Game
-        self._player1=Player()
-        self._player2=Player()
-        self._player3=Player()
-        self._player4=Player()
+        self._player1=None
+        self._player2=None
+        self._player3=None
+        self._player4=None
         self._Cards=[]
 
 
@@ -50,16 +50,46 @@ class Game:
         # on definit le groupe du joueur
         player.set_group(group)      
 
-
+    # creation de toutes les cartes graces a la liste de 
     def Create_Cards(self):
         for colour in colours:
             for  name in card_names:
                 card =Card(name,colour)
                 self._Cards.append(card)
 
+    #code pour verifier la creation des cartes  
     def print_Cards(self):
         for Card in self._Cards:
             print(Card.get_colour())
+
+    # fonction pour melanger les cartes (battre les carte)
+    def shuffle_Cards(self):
+        self._Cards=rd.shuffle(self._Cards)
+    
+    # fonction pour distribuer 
+    def Distribute(self,player,number_cards=5):
+        if player == 1:
+            player = self._player1
+        elif player == 2:
+            player = self._player2
+        elif player == 3:
+            player = self._player3
+        elif player == 4:
+            player = self._player4
+        else:
+            raise ValueError("la valeur doit etre comprise entre 1 et 4")
+
+        for i in range(number_cards):
+            card=self._Cards[i]
+            player.add_card_Hand(card)
+            self._Cards.pop(i)
+
+
+
+
+
+
+
         
 
 class Card:
@@ -147,6 +177,10 @@ class Player:
     
     def set_group(self,group):
        self._group=group
+
+    # fonction pour ajouter une carte a la main du joueur
+    def add_card_Hand(self,Card):
+        self._hand=self.self._hand.append(Card)
 
 
 
