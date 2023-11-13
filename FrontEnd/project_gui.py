@@ -55,13 +55,20 @@ while run:
 
         if dfc and click == 0:
           # Display the hand at the bottom
-          display_hand(hand[:4]) 
+          display_hand(hand[:5]) 
           # Display pop-up on the third click
           display_popup('10_of_diamonds.png')
           dfc = False
-        else:
-            display_hand(hand)   
+        else:   
             game.blit(rotated_arrow, rotated_rect) 
+
+            if len(hand) != 0:
+                display_hand(hand)
+
+            else:
+                print('game over')
+                run = False
+
         # Timer for slowing the rotation
         timer.tick(5)  # 2.5 for the rate of rotation
 

@@ -174,13 +174,26 @@ def display_hand(hand):
             for event in pg.event.get():
                 if event.type == pg.MOUSEBUTTONDOWN :  #and angle == 270: # to be added later
                     print(f'Clicked on: {card}')
-                # Add any other action you want to perform on card click
+                    hand.remove(card)
+                    #display played cards
+                    display_tapis(card, '10_of_diamonds.png', '10_of_clubs.png', '10_of_hearts.png')
 
         game.blit(card_image, (x, GAME_HEIGHT - 135))
         x += card_rect.width / 2 + spacing  # Adjust spacing between cards
 
     pg.display.flip()
 
-
-
-
+# Function to display cards on the tapis
+def display_tapis(card_1, card_2, card_3, card_4):
+        
+        # Display the cards at position of all players
+        card_1, card_rect_1 = display_card(440, 220, card_1)
+        card_2, card_rect_2 = display_card(360, 220, card_2)
+        card_3, card_rect_3 = display_card(360, 340, card_3)
+        card_4, card_rect_4 = display_card(440, 340, card_4)
+        
+        # Display the cards on the tapis
+        game.blit(card_1, card_rect_1)
+        game.blit(card_2, card_rect_2)
+        game.blit(card_3, card_rect_3)
+        game.blit(card_4, card_rect_4)
