@@ -5,8 +5,9 @@ from front_func import *
 
 # Array for simulating events
 Clicks = np.arange(0, 10)
-hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png']
+hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
 
+# Inital angle of the arrow
 angle = 0
 
 # Initializing pygame
@@ -43,28 +44,26 @@ while run:
         rotated_rect = rotated_arrow.get_rect(center=scaled_rect.center)
 
         # Display the back card at position of all players
-        back_card_1, back_card_rect_1 = display_card(2, 8, 'back_card.png')
-        back_card_2, back_card_rect_2 = display_card(8, 2, 'back_card.png')
-        back_card_4, back_card_rect_4 = display_card(1.15, 2, 'back_card.png')
-
-        # Display the hand at the bottom
-        display_hand(1, 1.15, hand)
+        back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png')
+        back_card_2, back_card_rect_2 = display_card(75, 300, 'back_card.png')
+        back_card_4, back_card_rect_4 = display_card(725, 300, 'back_card.png')
 
         # Display the arrow and starting cards
-        game.blit(rotated_arrow, rotated_rect)
         game.blit(back_card_1, back_card_rect_1)
         game.blit(back_card_2, back_card_rect_2)
         game.blit(back_card_4, back_card_rect_4)
 
-        if dfc and click ==3:
-          # Display pop-up on the first click
+        if dfc and click == 0:
+          # Display the hand at the bottom
+          display_hand(hand[:4]) 
+          # Display pop-up on the third click
           display_popup('10_of_diamonds.png')
           dfc = False
         else:
-            pass    
-
+            display_hand(hand)   
+            game.blit(rotated_arrow, rotated_rect) 
         # Timer for slowing the rotation
-        timer.tick(10)  # 2.5 for the rate of rotation
+        timer.tick(5)  # 2.5 for the rate of rotation
 
     # Update the Display
     pg.display.flip()
