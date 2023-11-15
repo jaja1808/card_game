@@ -36,12 +36,7 @@ while run:
         game.fill(BACKGROUND)
 
         # Calculate the rotation angle for the arrow
-        angle += 45  # 45 to make 4 sides
-
-        # Draw and Rotate the arrow
-        scaled_arrow, scaled_rect = draw_arrow(12, 10)
-        rotated_arrow = pg.transform.rotozoom(scaled_arrow, angle, 1)
-        rotated_rect = rotated_arrow.get_rect(center=scaled_rect.center)
+        angle += 90  # 45 to make 4 sides
 
         # Display the back card at position of all players
         back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png')
@@ -60,13 +55,13 @@ while run:
           display_popup('10_of_diamonds.png')
           dfc = False
         else:   
-            game.blit(rotated_arrow, rotated_rect) 
-
             if len(hand) != 0:
+                draw_arrow(10, 12, angle)
+                display_score(40,50)
                 display_hand(hand)
 
             else:
-                print('game over')
+                final_score()
                 run = False
 
         # Timer for slowing the rotation

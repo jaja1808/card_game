@@ -17,6 +17,7 @@ atout = ['spade.png','heart.png','diamond.png','club.png']
 # Colors
 GREY = (155, 155, 155)
 BACKGROUND = (0, 80, 20)
+BEIGE = (245, 245, 220)
 
 # Frames
 FRAME_RATE = 60
@@ -26,12 +27,17 @@ game = pg.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 
 
 # Function to draw the centre arrow
-def draw_arrow(pos_x, pos_y):
+def draw_arrow(pos_x, pos_y, angle):
     arrow = pg.image.load(image_path + 'Arrow.png')
     arrow_rect = arrow.get_rect(center=(GAME_WIDTH / 2, GAME_HEIGHT / 2))
     scaled_arrow = pg.transform.scale(arrow, (arrow.get_width() // pos_x, arrow.get_height() // pos_y))
     scaled_rect = scaled_arrow.get_rect(center=arrow_rect.center)
-    return scaled_arrow, scaled_rect
+    
+    # Draw and Rotate the arrow
+    rotated_arrow = pg.transform.rotozoom(scaled_arrow, angle, 1)
+    rotated_rect = rotated_arrow.get_rect(center=scaled_rect.center)
+    # Display arrow
+    game.blit(rotated_arrow, rotated_rect)
 
 
 # Function to display back of the card
@@ -183,6 +189,7 @@ def display_hand(hand):
 
     pg.display.flip()
 
+
 # Function to display cards on the tapis
 def display_tapis(card_1, card_2, card_3, card_4):
         
@@ -197,3 +204,34 @@ def display_tapis(card_1, card_2, card_3, card_4):
         game.blit(card_2, card_rect_2)
         game.blit(card_3, card_rect_3)
         game.blit(card_4, card_rect_4)
+
+
+# Function to Display the score board
+def display_score(us, them):
+
+    # Positions
+    position_x  = 10
+    position_y = 10
+
+    # Draw the div for score 
+    score = draw_div(position_x, position_y, 50, 60, BACKGROUND)
+    
+    # Creating the font for Score
+    font = pg.font.SysFont('Arial',14) # Arial font
+
+    score_us = font.render('US: '+str(us), True, BEIGE)
+    score_them = font.render('THEM: '+str(them), True, BEIGE)
+
+    # Display on game
+    game.blit(score_us, (score.centerx - 24, score.centery - 30))
+    game.blit(score_them, (score.centerx - 25, score.centery - 10))
+
+# Final score Window
+def final_score():
+    score = pg.Rect(100, 100, 600, 400)
+
+    
+    # Draw the final score
+    game.fill(BACKGROUND)
+    pg.draw.rect(game, BEIGE, score)
+    pg.display.flip()
