@@ -228,10 +228,13 @@ def display_score(us, them):
 
 # Final score Window
 def final_score():
-    score = pg.Rect(100, 100, 600, 400)
 
-    
+    score = pg.Rect(100, 100, 600, 400)
     # Draw the final score
     game.fill(BACKGROUND)
     pg.draw.rect(game, BEIGE, score)
+
+    # The rest will go here
+    
+    
     pg.display.flip()
