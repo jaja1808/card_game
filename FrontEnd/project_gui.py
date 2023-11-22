@@ -1,12 +1,13 @@
 import pygame as pg
 import numpy as np
+import time
 from front_func import *
 
 
 # Array for simulating events
 Clicks = np.arange(0, 10)
-hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
-
+#hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
+hand = []
 # Inital angle of the arrow
 angle = 0
 
@@ -36,7 +37,7 @@ while run:
         game.fill(BACKGROUND)
 
         # Calculate the rotation angle for the arrow
-        angle += 90  # 45 to make 4 sides
+        angle += 90  # 90 to make 4 sides
 
         # Display the back card at position of all players
         back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png')
@@ -61,11 +62,11 @@ while run:
                 display_hand(hand)
 
             else:
-                final_score()
+                final_score(12, 34, 'Lost')
                 run = False
 
         # Timer for slowing the rotation
-        timer.tick(5)  # 2.5 for the rate of rotation
+        #timer.tick(5)  # 2.5 for the rate of rotation
 
     # Update the Display
     pg.display.flip()

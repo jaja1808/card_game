@@ -11,7 +11,7 @@ GAME_HEIGHT = 600
 
 # Inital angle of the arrow
 angle = 0
-
+timer = pg.time.Clock()
 # Atout array
 atout = ['spade.png','heart.png','diamond.png','club.png']
 # Colors
@@ -178,7 +178,7 @@ def display_hand(hand):
             card_image = pg.transform.scale(card_image, (int(card_rect.width * 1.1), int(card_rect.height * 1.1)))
 
             for event in pg.event.get():
-                if event.type == pg.MOUSEBUTTONDOWN :  #and angle == 270: # to be added later
+                if event.type == pg.MOUSEBUTTONDOWN: # and angle == 270: # to be added later
                     print(f'Clicked on: {card}')
                     hand.remove(card)
                     #display played cards
@@ -227,14 +227,45 @@ def display_score(us, them):
     game.blit(score_them, (score.centerx - 25, score.centery - 10))
 
 # Final score Window
-def final_score():
+def final_score(total_score_us, total_score_them, message):
 
     score = pg.Rect(100, 100, 600, 400)
     # Draw the final score
     game.fill(BACKGROUND)
     pg.draw.rect(game, BEIGE, score)
+    score_surface = pg.Surface((score.width, score.height), pg.SRCALPHA)
+    
+    # Us Rectangle
+    Our_result = pg.Rect(10, 10, 150, 150)
+    Their_result = pg.Rect(170, 10, 150, 150)
+    us_rect = pg.Rect(10, 170, 150, 50)
+    them_rect = pg.Rect(170, 170, 150, 50)
+    pg.draw.rect(score_surface, GREY, Our_result)
+    pg.draw.rect(score_surface,GREY, Their_result)  
+    
+    # Creating the font for Score
+    font = pg.font.SysFont('Arial',34) # Arial font
+    tot_score_us = font.render('US: '+str(total_score_us), True, (0, 0, 0))
+    tot_score_them = font.render('THEM: '+str(total_score_them), True, (0, 0, 0))
+    win = font.render(' WIN', True, (0, 0, 0))
+    loose = font.render('LOOSE', True, (0, 0, 0))
 
-    # The rest will go here
-    
-    
+    # Drawing colored boxes for the win or loose 
+    if total_score_them < total_score_us:
+        pg.draw.rect(score_surface, (0, 255, 0), us_rect)
+        pg.draw.rect(score_surface, (255, 0, 0), them_rect)
+        score_surface.blit(win, (us_rect.centerx, us_rect.y + 10))
+        score_surface.blit(loose, (them_rect.centerx, them_rect.y + 10))
+    else:
+        pg.draw.rect(score_surface, (255, 0, 0), us_rect)
+        pg.draw.rect(score_surface, (0, 255, 0), them_rect)  
+        score_surface.blit(loose, (us_rect.x + 10, us_rect.y + 10))
+        score_surface.blit(win, (them_rect.x + 10, them_rect.y + 10))
+
+    # Blit text onto the score_surface at specific positions within the rectangles
+    score_surface.blit(tot_score_us, (Our_result.x + 10, Our_result.y + 10))
+    score_surface.blit(tot_score_them, (Their_result.x + 10, Their_result.y + 10))
+          
+    game.blit(score_surface, (score.x, score.y))
+
     pg.display.flip()
