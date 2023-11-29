@@ -11,14 +11,22 @@ card_names = ("7","8","9","10","ace","jack","king","queen")
 class Game:
     def __init__(self):
         # Creation de l'instance Game
-        self._player1=None
-        self._player2=None
-        self._player3=None
-        self._player4=None
+        self._player1=Player()
+        self._player2=Player()
+        self._player3=Player()
+        self._player4=Player()
         self._Cards=[]
 
 
+    def Players(self):
+        tab=[]
+        tab.append(self._player1)
+        tab.append(self._player2)
+        tab.append(self._player3)
+        tab.append(self._player4)
 
+        return tab
+        
 # fonction de creation d'un joueur de la classe 
 # important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
 # par defaut:# par defaut:
@@ -79,10 +87,12 @@ class Game:
         else:
             raise ValueError("la valeur doit etre comprise entre 1 et 4")
 
+            """
         for i in range(number_cards):
             card=self._Cards[i]
             player.add_card_Hand(card)
             self._Cards.pop(i)
+            """
 
 
 
@@ -109,6 +119,8 @@ class Card:
     
     def set_colour(self,colour):
         self._colour=colour
+
+
 
 
 # définition de la classe carte  attouf
@@ -138,7 +150,7 @@ class Normal_card(Card):
 
 
 class Player:
-    def __init__(self,name_player,type_player,hand,group):
+    def __init__(self,name_player="",type_player=False,hand=[],group=False):
         # nom du joueur
         # type= Chaine de caractere
         self._name_Player=name_player

@@ -31,13 +31,13 @@ while ETAPE!=0:
         # etape 200 creation des 4 joueurs 
 
         #creation Joueur 1
-        new_Game.CreatePLayer(1,"Papi",True,[],[])
+        new_Game.Create_PLayer(1,"Papi",True,[],[])
         #creation Joueur 2
-        new_Game.CreatePLayer(2,"Prince",False,[],[])
+        new_Game.Create_PLayer(2,"Prince",False,[],[])
         #creation Joueur 3
-        new_Game.CreatePLayer(3,"Brian",False,[],[])
+        new_Game.Create_PLayer(3,"Brian",False,[],[])
         #creation Joueur 4
-        new_Game.CreatePLayer(4,"Alain",False,[],[])
+        new_Game.Create_PLayer(4,"Alain",False,[],[])
 
 
 
@@ -46,9 +46,22 @@ while ETAPE!=0:
 
     elif ETAPE==300:
         # etape  qui consiste à distribuer a chaque joueur 5 cartes 
+        new_Game.Distribute(1) # joueur 1(papi)
+        new_Game.Distribute(2)  #(prince)
+        new_Game.Distribute(3)      #(Brian)
+        new_Game.Distribute(4)  #(Alain)
 
-        for player in range(4):
-            new_Game.distribute(player)
+
+    #    for i in new_Game.Players():
+    #     print(i.main())
+
+        print (new_Game.Players())
+
+        # mise a jour Etape
+        ETAPE=400  
+
+
+
         
 
 
