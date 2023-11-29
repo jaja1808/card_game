@@ -105,7 +105,7 @@ class Game:
 class Card:
 
     # Constructor
-    def __init__(self, card_name, colour, image):
+    def __init__(self, card_name, colour, image=""):
         self._card_name = card_name
         self._colour = colour
         self._image = image
