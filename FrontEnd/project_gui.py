@@ -6,8 +6,8 @@ from front_func import *
 
 # Array for simulating events
 Clicks = np.arange(0, 10)
-#hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
-hand = []
+hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
+#hand = []
 # Inital angle of the arrow
 angle = 0
 
@@ -62,7 +62,7 @@ while run:
                 display_hand(hand)
 
             else:
-                final_score(12, 34, 'Lost')
+                final_score(12, 34)
                 run = False
 
         # Timer for slowing the rotation

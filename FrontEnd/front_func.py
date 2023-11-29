@@ -48,6 +48,11 @@ def display_card(pos_x, pos_y, card_image):
     scaled_back_card_rect = scaled_back_card.get_rect(center=back_card_rect.center)
     return scaled_back_card, scaled_back_card_rect
 
+def display_image(pos_x, pos_y, image):
+    im = pg.image.load(image_path + image)
+    im_rect = im.get_rect(topleft = (pos_x, pos_y))
+    return im, im_rect
+
 
 # Function to create div-like elements
 def draw_div(pos_x, pos_y, width, height, color):
@@ -226,46 +231,40 @@ def display_score(us, them):
     game.blit(score_us, (score.centerx - 24, score.centery - 30))
     game.blit(score_them, (score.centerx - 25, score.centery - 10))
 
-# Final score Window
-def final_score(total_score_us, total_score_them, message):
 
-    score = pg.Rect(100, 100, 600, 400)
-    # Draw the final score
+# Final score Window
+def final_score(total_score_us, total_score_them):
+
+    score = pg.Rect(100, 100, 530, 270)
+    button_rect = pg.Rect(score.bottomright[0] + 10, score.bottomright[1] + 10, 70, 10)
+
+    # Draw the final score and making it the base surface
     game.fill(BACKGROUND)
-    pg.draw.rect(game, BEIGE, score)
     score_surface = pg.Surface((score.width, score.height), pg.SRCALPHA)
+    button_surface = pg.Surface((button_rect.width, button_rect.height), pg.SRCALPHA)
+
+    # Displaying the Image
+    bacG, bacG_rect = display_image(10, 10, 'back_gound_score.png')
+    score_surface.blit(bacG, bacG_rect)
     
-    # Us Rectangle
-    Our_result = pg.Rect(10, 10, 150, 150)
-    Their_result = pg.Rect(170, 10, 150, 150)
-    us_rect = pg.Rect(10, 170, 150, 50)
-    them_rect = pg.Rect(170, 170, 150, 50)
-    pg.draw.rect(score_surface, GREY, Our_result)
-    pg.draw.rect(score_surface,GREY, Their_result)  
-    
+    if total_score_us > total_score_them:
+        color = (0, 255, 0)
+        sentence = 'WIN'
+    else:
+        color = (255, 0, 0)
+        sentence = 'LOOSE'
+
+    pg.draw.rect(game, color, score)
+
     # Creating the font for Score
     font = pg.font.SysFont('Arial',34) # Arial font
-    tot_score_us = font.render('US: '+str(total_score_us), True, (0, 0, 0))
-    tot_score_them = font.render('THEM: '+str(total_score_them), True, (0, 0, 0))
-    win = font.render(' WIN', True, (0, 0, 0))
-    loose = font.render('LOOSE', True, (0, 0, 0))
+    word = font.render(sentence, True, color) # the win message
+    tot_score_us = font.render('US: '+str(total_score_us), True, BEIGE)
+    tot_score_them = font.render('THEM: '+str(total_score_them), True, BEIGE)
 
-    # Drawing colored boxes for the win or loose 
-    if total_score_them < total_score_us:
-        pg.draw.rect(score_surface, (0, 255, 0), us_rect)
-        pg.draw.rect(score_surface, (255, 0, 0), them_rect)
-        score_surface.blit(win, (us_rect.centerx, us_rect.y + 10))
-        score_surface.blit(loose, (them_rect.centerx, them_rect.y + 10))
-    else:
-        pg.draw.rect(score_surface, (255, 0, 0), us_rect)
-        pg.draw.rect(score_surface, (0, 255, 0), them_rect)  
-        score_surface.blit(loose, (us_rect.x + 10, us_rect.y + 10))
-        score_surface.blit(win, (them_rect.x + 10, them_rect.y + 10))
+    #pg.draw.ellipse(button_surface, color, button_surface.get_rect(), border_radius= 2)  # Draw oval shape
 
-    # Blit text onto the score_surface at specific positions within the rectangles
-    score_surface.blit(tot_score_us, (Our_result.x + 10, Our_result.y + 10))
-    score_surface.blit(tot_score_them, (Their_result.x + 10, Their_result.y + 10))
-          
+    game.blit(word, (score.centerx - 50, score.centery + 200))
     game.blit(score_surface, (score.x, score.y))
 
     pg.display.flip()
