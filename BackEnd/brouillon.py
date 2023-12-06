@@ -1,6 +1,6 @@
 import numpy as np
 import random
-
+"""
 # Définition des valeurs et des couleurs des cartes
 valeurs = ['7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 couleurs = ['Coeur', 'Carreau', 'Trèfle', 'Pique']
@@ -78,3 +78,58 @@ plis = [[{'valeur': '7', 'couleur': 'Coeur'}, {'valeur': 'A', 'couleur': 'Coeur'
 #points_manche = calculer_points_manche(plis, contrat)
 #print(points_manche)
 # jusbfibqiybbriunfddd
+
+
+"""
+
+
+class Player:
+    def __init__(self):
+        self._name_Player = None
+        self._hand =  None
+        self._type_player = None
+        self._group = None
+
+    def get_name_Player(self):
+        return self._name_Player
+
+    def set_name_Player(self, name_Player):
+        self._name_Player = name_Player
+
+    name_Player = property(get_name_Player, set_name_Player)
+
+    def get_hand(self):
+        return self._hand
+
+    def set_hand(self, hand):
+        self._hand = hand if hand is not None else []
+
+    @property
+    def hand(self):
+        return self.get_hand()
+    
+    @hand.setter
+    def hand(self, value):
+        self.set_hand(value)
+
+    def get_type_player(self):
+        return self._type_player
+
+    def set_type_player(self, type_player):
+        self._type_player = type_player
+
+    type_player = property(get_type_player, set_type_player)
+
+    def get_group(self):
+        return self._group
+
+    def set_group(self, group):
+        self._group = group
+
+    group = property(get_group, set_group)
+
+    def add_card_hand(self, card):
+        self.hand.append(card)
+
+    def remove_card_hand(self, card):
+        self.hand.remove(card)
