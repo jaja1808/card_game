@@ -11,11 +11,68 @@ card_names = ("7","8","9","10","ace","jack","king","queen")
 class Game:
     def __init__(self):
         # Creation de l'instance Game
-        self._player1=Player()
-        self._player2=Player()
-        self._player3=Player()
-        self._player4=Player()
-        self._Cards=[]
+        self._player1=None
+        self._player2=None
+        self._player3=None
+        self._player4=None
+        self._cards=None
+
+    #getter de l'attribut
+    def get_cards(self):
+        return self._cards
+    
+    #setter de l'attribut
+    def set_cards(self,cards):
+        self._cards =  cards
+
+    cards=property(get_cards,set_cards)
+
+
+    #getter de l'attribut
+    def getter_player1(self):
+        return self._player1
+
+    #setter de l'attribut
+    def setter_player1(self,player):
+        self._player1 =  player
+
+    #propertyproperty sur l'attribut
+    player1=property(getter_player1,setter_player1)    
+
+    
+    #getter de l'attribut
+    def getter_player2(self):
+        return self._player2
+
+    #setter de l'attribut
+    def setter_player2(self,player):
+        self._player2 =  player
+
+    #propertyproperty sur l'attribut
+    player2=property(getter_player2,setter_player2)
+
+
+    #getter de l'attribut
+    def getter_player3(self):
+        return self._player3
+
+    #setter de l'attribut
+    def setter_player3(self,player):
+        self._player3 =  player
+
+    #propertyproperty sur l'attribut
+    player3=property(getter_player3,setter_player3)
+
+    #getter de l'attribut
+    def getter_player4(self):
+        return self._player4
+
+    #setter de l'attribut
+    def setter_player4(self,player):
+        self._player4 =  player
+
+    #propertyproperty sur l'attribut
+    player4=property(getter_player4,setter_player4)    
 
 
     def Players(self):
@@ -35,44 +92,72 @@ class Game:
 # main = [] (liste vide ) 
 # Groupe = [] (liste vide ) 
     def Create_PLayer(self,player_number,name_player="Papi",type_player=True,hand=[],group=[]):
-        if player_number == 1:
-            player = self._player1
-        elif player_number == 2:
-            player = self._player2
-        elif player_number == 3:
-            player = self._player3
-        elif player_number == 4:
-            player = self._player4
-        else:
-            raise ValueError("la valeur doit etre comprise entre 1 et 4")
+        
+        player=player()
 
         # on definit le nom du joueur
-        player.set_name_Player(name_player)
+        player.name_Player=name_player
 
         # on definit la main du joueur
-        player.set_hand(hand)
+        player.hand=hand
         
         # on definit la le type de joueur
-        player.set_type_player(type_player)
+        player.type_player=type_player
 
         # on definit le groupe du joueur
-        player.set_group(group)      
+        player.group=group      
+
+        player.is_ok()
+
+        if player_number==1:
+            self.player1=player
+
+        if player_number==2:
+            self.player2=player
+
+    
+        if player_number==3:
+            self.player3=player
+
+        if player_number==4:
+            self.player4=player        
+
+
+
+
+
+    
+    # fonction pour ajouter une carte a la main du joueur
+    def add_card_cards(self,Card):
+        self.cards.append(Card)
+
+    # fonction pour retirer une carte a la main du joueur
+    def remove_card_cards(self,Card):
+        self.cards.pop(Card)
 
     # creation de toutes les cartes graces a la liste de 
     def Create_Cards(self):
         for colour in colours:
             for  name in card_names:
-                card =Card(name,colour)
-                self._Cards.append(card)
+                #creation dd'une carte
+                card =Card()
+                card.colour=colour
+                card.name=name
+                
+                #ajouter la cards a la liste de cartes
+                #add_card_cards(Card)  erreeur car ne trouve la fonction
+                self.cards.append(Card)
+
+
 
     #code pour verifier la creation des cartes  
     def print_Cards(self):
-        for Card in self._Cards:
-            print(Card.get_colour())
+        for card in self.cards:
+            print(card.colour)
 
     # fonction pour melanger les cartes (battre les carte)
     def shuffle_Cards(self):
-        self._Cards=rd.shuffle(self._Cards)
+        self.cards=rd.shuffle(self.cards)
     
     # fonction pour distribuer 
     def Distribute(self,player,number_cards=5):
@@ -153,7 +238,16 @@ class Card:
         self._score=score
     
     #property sur l'attribut colour
-    score=property(get_score,set_score)    
+    score=property(get_score,set_score)  
+
+
+    
+    # method de test pour voir si 
+    def is_ok(self):
+
+        ok=all(value is not None for value in self.__dict__.values())
+        if not ok:
+            raise CardError("Card instance is content some attribut with none values")  
 
 
 
@@ -246,12 +340,27 @@ class Player:
     def add_card_Hand(self,Card):
         self.hand.append(Card)
 
+    # fonction pour retirer une carte a la main du joueur
     def remove_card_Hand(self,Card):
         self.hand.pop(Card)
 
 
+    # method de test pour voir si 
+    def is_ok(self):
+
+        ok=all(value is not None for value in self.__dict__.values())
+        if not ok:
+            raise PlayerError("player instance is content some attribut with none values")
+    
 
 
+class PlayerError(Exception):
+    pass
+
+
+class CardError(Exception):
+    pass
+    
 
 
 
