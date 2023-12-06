@@ -87,13 +87,26 @@ class Game:
         else:
             raise ValueError("la valeur doit etre comprise entre 1 et 4")
 
-            """
+            
         for i in range(number_cards):
             card=self._Cards[i]
             player.add_card_Hand(card)
             self._Cards.pop(i)
-            """
+        
 
+    def display_players_hands(self):
+            players = self.Players()
+            for i, player in enumerate(players, start=1):
+                print(f"\nPlayer {i}'s Hand:")
+                hand = player.get_hand()
+
+                if not hand:
+                    print("Empty hand.")
+                else:
+                    for card in hand:
+                        print(f"{card.get_name()} of {card.get_colour()}")
+
+        
 
 
 
@@ -150,49 +163,66 @@ class Normal_card(Card):
 
 
 class Player:
-    def __init__(self,name_player="",type_player=False,hand=[],group=False):
+    def __init__(self):
         # nom du joueur
         # type= Chaine de caractere
-        self._name_Player=name_player
+        self.name_Player=None 
 
         # la main du joueur
         # type= liste
-        self._hand=hand
+        self._hand=None
 
         # le type  du joueur(bool())
         # type= bool (true humain , False IA)
-        self._type_player=type_player
+        self._type_player=None
         
-        self._group=group
+        self._group=None
 
     def get_name_Player(self):
         return self._name_Player
     
-    def get_player(self):
-        return self._player
+    def set_name_Player(self,name_Player):
+       self._name_Player=name_Player
+       
+    #    a =P¨layer()
+        # a.name_player=prince
+        # X=a.name_player
+        
+    name_Player = property(get_name_Player,set_name_Player)
+
+    
+    def get_hand(self):
+        return self._hand
+    
+    def set_hand(self,hand):
+        self._hand=hand if hand is not None else []
+    # definir une property
+    hand=property(get_hand,set_hand)
+
     
     def get_type_player(self):
         return self._type_player
     
+    def set_type_player(self,type_player):
+        self._type_player=type_player 
+
+    type_player=property(get_type_player,set_type_player)   
+
     def get_group(self):
         return self._group
-    
-
-    def set_name_Player(self,name_Player):
-       self._name_Player=name_Player
-    
-    def set_hand(self,hand):
-        self._hand=hand
-
-    def set_type_player(self,type_player):
-        self._type_player=type_player   
     
     def set_group(self,group):
        self._group=group
 
+    group=property(get_group,set_group)
+    
+
     # fonction pour ajouter une carte a la main du joueur
     def add_card_Hand(self,Card):
-        self._hand=self.self._hand.append(Card)
+        self.hand.append(Card)
+
+    def remove_card_Hand(self,Card):
+        self.hand.pop(Card)
 
 
 
