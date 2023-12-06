@@ -117,36 +117,61 @@ class Game:
 
 class Card:
     
-    def __init__(self,card_name,colour):
-        self._card_name=card_name
-        self._colour=colour
+    def __init__(self):
+        self._card_name=None
+        self._colour=None
+        self._score= None
 
+    #getter de l'attribut 
     def get_card_name(self):
         return self._card_name
     
-    def get_colour(self):
-        return self._colour
-   
+    #setter de l'attribut
     def set_card_name(self,card_name):
         self._card_name=card_name
-    
+
+    #property sur l'attribut name
+    carde_name=property(get_card_name,set_card_name)
+
+    #getter de l'attribut 
+    def get_colour(self):
+        return self._colour
+
+    #setter de l'attribut
     def set_colour(self,colour):
         self._colour=colour
+    
+    #property sur l'attribut colour
+    colour=property(get_colour,set_colour)    
+
+    #getter de l'attribut 
+    def get_score(self):
+        return self._score
+
+    #setter de l'attribut
+    def set_score(self,score):
+        self._score=score
+    
+    #property sur l'attribut colour
+    score=property(get_score,set_score)    
 
 
 
-
+"""
 # définition de la classe carte  attouf
 class Asset_card(Card):
-    def __init__(self, card_name, colour, score):
-        super().__init__(card_name, colour)
-        self._score=score
+    def __init__():
+        super,().__init__()
+        self._score=None
 
     def get_score(self):
         return self._score
     
     def set_score(self, score):
         self._score=score
+
+    # property de l'attribut score 
+    score=property(get_score,set_score)    
 
 
 # définition de la classe  non attouf(normal)
@@ -161,12 +186,13 @@ class Normal_card(Card):
     def set_score(self,score):
         self._score=score
 
+"""
 
 class Player:
     def __init__(self):
         # nom du joueur
         # type= Chaine de caractere
-        self.name_Player=None 
+        self._name_Player=None 
 
         # la main du joueur
         # type= liste
@@ -188,9 +214,8 @@ class Player:
         # a.name_player=prince
         # X=a.name_player
         
-    name_Player = property(get_name_Player,set_name_Player)
+    name_player = property(get_name_Player,set_name_Player)
 
-    
     def get_hand(self):
         return self._hand
     
