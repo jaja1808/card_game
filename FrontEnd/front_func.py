@@ -106,7 +106,7 @@ def user_input():
     user_text = ''
     # Text surface
     text_surface = font.render(user_text, True, (128, 128, 128))
-    initial_surface = font.render(initial_text, True, (128, 128, 128))
+    #initial_surface = font.render(initial_text, True, (128, 128, 128))
     button_txt = font.render("OK", True, (0, 0, 255))
     
     while motor:
