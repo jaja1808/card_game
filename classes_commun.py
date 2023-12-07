@@ -85,6 +85,7 @@ class Game:
                 card.colour=colour
                 card.name=name
                 card.score=0
+                card.image=""
                 
                 card.is_ok()
                 #ajouter la cards a la liste de cartes
@@ -132,10 +133,6 @@ class Game:
             self.player4=player        
 
 
-
-
-
-    
     # fonction pour ajouter une carte a la main du joueur
     def add_card_cards(self,Card):
         self.cards.append(Card)
@@ -172,20 +169,6 @@ class Game:
             card=self.cards[i]
             player.add_card_Hand(card)
             self.cards.pop(i)
-        
-
-    def display_players_hands(self):
-            players = self.Players()
-            for i, player in enumerate(players, start=1):
-                print(f"\nPlayer {i}'s Hand:")
-                hand = player.get_hand()
-
-                if not hand:
-                    print("Empty hand.")
-                else:
-                    for card in hand:
-                        print(f"{card.name} of {card.colour}")
-
         
 
 
@@ -234,7 +217,7 @@ class Card:
         return self._score 
 
     #property sur l'image 
-    score=property(get_colour,set_colour)   
+    score=property(get_score,set_score)   
 
     #setter de l'attribut 
     def set_image(self,image):

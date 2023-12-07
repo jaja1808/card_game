@@ -105,13 +105,6 @@ while ETAPE!=0:
         new_Game.Distribute(4)  #(Alain)
 
 
-        new_Game.display_players_hands()
-
-
-
-
-        
-        # evolution 
         ETAPE=int(input(" rentrer la valeur 400 pour faire evoluer le programme    ") )
 
 
