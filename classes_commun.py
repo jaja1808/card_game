@@ -214,39 +214,31 @@ class Card:
     name=property(get_name,set_name)
 
     #getter de l'attribut 
+
+    # Constructor
+    def __init__(self, card_name, colour, image=""):
+        self._card_name = card_name
+        self._colour = colour
+        self._image = image
+        # j'ajoute une test
+
+    # Name Getter  
+    def get_card_name(self):
+        return self._card_name
+    
+    # Colour Getter 
     def get_colour(self):
         return self._colour
-
-    #setter de l'attribut
+   
+    def set_card_name(self,card_name):
+        self._card_name=card_name
+    
     def set_colour(self,colour):
         self._colour=colour
-    
-    #property sur l'attribut colour
-    colour=property(get_colour,set_colour)    
-
-    #getter de l'attribut 
-    def get_score(self):
-        return self._score
-
-    #setter de l'attribut
-    def set_score(self,score):
-        self._score=score
-    
-    #property sur l'attribut colour
-    score=property(get_score,set_score)  
 
 
-    
-    # method de test pour voir si 
-    def is_ok(self):
-        none_attributes = [key for key, value in self.__dict__.items() if value is None]
-    
-        if none_attributes:
-            raise CardError(f"Player instance has None values for attributes: {none_attributes}")
-        
 
 
-"""
 # définition de la classe carte  attouf
 class Asset_card(Card):
     def __init__():
