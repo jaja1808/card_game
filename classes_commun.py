@@ -225,7 +225,6 @@ class Card:
     #property sur l'image 
     colour=property(get_colour,set_colour)   
 
-    
     #setter de l'attribut 
     def set_score(self,score):
         self._score=score
@@ -237,18 +236,23 @@ class Card:
     #property sur l'image 
     score=property(get_colour,set_colour)   
 
-
     #setter de l'attribut 
     def set_image(self,image):
         self._image=image
-
 
     #getter de l'attribut 
     def get_image(self):
         return self._image 
 
     #property sur l'image 
-    image=property(get_image,set_image)   
+    image=property(get_image,set_image) 
+
+    # method de test pour voir si 
+    def is_ok(self):
+        none_attributes = [key for key, value in self.__dict__.items() if value is None]
+    
+        if none_attributes:
+            raise CardError(f"Card instance has None values for attributes: {none_attributes}")  
 
   
 
