@@ -146,15 +146,205 @@ while ETAPE!=0:
 
         """
         attente de l'affichage de choix atout 
-        attente 
+        attente
+ 
         choix=0 
         choix=1 oui 
         choix=2 pass
         
+
+        ici j'envoie l'etat du jeton 
+        et le choix de chacun des joueurs
+
+        
+        jeton 
+        0   joueur principal 
+        1   joeur a gauche
+        2   joeur en face
+        3   joueur à droite 
+
         """
 
         pass
-        break     
+
+
+
+    elif ETAPE ==500:
+        """
+        redistribution des cartes
+
+        ici j'envoit toute les 3 autres  cartes aux joueurs
+
+        j'envoie de jeton du premier qui vas joueur
+        """
+
+        pass
+
+
+
+
+    
+    elif ETAPE ==550:
+        """
+       debut du jeu
+        si joueur principale
+
+       j'envoie une liste (tapis) [de carte] dans ce cas vide
+        attente  de objet
+
+        envoie 
+        score partenaire
+        score adversaire
+
+       si c'est joueur qui doit jouer je suis dans cette
+        """
+
+        pass
+
+
+    elif ETAPE ==551:
+        """
+       debut du jeu si c'est joueur 1 qui debute
+
+
+       j'envoie une liste (tapis) [de carte]
+        
+       
+       j'envoie jeton 
+       
+        envoie 
+        score partenaire
+        score adversaire
+
+
+       si c'est joueur qui doit jouer je suis dans cette
+        """
+
+        pass
+         
+    elif ETAPE ==552:
+        """
+       debut du jeu si c'est joueur 2 qui debute
+
+
+       j'envoie une liste (tapis) [de carte]
+
+       j'envoie jeton 
+        
+       
+       
+        envoie 
+        score partenaire
+        score adversaire
+
+       si c'est joueur qui doit jouer je suis dans cette
+        """
+
+        pass
+
+
+
+    elif ETAPE ==553:
+        """
+       debut du jeu si c'est joueur 3 qui debute
+
+
+       j'envoie une liste (tapis) [de carte]
+
+       j'envoie jeton 
+       
+       
+
+       
+       
+        envoie 
+        score partenaire
+        score adversaire
+
+
+       si c'est joueur qui doit jouer je suis dans cette
+        """
+
+        pass
+
+
+
+
+    elif ETAPE ==600:
+
+        """
+       debut du jeu si c'est joueur 3 qui debute
+
+
+       j'envoie une liste (tapis) [de carte]
+
+       j'envoie jeton 
+      
+      
+
+       
+       
+        envoie 
+        score partenaire
+        score adversaire
+
+
+       si c'est joueur qui doit jouer je suis dans cette
+        """
+
+        pass
+
+
+
+
+    elif ETAPE ==900:
+        
+        """
+        last tour
+        dernier tour de jeu
+
+        apres
+      
+      
+
+       
+       
+        envoie 
+        score partenaire
+        score adversaire
+
+
+       si c'est joueur qui doit jouer je suis dans cette
+        """
+
+        pass
+
+
+
+    elif ETAPE ==1000:
+        """
+        
+        plus de carte sur le tapis jeu finis
+      
+
+        score final partenaire
+        score final advaire
+    
+        game finish 
+        """
+
+        pass
+
+
+
+
+
+
+
+
+
+   
+         
    
 
 
