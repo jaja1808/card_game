@@ -29,7 +29,7 @@ while run:
 
     # Set background color
     game.fill(BACKGROUND)
-
+    
     # Listening for Events
     for click in Clicks:
 

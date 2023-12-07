@@ -85,7 +85,7 @@ class Game:
                 card.colour=colour
                 card.name=name
                 card.score=0
-                card.image=""
+                card.image=str(name+'_of_'+colour+'.png')
                 
                 card.is_ok()
                 #ajouter la cards a la liste de cartes
