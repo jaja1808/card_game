@@ -1,4 +1,5 @@
 import pygame as pg
+import numpy as np
 
 #IMPORTANT VARIABLES 
 
@@ -12,8 +13,12 @@ GAME_HEIGHT = 600
 # Inital angle of the arrow
 angle = 0
 timer = pg.time.Clock()
+
 # Atout array
 atout = ['spade.png','heart.png','diamond.png','club.png']
+# Score array
+score_array = np.arange(6)
+
 # Colors
 GREY = (155, 155, 155)
 BACKGROUND = (0, 80, 20)
@@ -25,6 +30,8 @@ FRAME_RATE = 60
 # GAME SIZE DISPLAY
 game = pg.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 
+
+######################################################################################################################################
 
 # Function to draw the centre arrow
 def draw_arrow(pos_x, pos_y, angle):
@@ -39,6 +46,7 @@ def draw_arrow(pos_x, pos_y, angle):
     # Display arrow
     game.blit(rotated_arrow, rotated_rect)
 
+######################################################################################################################################
 
 # Function to display back of the card
 def display_card(pos_x, pos_y, card_image):
@@ -48,17 +56,107 @@ def display_card(pos_x, pos_y, card_image):
     scaled_back_card_rect = scaled_back_card.get_rect(center=back_card_rect.center)
     return scaled_back_card, scaled_back_card_rect
 
+######################################################################################################################################
+
+# Function
 def display_image(pos_x, pos_y, image):
     im = pg.image.load(image_path + image)
     im_rect = im.get_rect(topleft = (pos_x, pos_y))
     return im, im_rect
 
+######################################################################################################################################
+
+# Function to draw the grid
+def draw_grid(screen , color, width, height, grid_width, grid_height):
+    for x in range(0, width, grid_width):
+        pg.draw.line(screen, color, (x, 0), (x, height))
+    for y in range(0, height, grid_height):
+        pg.draw.line(screen, color, (0, y), (width, y))
+    
+######################################################################################################################################
 
 # Function to create div-like elements
 def draw_div(pos_x, pos_y, width, height, color):
     div_rect = pg.Rect(pos_x, pos_y, width, height)
     div = pg.draw.rect(game, color, div_rect)
     return div
+
+######################################################################################################################################
+
+def user_input(): 
+    
+    game.fill(BACKGROUND)
+    font = pg.font.SysFont('Arial', 28)
+    motor = True
+    input_active = True  
+
+    home = pg.Rect(0, 0, GAME_WIDTH, GAME_HEIGHT)
+    input_box = pg.Rect(GAME_WIDTH // 2 - 150, GAME_HEIGHT // 2 - 25, 280, 50)
+    button = pg.Rect(input_box.right + 10, input_box.y, 80, 50)
+
+    # Surfaces
+    home_surface = pg.Surface((home.width, home.height), pg.SRCALPHA)
+    input_surface = pg.Surface((input_box.width, input_box.height), pg.SRCALPHA)
+
+    # Displaying the Image
+    home_im, home_rect = display_image(0, 0, 'tapis_belote.png')
+    home_surface.blit(home_im, home_rect)
+    # Text to display initially
+    initial_text = "Enter your name"
+    user_text = ''
+    # Text surface
+    text_surface = font.render(user_text, True, (128, 128, 128))
+    initial_surface = font.render(initial_text, True, (128, 128, 128))
+    button_txt = font.render("OK", True, (0, 0, 255))
+    
+    while motor:
+
+        for event in pg.event.get():
+            
+            if event.type == pg.QUIT:
+                motor = False
+
+            if event.type == pg.MOUSEBUTTONDOWN:
+                
+                if input_box.collidepoint(event.pos):
+                    input_active = True
+                
+                elif button.collidepoint(event.pos) and user_text != '':
+                    return user_text
+                else:
+                    input_active = False
+                    text_surface = font.render(initial_text, True, (128, 128, 128))
+
+            if event.type == pg.KEYDOWN:
+                if input_active:
+                    
+                    if event.key == pg.K_BACKSPACE:
+                        user_text = user_text[:-1]
+
+                    elif event.key == pg.K_RETURN:
+                        return user_text
+                    
+                    else:
+                        user_text += event.unicode
+                
+        pg.draw.rect(home_surface, BEIGE, input_box)
+        pg.draw.rect(home_surface, GREY, button)
+        home_surface.blit(button_txt, (button.centerx - button_txt.get_width() // 2, button.centery - button_txt.get_height() // 2))
+
+        if user_text == '':
+            text_surface = font.render(initial_text, True, (128, 128, 128))
+        elif text_surface.get_width() > input_box.width - 10:
+            user_text = ''  # Clear the user text
+        else:
+            text_surface = font.render(user_text, True, (0, 0, 0))
+        
+        home_surface.blit(text_surface, (input_box.x + 5, input_box.y + 5))
+        home_surface.blit(input_surface, (input_box.x, input_box.y))
+        game.blit(home_surface, (home.x, home.y))
+
+        pg.display.flip()
+
+######################################################################################################################################
 
 #  Function to draw buttons in the pop-up div
 def draw_atout(popup_rect, button_width, button_height):
@@ -105,7 +203,7 @@ def draw_atout(popup_rect, button_width, button_height):
                     input = False  #print(f'your atout is: {atout[2]}') # testing 
                     return atout[2]
 
-
+######################################################################################################################################
 
 # Function to display pop-up with buttons and card image
 def display_popup(card_image):
@@ -162,6 +260,7 @@ def display_popup(card_image):
                     print(f'Atout is:{atout_ch}')
                     waiting_for_input = False
 
+######################################################################################################################################
 
 # Function to display a hand of cards
 def display_hand(hand):
@@ -194,6 +293,7 @@ def display_hand(hand):
 
     pg.display.flip()
 
+######################################################################################################################################
 
 # Function to display cards on the tapis
 def display_tapis(card_1, card_2, card_3, card_4):
@@ -210,6 +310,7 @@ def display_tapis(card_1, card_2, card_3, card_4):
         game.blit(card_3, card_rect_3)
         game.blit(card_4, card_rect_4)
 
+######################################################################################################################################
 
 # Function to Display the score board
 def display_score(us, them):
@@ -231,23 +332,24 @@ def display_score(us, them):
     game.blit(score_us, (score.centerx - 24, score.centery - 30))
     game.blit(score_them, (score.centerx - 25, score.centery - 10))
 
+######################################################################################################################################
 
 # Final score Window
-def final_score(total_score_us, total_score_them):
+def final_score(score_array):
 
-    score = pg.Rect(100, 100, 530, 270)
-    button_rect = pg.Rect(score.bottomright[0] + 10, score.bottomright[1] + 10, 70, 10)
+    score = pg.Rect(10, 10, 530, 270)
+    table = pg.Rect(500, 350, 280, 200)
 
     # Draw the final score and making it the base surface
     game.fill(BACKGROUND)
     score_surface = pg.Surface((score.width, score.height), pg.SRCALPHA)
-    button_surface = pg.Surface((button_rect.width, button_rect.height), pg.SRCALPHA)
+    table_surface = pg.Surface((table.width, table.height), pg.SRCALPHA)
 
     # Displaying the Image
     bacG, bacG_rect = display_image(10, 10, 'back_gound_score.png')
     score_surface.blit(bacG, bacG_rect)
     
-    if total_score_us > total_score_them:
+    if score_array[1] > score_array[2]:
         color = (0, 255, 0)
         sentence = 'WIN'
     else:
@@ -255,16 +357,19 @@ def final_score(total_score_us, total_score_them):
         sentence = 'LOOSE'
 
     pg.draw.rect(game, color, score)
+    pg.draw.rect(game, BEIGE, table)
 
     # Creating the font for Score
     font = pg.font.SysFont('Arial',34) # Arial font
     word = font.render(sentence, True, color) # the win message
-    tot_score_us = font.render('US: '+str(total_score_us), True, BEIGE)
-    tot_score_them = font.render('THEM: '+str(total_score_them), True, BEIGE)
+    tot_score_us = font.render('US: '+str(score_array[1]), True, (0, 0, 0))
+    tot_score_them = font.render('THEM: '+str(score_array[2]), True, (0, 0, 0))
 
-    #pg.draw.ellipse(button_surface, color, button_surface.get_rect(), border_radius= 2)  # Draw oval shape
+    # Creating the grid in Table
+    draw_grid(table_surface, (0, 0, 0), table.width, table.height, 140, 50)
 
     game.blit(word, (score.centerx - 50, score.centery + 200))
     game.blit(score_surface, (score.x, score.y))
+    game.blit(table_surface, (table.x, table.y))
 
     pg.display.flip()
