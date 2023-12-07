@@ -10,9 +10,21 @@ ETAPE=0
 ETAPE=100
 
 """
+partie de pré-congiguration frontend
+------------------------------------------------------------
+pg.init()
+game widraw
+
+
+"""
+
+
+
+"""
 ------------------------------------------------------------------------------------
 -----------------------------  Boucle Principale   ---------------------------------
 ------------------------------------------------------------------------------------
+
 """
 while ETAPE!=0:
     
@@ -24,18 +36,50 @@ while ETAPE!=0:
         # creation de toute les cartes
         new_Game.Create_Cards()
         
+        
 
+
+        """
+        c'est dans cette etape que l'on initialise le jeu
+        ici on initialise aussi le pygame
+
+        pg.init()
+        """
         # afficher les cartes crées
         new_Game.print_Cards()
 
 
         # evolution 
         # ETAPE=int(input(" rentrer la valeur 200 pour faire evoluer le programme    ") )
+        """
+        je suis dans l'attente du front- end
+        etape front =200
+        """
         ETAPE=200
       
 
     elif ETAPE==200:
         # etape 200 creation des 4 joueurs 
+
+
+
+        """
+        front-end
+        attente de nom de joueur sous forme de string
+        joueur principal
+
+        user_name (string)
+
+        attente d'un return d'une fonction
+
+
+        dans une boucle if 
+        name=fontion()
+        new_Game.Create_PLayer(1,name,True,[],[])
+
+        etape front_end=300
+
+        """
 
         #creation Joueur 1
         new_Game.Create_PLayer(1,"Papi",True,[],[])
@@ -63,13 +107,62 @@ while ETAPE!=0:
 
         new_Game.display_players_hands()
 
+
+
+
         
         # evolution 
         ETAPE=int(input(" rentrer la valeur 400 pour faire evoluer le programme    ") )
 
+
+        """
+        renvoeyer la main du joueur 
+        renvoyer la carte de choix d'atout 
+        choix atout= last_cards
+
+
+        etape front etape 300
+
+
+        attente front_etape 400
+        """
+
     elif ETAPE ==400:
+        """
+        etape choix atout
+        """
+
+        """
+        attente de l'affichage de choix atout 
+        attente 
+        choix=0 
+        choix=1 oui 
+        choix=2 pass
+
+        """
+
+        pass
         break     
 
+
+
+    elif ETAPE ==400:
+        """
+        etape choix atout
+        """
+
+        """
+        attente de l'affichage de choix atout 
+        attente 
+        choix=0 
+        choix=1 oui 
+        choix=2 pass
+        
+        """
+
+        pass
+        break     
+   
 
 
         
