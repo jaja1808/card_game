@@ -254,8 +254,8 @@ class Card:
 
 
 
-  
 
+"""
 # définition de la classe carte  attout
 class Asset_card(Card):
     def __init__():
@@ -284,6 +284,7 @@ class Normal_card(Card):
     def set_score(self,score):
         self._score=score
 
+"""
 
 
 class Player:
