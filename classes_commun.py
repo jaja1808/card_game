@@ -74,15 +74,24 @@ class Game:
     #propertyproperty sur l'attribut
     player4=property(getter_player4,setter_player4)    
 
+    
+    # creation de toutes les cartes graces a la liste de 
+    def Create_Cards(self):
+        self.cards=[]
+        for colour in colours:
+            for  name in card_names:
+                #creation dd'une carte
+                card =Card()
+                card.colour=colour
+                card.name=name
+                card.score=0
+                
+                card.is_ok()
+                #ajouter la cards a la liste de cartes
+                #add_card_cards(Card)  erreeur car ne trouve la fonction
+                self.cards.append(card)
 
-    def Players(self):
-        tab=[]
-        tab.append(self._player1)
-        tab.append(self._player2)
-        tab.append(self._player3)
-        tab.append(self._player4)
 
-        return tab
         
 # fonction de creation d'un joueur de la classe 
 # important de le faire ainsi car il y as plusieurs attributs pour 1 Joueur 
@@ -93,10 +102,10 @@ class Game:
 # Groupe = [] (liste vide ) 
     def Create_PLayer(self,player_number,name_player="Papi",type_player=True,hand=[],group=[]):
         
-        player=player()
+        player=Player()
 
         # on definit le nom du joueur
-        player.name_Player=name_player
+        player.name_player=name_player
 
         # on definit la main du joueur
         player.hand=hand
@@ -135,20 +144,6 @@ class Game:
     def remove_card_cards(self,Card):
         self.cards.pop(Card)
 
-    # creation de toutes les cartes graces a la liste de 
-    def Create_Cards(self):
-        for colour in colours:
-            for  name in card_names:
-                #creation dd'une carte
-                card =Card()
-                card.colour=colour
-                card.name=name
-                
-                #ajouter la cards a la liste de cartes
-                #add_card_cards(Card)  erreeur car ne trouve la fonction
-                self.cards.append(Card)
-
-
 
     #code pour verifier la creation des cartes  
     def print_Cards(self):
@@ -174,9 +169,9 @@ class Game:
 
             
         for i in range(number_cards):
-            card=self._Cards[i]
+            card=self.cards[i]
             player.add_card_Hand(card)
-            self._Cards.pop(i)
+            self.cards.pop(i)
         
 
     def display_players_hands(self):
@@ -189,7 +184,7 @@ class Game:
                     print("Empty hand.")
                 else:
                     for card in hand:
-                        print(f"{card.get_name()} of {card.get_colour()}")
+                        print(f"{card.name} of {card.colour}")
 
         
 
@@ -203,20 +198,20 @@ class Game:
 class Card:
     
     def __init__(self):
-        self._card_name=None
+        self._name=None
         self._colour=None
         self._score= None
 
     #getter de l'attribut 
-    def get_card_name(self):
-        return self._card_name
+    def get_name(self):
+        return self._name
     
     #setter de l'attribut
-    def set_card_name(self,card_name):
-        self._card_name=card_name
+    def set_name(self,card_name):
+        self._name=card_name
 
     #property sur l'attribut name
-    carde_name=property(get_card_name,set_card_name)
+    name=property(get_name,set_name)
 
     #getter de l'attribut 
     def get_colour(self):
@@ -244,11 +239,11 @@ class Card:
     
     # method de test pour voir si 
     def is_ok(self):
-
-        ok=all(value is not None for value in self.__dict__.values())
-        if not ok:
-            raise CardError("Card instance is content some attribut with none values")  
-
+        none_attributes = [key for key, value in self.__dict__.items() if value is None]
+    
+        if none_attributes:
+            raise CardError(f"Player instance has None values for attributes: {none_attributes}")
+        
 
 
 """
@@ -286,7 +281,7 @@ class Player:
     def __init__(self):
         # nom du joueur
         # type= Chaine de caractere
-        self._name_Player=None 
+        self._name_player=None 
 
         # la main du joueur
         # type= liste
@@ -298,17 +293,17 @@ class Player:
         
         self._group=None
 
-    def get_name_Player(self):
-        return self._name_Player
+    def get_name_player(self):
+        return self._name_player
     
-    def set_name_Player(self,name_Player):
-       self._name_Player=name_Player
+    def set_name_player(self,name_Player):
+       self._name_player=name_Player
        
+    name_player = property(get_name_player,set_name_player)
     #    a =P¨layer()
         # a.name_player=prince
         # X=a.name_player
         
-    name_player = property(get_name_Player,set_name_Player)
 
     def get_hand(self):
         return self._hand
@@ -347,11 +342,11 @@ class Player:
 
     # method de test pour voir si 
     def is_ok(self):
-
-        ok=all(value is not None for value in self.__dict__.values())
-        if not ok:
-            raise PlayerError("player instance is content some attribut with none values")
+        none_attributes = [key for key, value in self.__dict__.items() if value is None]
     
+        if none_attributes:
+            raise PlayerError(f"Player instance has None values for attributes: {none_attributes}")
+        
 
 
 class PlayerError(Exception):

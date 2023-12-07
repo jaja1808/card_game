@@ -46,7 +46,7 @@ while ETAPE!=0:
         pg.init()
         """
         # afficher les cartes crées
-        new_Game.print_Cards()
+        
 
 
         # evolution 
