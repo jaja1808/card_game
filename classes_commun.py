@@ -198,9 +198,10 @@ class Game:
 class Card:
     
     def __init__(self):
-        self._name=None
+        self._name  =None
         self._colour=None
-        self._score= None
+        self._score =None
+        self._image =None
 
     #getter de l'attribut 
     def get_name(self):
@@ -213,51 +214,49 @@ class Card:
     #property sur l'attribut name
     name=property(get_name,set_name)
 
+    #setter de l'attribut 
+    def set_colour(self,colour):
+        self._colour=colour
+
     #getter de l'attribut 
-
-    # Constructor
-    def __init__(self, card_name, colour, image=""):
-        self._card_name = card_name
-        self._colour = colour
-        self._image = image
-        # j'ajoute une test
-
-    # Name Getter  
-
-    # Constructor
-    def __init__(self, card_name, colour, image=""):
-        self._card_name = card_name
-        self._colour = colour
-        self._image = image
-        # j'ajoute une test
-
-    # Name Getter  
-    def get_card_name(self):
-        return self._card_name
-    
-    # Colour Getter 
-    # Colour Getter 
     def get_colour(self):
-        return self._colour
+        return self._colour 
+
+    #property sur l'image 
+    colour=property(get_colour,set_colour)   
+
     
-    # Image Getter
+    #setter de l'attribut 
+    def set_score(self,score):
+        self._score=score
+
+    #getter de l'attribut 
+    def get_score(self):
+        return self._score 
+
+    #property sur l'image 
+    score=property(get_colour,set_colour)   
+
+
+    #setter de l'attribut 
+    def set_image(self,image):
+        self._image=image
+
+
+    #getter de l'attribut 
     def get_image(self):
-        return self._image
-    
-    # Name setter
-    def set_card_name(self, card_name):
-        self._card_name = card_name
-    
-    # Colour setter
-    def set_colour(self, colour):
-        self._colour = colour
+        return self._image 
 
-    # Image setter
-    def set_image(self, image):
-        self._image = image
+    #property sur l'image 
+    image=property(get_image,set_image)   
+
+  
 
 
-# définition de la classe carte  attouf
+
+  
+
+# définition de la classe carte  attout
 class Asset_card(Card):
     def __init__():
         super,().__init__()
@@ -285,7 +284,7 @@ class Normal_card(Card):
     def set_score(self,score):
         self._score=score
 
-"""
+
 
 class Player:
     def __init__(self):
@@ -368,7 +367,7 @@ class CardError(Exception):
     
 
 
-"""
+
 
 
 
