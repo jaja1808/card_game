@@ -6,11 +6,14 @@ from front_func import *
 
 # Array for simulating events
 Clicks = np.arange(0, 10)
-hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
-#hand = []
+#hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
+hand = []
+# Score array
+score_array = np.arange(6)
 # Inital angle of the arrow
 angle = 0
 
+''' We start here fron the main program'''
 # Initializing pygame
 pg.init()
 
@@ -27,6 +30,13 @@ dfc = True
 # Keep the game going 
 while run:
 
+    ''' new game button 
+        return (integer) etape front == 200 '''
+
+
+    ''' the input for the name and the declaration of the player 
+        return name (string) and etape (integer) == 300 '''
+    
     # Set background color
     game.fill(BACKGROUND)
     
@@ -34,39 +44,46 @@ while run:
     for click in Clicks:
 
         # Always start with the back ground        
-        game.fill(BACKGROUND)
+            game.fill(BACKGROUND)    
 
-        # Calculate the rotation angle for the arrow
-        angle += 90  # 90 to make 4 sides
+            ''' etape == 300, receive hand[], atout and choix atout(carte tapis) 
+                from backend and sends Acknowledgement (int == 400 )'''
 
-        # Display the back card at position of all players
-        back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png')
-        back_card_2, back_card_rect_2 = display_card(75, 300, 'back_card.png')
-        back_card_4, back_card_rect_4 = display_card(725, 300, 'back_card.png')
+            # Calculate the rotation angle for the arrow
+            angle += 90  # 90 to make 4 sides
 
-        # Display the arrow and starting cards
-        game.blit(back_card_1, back_card_rect_1)
-        game.blit(back_card_2, back_card_rect_2)
-        game.blit(back_card_4, back_card_rect_4)
+            # Display the back card at position of all players
+            back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png')
+            back_card_2, back_card_rect_2 = display_card(75, 300, 'back_card.png')
+            back_card_4, back_card_rect_4 = display_card(725, 300, 'back_card.png')
 
-        if dfc and click == 0:
-          # Display the hand at the bottom
-          display_hand(hand[:5]) 
-          # Display pop-up on the third click
-          display_popup('10_of_diamonds.png')
-          dfc = False
-        else:   
-            if len(hand) != 0:
-                draw_arrow(10, 12, angle)
-                display_score(40,50)
-                display_hand(hand)
+            # Display the arrow and starting cards
+            game.blit(back_card_1, back_card_rect_1)
+            game.blit(back_card_2, back_card_rect_2)
+            game.blit(back_card_4, back_card_rect_4)
 
-            else:
-                final_score(12, 34)
-                run = False
+            if dfc and click == 0:
+              # Display the hand at the bottom
+              display_hand(hand[:5]) 
+              # Display pop-up on the third click
+              display_popup('10_of_diamonds.png')
+              dfc = False
 
-        # Timer for slowing the rotation
-        #timer.tick(5)  # 2.5 for the rate of rotation
+              ''' if (pass) sends choix = 2 else choix = 1 , and receives geton for displaying (pass or not) if chosen recieve (atout)[display atout top corner]'''
+            else:   
+                if len(hand) != 0:
+                    draw_arrow(10, 12, angle)
+                    display_score(40,50)
+                    display_hand(hand)
+
+                else:
+                    user_input()
+                    #final_score(score_array)
+                    time.sleep(1)
+                    run = False
+
+            # Timer for slowing the rotation
+            #timer.tick(5)  # 2.5 for the rate of rotation
 
     # Update the Display
     pg.display.flip()
