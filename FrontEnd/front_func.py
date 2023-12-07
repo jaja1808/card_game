@@ -83,6 +83,20 @@ def draw_div(pos_x, pos_y, width, height, color):
 
 ######################################################################################################################################
 
+# Function to Display the 3 cards of other players
+def back_cards():
+    # Display the back card at position of all players
+    back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png')
+    back_card_2, back_card_rect_2 = display_card(75, 300, 'back_card.png')
+    back_card_4, back_card_rect_4 = display_card(725, 300, 'back_card.png')
+
+    # Display the arrow and starting cards
+    game.blit(back_card_1, back_card_rect_1)
+    game.blit(back_card_2, back_card_rect_2)
+    game.blit(back_card_4, back_card_rect_4)
+
+######################################################################################################################################
+
 def user_input(): 
     
     game.fill(BACKGROUND)
@@ -106,7 +120,6 @@ def user_input():
     user_text = ''
     # Text surface
     text_surface = font.render(user_text, True, (128, 128, 128))
-    #initial_surface = font.render(initial_text, True, (128, 128, 128))
     button_txt = font.render("OK", True, (0, 0, 255))
     
     while motor:
