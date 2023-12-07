@@ -223,20 +223,38 @@ class Card:
         # j'ajoute une test
 
     # Name Getter  
+
+    # Constructor
+    def __init__(self, card_name, colour, image=""):
+        self._card_name = card_name
+        self._colour = colour
+        self._image = image
+        # j'ajoute une test
+
+    # Name Getter  
     def get_card_name(self):
         return self._card_name
     
     # Colour Getter 
+    # Colour Getter 
     def get_colour(self):
         return self._colour
-   
-    def set_card_name(self,card_name):
-        self._card_name=card_name
     
-    def set_colour(self,colour):
-        self._colour=colour
+    # Image Getter
+    def get_image(self):
+        return self._image
+    
+    # Name setter
+    def set_card_name(self, card_name):
+        self._card_name = card_name
+    
+    # Colour setter
+    def set_colour(self, colour):
+        self._colour = colour
 
-
+    # Image setter
+    def set_image(self, image):
+        self._image = image
 
 
 # définition de la classe carte  attouf
