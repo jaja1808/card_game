@@ -53,6 +53,10 @@ while ETAPE!=0:
         # ETAPE=int(input(" rentrer la valeur 200 pour faire evoluer le programme    ") )
         """
         je suis dans l'attente du front- end
+
+        attente d'une variable 200
+        par click bouton new game
+
         etape front =200
         """
         ETAPE=200
@@ -104,6 +108,13 @@ while ETAPE!=0:
         new_Game.Distribute(3)  #(Brian)
         new_Game.Distribute(4)  #(Alain)
 
+        #ajouter la derniere carte au tapis pour choix attout
+        # ajouter une carte sur le tapis
+        new_Game.choix_attout()
+
+
+
+
 
         ETAPE=int(input(" rentrer la valeur 400 pour faire evoluer le programme    ") )
 
@@ -120,29 +131,28 @@ while ETAPE!=0:
         attente front_etape 400
         """
 
-    elif ETAPE ==400:
-        """
-        etape choix atout
-        """
-
-        """
-        attente de l'affichage de choix atout 
-        attente 
-        choix=0 
-        choix=1 oui 
-        choix=2 pass
-
-        """
-
-        pass
-        break     
-
-
+ 
 
     elif ETAPE ==400:
         """
         etape choix atout
         """
+
+        # mise a jour de la valeur choix de la part du frontend
+        # new_Game.choix=xxxxxxxxxxxx
+
+
+
+        if new_Game.choix==1:
+            #
+            
+            pass
+            
+
+
+
+
+
 
         """
         attente de l'affichage de choix atout 
@@ -152,7 +162,7 @@ while ETAPE!=0:
         choix=1 oui 
         choix=2 pass
         
-
+            
         ici j'envoie l'etat du jeton 
         et le choix de chacun des joueurs
 
@@ -173,7 +183,7 @@ while ETAPE!=0:
         """
         redistribution des cartes
 
-        ici j'envoit toute les 3 autres  cartes aux joueurs
+        ici j'envoit toute les 3 autres cartes aux joueurs 
 
         j'envoie de jeton du premier qui vas joueur
         """

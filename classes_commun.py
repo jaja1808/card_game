@@ -6,16 +6,29 @@ colours = ("spades","hearts","diamonds","clubs")
 card_names = ("7","8","9","10","ace","jack","king","queen")
 
 
+#---------------------------------------------------------------------------------------------------------------------------------------
 
 # definition de la classe carte
 class Game:
     def __init__(self):
         # Creation de l'instance Game
+
+        #les joueurs(joueur)
         self._player1=None
         self._player2=None
         self._player3=None
         self._player4=None
+
+        #liste de cartes (32)
         self._cards=None
+        self._tapis=None
+
+        # choix = card 
+        self._choix=None
+
+        # jeton du joueur
+        self._jeton=None
+
 
     #getter de l'attribut
     def get_cards(self):
@@ -36,7 +49,7 @@ class Game:
     def setter_player1(self,player):
         self._player1 =  player
 
-    #propertyproperty sur l'attribut
+    #property sur l'attribut
     player1=property(getter_player1,setter_player1)    
 
     
@@ -48,7 +61,7 @@ class Game:
     def setter_player2(self,player):
         self._player2 =  player
 
-    #propertyproperty sur l'attribut
+    #property sur l'attribut
     player2=property(getter_player2,setter_player2)
 
 
@@ -60,7 +73,7 @@ class Game:
     def setter_player3(self,player):
         self._player3 =  player
 
-    #propertyproperty sur l'attribut
+    #property sur l'attribut
     player3=property(getter_player3,setter_player3)
 
     #getter de l'attribut
@@ -71,10 +84,45 @@ class Game:
     def setter_player4(self,player):
         self._player4 =  player
 
-    #propertyproperty sur l'attribut
-    player4=property(getter_player4,setter_player4)    
+    #property sur l'attribut
+    player4=property(getter_player4,setter_player4)
 
-    
+    #getter de l'attribut
+    def getter_tapis(self):
+        return self._tapis
+
+    #setter de l'attribut
+    def setter_tapis(self,tapis):
+        self._tapis =  tapis
+
+    #property sur l'attribut
+    tapis=property(getter_tapis,setter_tapis)
+
+
+    #getter de l'attribut
+    def getter_choix(self):
+        return self._choix
+
+    #setter de l'attribut
+    def setter_choix(self,choix):
+        self._choix =  choix
+
+    #property sur l'attribut
+    choix=property(getter_choix,setter_choix)
+
+    #getter de l'attribut
+    def getter_jeton(self):
+        return self._jeton
+
+    #setter de l'attribut
+    def setter_jeton(self,jeton):
+        self._jeton =  jeton
+
+    #property  sur l'attribut
+    jeton=property(getter_jeton,setter_jeton)
+
+
+
     # creation de toutes les cartes graces a la liste de 
     def Create_Cards(self):
         self.cards=[]
@@ -169,6 +217,35 @@ class Game:
             card=self.cards[i]
             player.add_card_Hand(card)
             self.cards.pop(i)
+
+    
+    #creation de tapis vide
+    def creation_tapis(self):
+        self.tapis = []
+        self.choix=0
+
+    # ajout de carte dans tapis
+    def add_card_tapis(self,card):
+        self.tapis.append(card)
+
+    #retirer des cartes dans le tapis
+    def remove_card_tapis(self):
+        self.tapis.pop()
+
+        
+    def choix_attout(self):
+    #dans cette fontion je rajoute une carte au tapis afin de choisir la carte de attout
+        
+        # ajout du dernier element des cartes dans la variable atout
+        atout= self.cards[-1]
+        
+        #ajout de la variable dans tapis
+        self.add_card_tapis(atout)
+
+        #mise à jour des cartes
+        self.cards.pop()
+    
+
         
 
 
@@ -176,6 +253,7 @@ class Game:
 
 
 
+#---------------------------------------------------------------------------------------------------------------------------------------
         
 
 class Card:
@@ -273,6 +351,7 @@ class Normal_card(Card):
 
 """
 
+#---------------------------------------------------------------------------------------------------------------------------------------
 
 class Player:
     def __init__(self):
