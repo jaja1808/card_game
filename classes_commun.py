@@ -236,7 +236,6 @@ class Game:
     def choix_attout(self):
     #dans cette fontion je rajoute une carte au tapis afin de choisir la carte de attout
         
-        self.creation_tapis()
 
         # ajout du dernier element des cartes dans la variable atout
         atout= self.cards[-1]

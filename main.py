@@ -87,6 +87,9 @@ while ETAPE!=0:
         #creation Joueur 4
         new_Game.Create_PLayer(4,"Alain",False,[],[])
 
+        #creation d'un tapis vide
+        new_Game.creation_tapis()
+
 
         
         # evolution 
