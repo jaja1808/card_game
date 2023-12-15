@@ -1,10 +1,12 @@
 import pygame as pg
 import numpy as np
+import os 
 
 #IMPORTANT VARIABLES 
 
 # Images path
-image_path = "C:/Users/rusha/Documents/Sem_7/Computer_science/Project/code/images/"
+front_path = os.getcwd()
+image_path = os.path.join(front_path,'images/')
 
 # Size of the game window
 GAME_WIDTH = 800
