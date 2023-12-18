@@ -7,6 +7,7 @@ import os
 # Images path
 front_path = os.getcwd()
 image_path = os.path.join(front_path,'images/')
+backend_path = os.path.join(front_path, 'BackEnd/')
 
 # Size of the game window
 GAME_WIDTH = 800

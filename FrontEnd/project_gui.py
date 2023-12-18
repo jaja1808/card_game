@@ -2,7 +2,9 @@ import pygame as pg
 import numpy as np
 import time
 from front_func import *
-
+#from BackEnd.classes_backend import *
+#from BackEnd.Principal import *
+#from classes_commun import *
 
 # Array for simulating events
 Clicks = np.arange(0, 10)
@@ -12,6 +14,7 @@ hand = []
 score_array = np.arange(6)
 # Inital angle of the arrow
 angle = 0
+step = 0
 
 ''' We start here fron the main program'''
 # Initializing pygame
