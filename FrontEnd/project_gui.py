@@ -80,7 +80,8 @@ while run:
                     display_hand(hand)
 
                 else:
-                    user_input()
+                    newGame_page()
+                    #user_input()
                     #final_score(score_array)
                     time.sleep(1)
                     run = False

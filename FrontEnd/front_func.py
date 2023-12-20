@@ -85,7 +85,40 @@ def draw_div(pos_x, pos_y, width, height, color):
     return div
 
 ######################################################################################################################################
+# Function to give the newGame button
+def newGame_page():
 
+    state = False
+    motor = True
+    game.fill(BACKGROUND)
+    font = pg.font.SysFont('Arial', 28)
+    im, im_rect = display_image(144, 44, 'Home.png')
+    first_butt_txt = font.render("NEW GAME", True, (0, 0, 0))
+    button_rect = pg.Rect((GAME_WIDTH/2) - 15, (GAME_HEIGHT/2) - 5, 30, 10)
+    button_surface = pg.Surface((button_rect.width, button_rect.height), pg.SRCALPHA)
+    
+    while motor:
+
+        for event in pg.event.get():
+                
+                if event.type == pg.QUIT:
+                    motor = False
+
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    
+                    if button_rect.collidepoint(event.pos):
+                        state = True
+
+    game.blit(im, im_rect)
+    pg.draw.rect(game, BEIGE, button_rect)
+    button_surface.blit(first_butt_txt, button_rect)
+
+    pg.display.flip()
+    
+    return state
+######################################################################################################################################
+
+# Function to give the user input page and get their name as well
 def user_input(): 
     
     game.fill(BACKGROUND)
