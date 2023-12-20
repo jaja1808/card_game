@@ -6,8 +6,8 @@ from front_func import *
 
 # Array for simulating events
 Clicks = np.arange(0, 10)
-hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
-#hand = []
+#hand = ['7_of_diamonds.png', '7_of_spades.png', '7_of_hearts.png', '7_of_clubs.png','8_of_clubs.png','8_of_diamonds.png','8_of_hearts.png','8_of_spades.png']
+hand = []
 # Score array
 score_array = np.arange(6)
 # Inital angle of the arrow
@@ -85,8 +85,10 @@ while run:
                     ''' if hand == [empty], i recive score (total_us, total_them and score winner)and 
                     display the final score page'''
                     
-                    #user_input()
-                    final_score(score_array)
+                    name, etape = user_input()
+                    print(name, etape)
+                    #first_page()
+                    #final_score(score_array)
                     time.sleep(1)
                     run = False
 
