@@ -85,6 +85,64 @@ def draw_div(pos_x, pos_y, width, height, color):
     return div
 
 ######################################################################################################################################
+
+# Function to Display the 3 cards of other players
+def back_cards():
+    # Display the back card at position of all players
+    back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png')
+    back_card_2, back_card_rect_2 = display_card(75, 300, 'back_card.png')
+    back_card_4, back_card_rect_4 = display_card(725, 300, 'back_card.png')
+
+    # Display the arrow and starting cards
+    game.blit(back_card_1, back_card_rect_1)
+    game.blit(back_card_2, back_card_rect_2)
+    game.blit(back_card_4, back_card_rect_4)
+
+######################################################################################################################################
+
+# Function to create div-like elements
+def first_page():
+    # fille the background with dark green
+    game.fill(BACKGROUND)
+    etape = 200
+    # Displaying the image of Belote for the first page
+    first_image, first_image_rect = display_image(144, 0, 'Home.png')
+    # Font for the button words
+    font = pg.font.SysFont('Arial', 30)
+    # Text on the button
+    button_text = "New Game"
+    color = (80, 80, 80)
+    # Declare the button rectangle
+    button_rect = pg.Rect(first_image_rect.bottomleft[0], first_image_rect.bottomleft[1]+ 10, first_image_rect.width, 50)
+    pg.draw.rect(game, GREY, button_rect)
+    # Creating the button surface
+    button_surface = pg.Surface((button_rect.width, button_rect.height), pg.SRCALPHA)
+
+    mouse_p = pg.mouse.get_pos()
+    # checking the position of the mouse if it touches the button rectangle
+    if button_rect.collidepoint(mouse_p):
+        color = (0, 0, 0)
+
+    button_txt = font.render(button_text, True, color)
+
+    for event in pg.event.get():
+        if event.type == pg.MOUSEBUTTONDOWN:
+            if button_rect.collidepoint(event.pos):
+                print(etape)
+                return etape
+    
+    # Calculate coordinates to center the text within the button
+    text_x = (button_rect.width - button_txt.get_width()) // 2
+    text_y = (button_rect.height - button_txt.get_height()) // 2
+    
+    button_surface.blit(button_txt, (text_x, text_y))  # Blit text onto button_surface at center
+
+    game.blit(first_image,first_image_rect)
+    game.blit(button_surface, button_rect)
+    
+    pg.display.flip()
+
+######################################################################################################################################
 # Function to give the newGame button
 def newGame_page():
 
@@ -123,6 +181,7 @@ def user_input():
     
     game.fill(BACKGROUND)
     font = pg.font.SysFont('Arial', 28)
+    etape = 300
     motor = True
     input_active = True  
 
@@ -142,7 +201,6 @@ def user_input():
     user_text = ''
     # Text surface
     text_surface = font.render(user_text, True, (128, 128, 128))
-    #initial_surface = font.render(initial_text, True, (128, 128, 128))
     button_txt = font.render("OK", True, (0, 0, 255))
     
     while motor:
@@ -158,7 +216,11 @@ def user_input():
                     input_active = True
                 
                 elif button.collidepoint(event.pos) and user_text != '':
-                    return user_text
+                    input_active = False
+                    motor = False
+                    game.fill(BACKGROUND)
+                    pg.display.flip()
+                    return user_text, etape
                 else:
                     input_active = False
                     text_surface = font.render(initial_text, True, (128, 128, 128))
@@ -170,7 +232,9 @@ def user_input():
                         user_text = user_text[:-1]
 
                     elif event.key == pg.K_RETURN:
-                        return user_text
+                        input_active = False
+                        motor = False
+                        return user_text, etape
                     
                     else:
                         user_text += event.unicode
@@ -332,7 +396,7 @@ def display_hand(hand):
 ######################################################################################################################################
 
 # Function to display cards on the tapis
-def display_tapis(card_1, card_2, card_3, card_4):
+def display_tapis(card_1, card_2, card_3, card_4): # Change the cards to list of cards to be done
         
         # Display the cards at position of all players
         card_1, card_rect_1 = display_card(440, 220, card_1)
