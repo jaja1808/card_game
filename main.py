@@ -36,19 +36,12 @@ while ETAPE!=0:
         # creation de toute les cartes
         new_Game.Create_Cards()
         
-        
-
-
         """
         c'est dans cette etape que l'on initialise le jeu
         ici on initialise aussi le pygame
-
         pg.init()
         """
         # afficher les cartes crées
-        
-
-
         # evolution 
         # ETAPE=int(input(" rentrer la valeur 200 pour faire evoluer le programme    ") )
         """
@@ -93,6 +86,9 @@ while ETAPE!=0:
         new_Game.Create_PLayer(3,"Brian",False,[],[])
         #creation Joueur 4
         new_Game.Create_PLayer(4,"Alain",False,[],[])
+
+        #creation d'un tapis vide
+        new_Game.creation_tapis()
 
 
         
@@ -141,16 +137,57 @@ while ETAPE!=0:
         # mise a jour de la valeur choix de la part du frontend
         # new_Game.choix=xxxxxxxxxxxx
 
-
-
+            #le joueur a choisit de valider le choix
         if new_Game.choix==1:
-            #
             
-            pass
+            #mise a jour des valeurs de score des toutes les cartes
+               
+
+
+            # mise a jour de choix
+            new_Game.choix=0
+
+            #evolution du grafcet vers l'etape avant la redistribution
+            ETAPE=450
+    
+            #le joueur a choisit pass
+        if new_Game.choix==2:
+            # mise a jour de choix
+            new_Game.choix=0
+            
+            #evolution du grafcet vers l'etape avant la redistribution
+            ETAPE=401
             
 
 
+        elif ETAPE ==401:
+            """
+            etape choix atout Joeur 1
+            """
 
+            # mise a joueur jeton
+            new_Game.jeton=1
+            
+        # mise a jour de la valeur choix de la part du frontend
+        # new_Game.choix=xxxxxxxxxxxx
+
+
+             #le joueur a choisit de valider le choix
+            if new_Game.choix==1:
+            
+            # mise a jour de choix
+                new_Game.choix=0
+
+            #evolution du grafcet vers l'etape avant la redistribution
+                ETAPE=451
+    
+            #le joueur a choisit pass
+            if new_Game.choix==2:
+            # mise a jour de choix
+                new_Game.choix=0
+            
+                #evolution du grafcet vers l'etape avant la redistribution
+                ETAPE=402
 
 
 
@@ -174,7 +211,6 @@ while ETAPE!=0:
         3   joueur à droite 
 
         """
-
         pass
 
 
