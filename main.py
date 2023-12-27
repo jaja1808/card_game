@@ -140,6 +140,10 @@ while ETAPE!=0:
             #le joueur a choisit de valider le choix
         if new_Game.choix==1:
             
+            #mise a jour des valeurs de score des toutes les cartes
+               
+
+
             # mise a jour de choix
             new_Game.choix=0
 
