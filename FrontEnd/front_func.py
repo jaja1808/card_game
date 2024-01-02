@@ -2,7 +2,7 @@ import pygame as pg
 import numpy as np
 import os 
 
-#IMPORTANT VARIABLES 
+#IMPORTANT VARIABLES (STRUCTURE)
 
 # Images path
 front_path = os.getcwd()
