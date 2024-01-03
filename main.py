@@ -123,8 +123,7 @@ while ETAPE!=0:
 
         etape front etape 300
 
-
-        attente front_etape 400
+ 0
         """
 
  
@@ -136,14 +135,16 @@ while ETAPE!=0:
 
         # mise a jour de la valeur choix de la part du frontend
         # new_Game.choix=xxxxxxxxxxxx
-
-            #le joueur a choisit de valider le choix
+        
+        #pour l'instant je mets 1 pour faire evoluer le jeu 
+        new_Game.choix=1
+  
+        #le joueur a choisit de valider le choix
         if new_Game.choix==1:
             
             #mise a jour des valeurs de score des toutes les cartes
                
-
-
+            
             # mise a jour de choix
             new_Game.choix=0
 
