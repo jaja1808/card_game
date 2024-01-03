@@ -7,8 +7,8 @@ from FrontEnd.front_func import *
 # image path
 image_path = Path.cwd() / 'images'
 
-# creation d'une variable Etape qui definit nos conditions
-ETAPE=0
+# creation d'une variable etape qui definit nos conditions
+#etape = 0
 
 """
 partie de pré-congiguration frontend
@@ -36,9 +36,11 @@ while run:
     # Set background color
     game.fill(BACKGROUND)
 
-    while ETAPE!=0:
+    etape = 100
+
+    while etape!=0:
         
-        if ETAPE==100:
+        if etape==100:
             # etape 100 debut de la partie
             # creation d'une instance game()
             new_Game=Game()
@@ -52,17 +54,18 @@ while run:
             etape front =200
             """
 
-            # The page of clicking new game button
-            ETAPE = first_page()
+            # The page of clicking new game button to launch the game
+            etape = first_page(image_path)
+            print(etape)
             """
             c'est dans cette etape que l'on initialise le jeu
             """
 
             # afficher les cartes crées
             # evolution 
-            # ETAPE=int(input(" rentrer la valeur 200 pour faire evoluer le programme    ") )
+            # etape=int(input(" rentrer la valeur 200 pour faire evoluer le programme ") )
 
-        elif ETAPE==200:
+        elif etape==200:
             # etape 200 creation des 4 joueurs
             """
             front-end
@@ -81,7 +84,7 @@ while run:
 
             """
             # name of the user 
-            name , ETAPE = user_input()
+            name , etape = user_input(image_path)
 
             #creation Joueur 1
             new_Game.Create_PLayer(1, name, True, [], [])
@@ -96,11 +99,11 @@ while run:
             new_Game.creation_tapis()
         
             # evolution 
-            # ETAPE=int(input(" rentrer la valeur 300 pour faire evoluer le programme    ") )
-            ETAPE=300
+            # etape=int(input(" rentrer la valeur 300 pour faire evoluer le programme    ") )
+            etape=300
         
 
-        elif ETAPE==300:
+        elif etape==300:
             # etape  qui consiste à distribuer a chaque joueur 5 cartes 
             new_Game.Distribute(1)  #joueur 1(papi)
             new_Game.Distribute(2)  #(prince)
@@ -128,10 +131,10 @@ while run:
             #Displaying the hand
             #display_hand(hand)
 
-            ETAPE = 400
+            etape = 400
     
 
-        elif ETAPE ==400:
+        elif etape ==400:
             """
             etape choix atout
             """
@@ -150,7 +153,7 @@ while run:
                 new_Game.choix=0
 
                 #evolution du grafcet vers l'etape avant la redistribution
-                ETAPE=450
+                etape=450
         
             #le joueur a choisit pass
             if new_Game.choix==2:
@@ -158,11 +161,11 @@ while run:
                 new_Game.choix=0
                 
                 #evolution du grafcet vers l'etape avant la redistribution
-                ETAPE=401
+                etape=401
             
 
 
-        elif ETAPE ==401:
+        elif etape ==401:
             """
             etape choix atout Joeur 1
             """
@@ -181,7 +184,7 @@ while run:
                 new_Game.choix=0
 
             #evolution du grafcet vers l'etape avant la redistribution
-                ETAPE=451
+                etape=451
     
             #le joueur a choisit pass
             if new_Game.choix==2:
@@ -189,7 +192,7 @@ while run:
                 new_Game.choix=0
             
                 #evolution du grafcet vers l'etape avant la redistribution
-                ETAPE=402
+                etape=402
 
 
 
@@ -216,7 +219,7 @@ while run:
             pass
 
 
-        elif ETAPE ==500:
+        elif etape ==500:
             """
             redistribution des cartes
 
@@ -231,7 +234,7 @@ while run:
 
 
         
-        elif ETAPE ==550:
+        elif etape ==550:
             """
         debut du jeu
             si joueur principale
@@ -249,7 +252,7 @@ while run:
             pass
 
 
-        elif ETAPE ==551:
+        elif etape ==551:
             """
         debut du jeu si c'est joueur 1 qui debute
 
@@ -269,7 +272,7 @@ while run:
 
             pass
             
-        elif ETAPE ==552:
+        elif etape ==552:
             """
         debut du jeu si c'est joueur 2 qui debute
 
@@ -291,7 +294,7 @@ while run:
 
 
 
-        elif ETAPE ==553:
+        elif etape ==553:
             """
         debut du jeu si c'est joueur 3 qui debute
 
@@ -317,7 +320,7 @@ while run:
 
 
 
-        elif ETAPE ==600:
+        elif etape ==600:
 
             """
         debut du jeu si c'est joueur 3 qui debute
@@ -344,7 +347,7 @@ while run:
 
 
 
-        elif ETAPE ==900:
+        elif etape ==900:
             
             """
             last tour
@@ -368,7 +371,7 @@ while run:
 
 
 
-        elif ETAPE ==1000:
+        elif etape ==1000:
             """
             
             plus de carte sur le tapis jeu finis

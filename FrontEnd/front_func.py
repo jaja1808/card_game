@@ -118,14 +118,14 @@ def draw_div(pos_x, pos_y, width, height, color):
 ######################################################################################################################################
 
 # Function to Display the 3 cards of other players
-def back_cards():
+def back_cards(image_path):
     '''
         this function is for displaying the back of the cards of other players 
     '''
     # Display the back card at position of all players
-    back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png')
-    back_card_2, back_card_rect_2 = display_card(75, 300, 'back_card.png')
-    back_card_4, back_card_rect_4 = display_card(725, 300, 'back_card.png')
+    back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png',image_path)
+    back_card_2, back_card_rect_2 = display_card(75, 300, 'back_card.png', image_path)
+    back_card_4, back_card_rect_4 = display_card(725, 300, 'back_card.png', image_path)
 
     # Display the arrow and starting cards
     game.blit(back_card_1, back_card_rect_1)
@@ -135,7 +135,7 @@ def back_cards():
 ######################################################################################################################################
 
 # Function to create div-like elements
-def first_page():
+def first_page(image_path):
     '''
         this will create the first page to start the new game with a click of the button
         the next step will be called 
@@ -144,7 +144,7 @@ def first_page():
     game.fill(BACKGROUND)
     etape = 200
     # Displaying the image of Belote for the first page
-    first_image, first_image_rect = display_image(144, 0, 'Home.png' )
+    first_image, first_image_rect = display_image(144, 0, 'Home.png', image_path)
     # Font for the button words
     font = pg.font.SysFont('Arial', 30)
     # Text on the button
@@ -182,7 +182,7 @@ def first_page():
 ######################################################################################################################################
     
 # Function to give the user input page and get their name as well
-def user_input():
+def user_input(image_path):
     '''
         This function will take the name of the user and give it back to the system
         then call the next step
@@ -204,7 +204,7 @@ def user_input():
     input_surface = pg.Surface((input_box.width, input_box.height), pg.SRCALPHA)
 
     # Displaying the Image
-    home_im, home_rect = display_image(0, 0, 'tapis_belote.png')
+    home_im, home_rect = display_image(0, 0, 'tapis_belote.png', image_path)
     home_surface.blit(home_im, home_rect)
     # Text to display initially
     initial_text = "Enter your name"
@@ -337,7 +337,7 @@ def display_popup(card_image, image_path, atout):
     pg.draw.rect(game, BACKGROUND, popup_rect) # change background to grey to see it
 
     # Display card image
-    card, card_rect = display_card(2, 2, card_image)
+    card, card_rect = display_card(2, 2, card_image, image_path)
     game.blit(card, (popup_rect.centerx - card_rect.width // 2, popup_rect.centery - card_rect.height/1.25))
 
     # Display buttons
@@ -399,7 +399,7 @@ def display_hand(hand, image_path):
     mouse_x, mouse_y = pg.mouse.get_pos()
 
     for card in hand:
-        card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card)
+        card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card, image_path)
 
         # Check if the mouse is over the scaled card
         scaled_rect = pg.Rect(x, GAME_HEIGHT - 135, card_rect.width/2, card_rect.height)
@@ -468,7 +468,7 @@ def display_score(us, them):
 ######################################################################################################################################
 
 # Final score Window
-def final_score(score_array): # to be completed
+def final_score(score_array, image_path): # to be completed
     '''
         This function will display the final page with the total scores and the verdict of the game
         score array: belote score '''
@@ -482,7 +482,7 @@ def final_score(score_array): # to be completed
     table_surface = pg.Surface((table.width, table.height), pg.SRCALPHA)
 
     # Displaying the Image
-    bacG, bacG_rect = display_image(10, 10, 'back_gound_score.png')
+    bacG, bacG_rect = display_image(10, 10, 'back_gound_score.png', image_path)
     score_surface.blit(bacG, bacG_rect)
     
     if score_array[1] > score_array[2]:
