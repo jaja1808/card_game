@@ -101,17 +101,20 @@ while run:
         
             # evolution 
             # etape=int(input(" rentrer la valeur 300 pour faire evoluer le programme    ") )
+            game.fill(BACKGROUND)
         
 
         elif etape==300:
+            
+            #names = [new_Game.player4.name_player, new_Game.player2.name_player, new_Game.player3.name_player]
+            #back_cards(image_path, names)
+            
+
             # etape  qui consiste à distribuer a chaque joueur 5 cartes 
             new_Game.Distribute(1)  #joueur 1(papi)
             new_Game.Distribute(2)  #(prince)
             new_Game.Distribute(3)  #(Brian)
             new_Game.Distribute(4)  #(Alain)
-
-            # Display the back cards 
-            back_cards(image_path)
 
             #ajouter la derniere carte au tapis pour choix attout
             # ajouter une carte sur le tapis
@@ -138,17 +141,17 @@ while run:
             """
             etape choix atout
             """
-
+            # Get the choice from the user
+            #choix = display_popup(choix_atout, image_path, atout)
+        
             # mise a jour de la valeur choix de la part du frontend
-            # new_Game.choix=xxxxxxxxxxxx
+            # new_Game.choix= choix
 
                 #le joueur a choisit de valider le choix
             if new_Game.choix==1:
                 
                 #mise a jour des valeurs de score des toutes les cartes
                 
-
-
                 # mise a jour de choix
                 new_Game.choix=0
 

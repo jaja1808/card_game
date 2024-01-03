@@ -115,19 +115,45 @@ def draw_div(pos_x, pos_y, width, height, color):
 ######################################################################################################################################
 
 # Function to Display the 3 cards of other players
-def back_cards(image_path):
+def back_cards(image_path, names):
     '''
         this function is for displaying the back of the cards of other players 
     '''
     # Display the back card at position of all players
+    
+    # Font for the button words
+    font = pg.font.SysFont('Arial', 14)
+
     back_card_1, back_card_rect_1 = display_card(400, 75, 'back_card.png',image_path)
     back_card_2, back_card_rect_2 = display_card(75, 300, 'back_card.png', image_path)
     back_card_4, back_card_rect_4 = display_card(725, 300, 'back_card.png', image_path)
 
-    # Display the arrow and starting cards
-    game.blit(back_card_1, back_card_rect_1)
-    game.blit(back_card_2, back_card_rect_2)
-    game.blit(back_card_4, back_card_rect_4)
+    # Render text surfaces for player names
+    name_surfaces = [font.render(name, True, BEIGE) for name in names]
+
+    running = True
+    while running:
+        
+        # Blit the cards and player names
+        game.blit(back_card_1, back_card_rect_1)
+        game.blit(back_card_2, back_card_rect_2)
+        game.blit(back_card_4, back_card_rect_4)
+
+        # Display player names above the cards
+        for i, name_surface in enumerate(name_surfaces):
+            card_rect = [back_card_rect_1, back_card_rect_2, back_card_rect_4][i]
+
+            # Calculate the position to display the name above the card
+            text_x = card_rect.centerx - name_surface.get_width() // 2
+            text_y = card_rect.top - name_surface.get_height() - 2  # Place it above the card with a small margin
+
+            game.blit(name_surface, (text_x, text_y))
+        
+        pg.display.flip()
+
+        for event in pg.event.get():
+           if event.type == pg.QUIT:
+                running = False
 
 ######################################################################################################################################
 # Function to create div-like elements
