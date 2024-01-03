@@ -149,33 +149,33 @@ while run:
 
         elif etape ==400:
             """
-        etape choix atout
+        tape choix atout
             """
   
 
         # mise a jour de la valeur choix de la part du frontend
         # new_Game.choix=xxxxxxxxxxxx
 
-            #le joueur a choisit de valider le choix
-        if new_Game.choix==1:
-            
-            #mise a jour des valeurs de score des toutes les cartes
-               
+            #le joueur a choisit passer le choix
+        if new_Game.choix=='pass':
+            etape=401
+           
 
-
+        if new_Game.choix=='clubs':
+            etape=450
             # mise a jour de choix
-            new_Game.choix=0
+        if new_Game.choix=="diamonds":
 
+            #evolution du grafcet vers l'etape avant la redistribution
+            etape=450
+        if new_Game.choix=="hearts":       
                 #evolution du grafcet vers l'etape avant la redistribution
             etape=450
-        
-            #le joueur a choisit pass
-            if new_Game.choix==2:
-                # mise a jour de choix
-                new_Game.choix=0
-                
+
+        if new_Game.choix=="spades":       
                 #evolution du grafcet vers l'etape avant la redistribution
-                etape=401
+            etape=450    
+        
             
 
 
@@ -184,8 +184,9 @@ while run:
             etape choix atout Joeur 1
             """
 
-            # mise a joueur jeton
-            new_Game.jeton=1
+            # mise a joueur jeton (valeur en angle )
+
+            new_Game.jeton=270
             
         # mise a jour de la valeur choix de la part du frontend
         # new_Game.choix=xxxxxxxxxxxx
@@ -224,10 +225,10 @@ while run:
 
             
             jeton 
-            0   joueur principal 
-            1   joeur a gauche
-            2   joeur en face
-            3   joueur à droite 
+            #joueur1 =270
+            #joueur2 =180
+            #joueur3 =90
+            #joueur4 =0
 
             """
             pass
