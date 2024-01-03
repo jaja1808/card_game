@@ -150,11 +150,6 @@ while run:
             etape=401
            
 
-               
-        
-
-
-
         if new_Game.choix=='clubs':
             etape=450
             # mise a jour de choix
