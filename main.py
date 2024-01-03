@@ -1,24 +1,28 @@
-# new line
+import pygame as pg
 from classes_commun import *
-
+from pathlib import Path
+from FrontEnd.front_func import *
 # from classes_backend import *
 
+# image path
+image_path = Path.cwd() / 'images'
 
 # creation d'une variable Etape qui definit nos conditions
 ETAPE=0
 
-ETAPE=100
-
 """
 partie de pré-congiguration frontend
 ------------------------------------------------------------
-pg.init()
-game widraw
-
-
 """
+# Initializing pygame
+pg.init()
 
+# Creating game window 
+game = pg.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
+pg.display.set_caption("Belote Game")
 
+# Variable for game 
+run = True
 
 """
 ------------------------------------------------------------------------------------
@@ -26,346 +30,344 @@ game widraw
 ------------------------------------------------------------------------------------
 
 """
-while ETAPE!=0:
+# Keep the game going 
+while run:
     
-    if ETAPE==100:
-        # etape 100 debut de la partie
-        # creation d'une instance game()
-        new_Game=Game()
+    # Set background color
+    game.fill(BACKGROUND)
 
-        # creation de toute les cartes
-        new_Game.Create_Cards()
+    while ETAPE!=0:
         
-        
+        if ETAPE==100:
+            # etape 100 debut de la partie
+            # creation d'une instance game()
+            new_Game=Game()
+            # creation de toute les cartes
+            new_Game.Create_Cards()
 
+            """
+            je suis dans l'attente du front- end
+            attente d'une variable 200
+            par click bouton new game
+            etape front =200
+            """
 
-        """
-        c'est dans cette etape que l'on initialise le jeu
-        ici on initialise aussi le pygame
+            # The page of clicking new game button
+            ETAPE = first_page()
+            """
+            c'est dans cette etape que l'on initialise le jeu
+            """
 
-        pg.init()
-        """
-        # afficher les cartes crées
-        
+            # afficher les cartes crées
+            # evolution 
+            # ETAPE=int(input(" rentrer la valeur 200 pour faire evoluer le programme    ") )
 
+        elif ETAPE==200:
+            # etape 200 creation des 4 joueurs
+            """
+            front-end
+            attente de nom de joueur sous forme de string
+            joueur principal
 
-        # evolution 
-        # ETAPE=int(input(" rentrer la valeur 200 pour faire evoluer le programme    ") )
-        """
-        je suis dans l'attente du front- end
+            user_name (string)
 
-        attente d'une variable 200
-        par click bouton new game
+            attente d'un return d'une fonction
 
-        etape front =200
-        """
-        ETAPE=200
-      
+            dans une boucle if 
+            name=fontion()
+            new_Game.Create_PLayer(1,name,True,[],[])
 
-    elif ETAPE==200:
-        # etape 200 creation des 4 joueurs 
+            etape front_end=300
 
+            """
+            # name of the user 
+            name , ETAPE = user_input()
 
-
-        """
-        front-end
-        attente de nom de joueur sous forme de string
-        joueur principal
-
-        user_name (string)
-
-        attente d'un return d'une fonction
-
-
-        dans une boucle if 
-        name=fontion()
-        new_Game.Create_PLayer(1,name,True,[],[])
-
-        etape front_end=300
-
-        """
-
-        #creation Joueur 1
-        new_Game.Create_PLayer(1,"Papi",True,[],[])
-        #creation Joueur 2
-        new_Game.Create_PLayer(2,"Prince",False,[],[])
-        #creation Joueur 3
-        new_Game.Create_PLayer(3,"Brian",False,[],[])
-        #creation Joueur 4
-        new_Game.Create_PLayer(4,"Alain",False,[],[])
-
-
-        
-        # evolution 
-        # ETAPE=int(input(" rentrer la valeur 300 pour faire evoluer le programme    ") )
-        ETAPE=300
-        
-
-    elif ETAPE==300:
-        # etape  qui consiste à distribuer a chaque joueur 5 cartes 
-        new_Game.Distribute(1)  #joueur 1(papi)
-        new_Game.Distribute(2)  #(prince)
-        new_Game.Distribute(3)  #(Brian)
-        new_Game.Distribute(4)  #(Alain)
-
-        #ajouter la derniere carte au tapis pour choix attout
-        # ajouter une carte sur le tapis
-        new_Game.choix_attout()
-
-
-
-
-
-        ETAPE=int(input(" rentrer la valeur 400 pour faire evoluer le programme    ") )
-
-
-        """
-        renvoeyer la main du joueur 
-        renvoyer la carte de choix d'atout 
-        choix atout= last_cards
-
-
-        etape front etape 300
-
-
-        attente front_etape 400
-        """
-
- 
-
-    elif ETAPE ==400:
-        """
-        etape choix atout
-        """
-
-        # mise a jour de la valeur choix de la part du frontend
-        # new_Game.choix=xxxxxxxxxxxx
-
-
-
-        if new_Game.choix==1:
-            #
+            #creation Joueur 1
+            new_Game.Create_PLayer(1,name,True,[],[])
+            #creation Joueur 2
+            new_Game.Create_PLayer(2,"Prince",False,[],[])
+            #creation Joueur 3
+            new_Game.Create_PLayer(3,"Brian",False,[],[])
+            #creation Joueur 4
+            new_Game.Create_PLayer(4,"Alain",False,[],[])
             
+
+        elif ETAPE==300:
+            # etape  qui consiste à distribuer a chaque joueur 5 cartes 
+            new_Game.Distribute(1)  #joueur 1(papi)
+            new_Game.Distribute(2)  #(prince)
+            new_Game.Distribute(3)  #(Brian)
+            new_Game.Distribute(4)  #(Alain)
+
+            # Display the back cards 
+            back_cards()
+
+            #ajouter la derniere carte au tapis pour choix attout
+            # ajouter une carte sur le tapis
+
+            new_Game.choix_attout()
+
+            """
+            renvoeyer la main du joueur 
+            renvoyer la carte de choix d'atout 
+            choix atout= last_cards
+            attente front_etape 400
+            """
+            # hand = from backend
+            # atout = from backend
+            # choix atout = from backend
+
+            #Displaying the hand
+            #display_hand(hand)
+
+            ETAPE = 400
+    
+
+        elif ETAPE ==400:
+            """
+            etape choix atout
+            """
+
+            # mise a jour de la valeur choix de la part du frontend
+            # new_Game.choix=xxxxxxxxxxxx
+
+
+
+            if new_Game.choix==1:
+                #
+                
+                pass
+                
+
+
+
+
+
+
+            """
+            attente de l'affichage de choix atout 
+            attente
+    
+            choix=0 
+            choix=1 oui 
+            choix=2 pass
+            
+                
+            ici j'envoie l'etat du jeton 
+            et le choix de chacun des joueurs
+
+            
+            jeton 
+            0   joueur principal 
+            1   joeur a gauche
+            2   joeur en face
+            3   joueur à droite 
+
+            """
+
+            pass
+
+
+
+        elif ETAPE ==500:
+            """
+            redistribution des cartes
+
+            ici j'envoit toute les 3 autres cartes aux joueurs 
+
+            j'envoie de jeton du premier qui vas joueur
+            """
+
+            pass
+
+
+
+
+        
+        elif ETAPE ==550:
+            """
+        debut du jeu
+            si joueur principale
+
+        j'envoie une liste (tapis) [de carte] dans ce cas vide
+            attente  de objet
+
+            envoie 
+            score partenaire
+            score adversaire
+
+        si c'est joueur qui doit jouer je suis dans cette
+            """
+
+            pass
+
+
+        elif ETAPE ==551:
+            """
+        debut du jeu si c'est joueur 1 qui debute
+
+
+        j'envoie une liste (tapis) [de carte]
+            
+        
+        j'envoie jeton 
+        
+            envoie 
+            score partenaire
+            score adversaire
+
+
+        si c'est joueur qui doit jouer je suis dans cette
+            """
+
             pass
             
+        elif ETAPE ==552:
+            """
+        debut du jeu si c'est joueur 2 qui debute
 
 
+        j'envoie une liste (tapis) [de carte]
 
-
-
-
-        """
-        attente de l'affichage de choix atout 
-        attente
- 
-        choix=0 
-        choix=1 oui 
-        choix=2 pass
-        
+        j'envoie jeton 
             
-        ici j'envoie l'etat du jeton 
-        et le choix de chacun des joueurs
+        
+        
+            envoie 
+            score partenaire
+            score adversaire
+
+        si c'est joueur qui doit jouer je suis dans cette
+            """
+
+            pass
+
+
+
+        elif ETAPE ==553:
+            """
+        debut du jeu si c'est joueur 3 qui debute
+
+
+        j'envoie une liste (tapis) [de carte]
+
+        j'envoie jeton 
+        
+        
 
         
-        jeton 
-        0   joueur principal 
-        1   joeur a gauche
-        2   joeur en face
-        3   joueur à droite 
-
-        """
-
-        pass
+        
+            envoie 
+            score partenaire
+            score adversaire
 
 
+        si c'est joueur qui doit jouer je suis dans cette
+            """
 
-    elif ETAPE ==500:
-        """
-        redistribution des cartes
+            pass
 
-        ici j'envoit toute les 3 autres cartes aux joueurs 
 
-        j'envoie de jeton du premier qui vas joueur
-        """
 
-        pass
+
+        elif ETAPE ==600:
+
+            """
+        debut du jeu si c'est joueur 3 qui debute
+
+
+        j'envoie une liste (tapis) [de carte]
+
+        j'envoie jeton 
+        
+        
+
+        
+        
+            envoie 
+            score partenaire
+            score adversaire
+
+
+        si c'est joueur qui doit jouer je suis dans cette
+            """
+
+            pass
+
+
+
+
+        elif ETAPE ==900:
+            
+            """
+            last tour
+            dernier tour de jeu
+
+            apres
+        
+        
+
+        
+        
+            envoie 
+            score partenaire
+            score adversaire
+
+
+        si c'est joueur qui doit jouer je suis dans cette
+            """
+
+            pass
+
+
+
+        elif ETAPE ==1000:
+            """
+            
+            plus de carte sur le tapis jeu finis
+        
+
+            score final partenaire
+            score final advaire
+        
+            game finish 
+            """
+
+            pass
+
+    # if __name__ == "__main__":
+
+
+
 
 
 
 
     
-    elif ETAPE ==550:
-        """
-       debut du jeu
-        si joueur principale
-
-       j'envoie une liste (tapis) [de carte] dans ce cas vide
-        attente  de objet
-
-        envoie 
-        score partenaire
-        score adversaire
-
-       si c'est joueur qui doit jouer je suis dans cette
-        """
-
-        pass
-
-
-    elif ETAPE ==551:
-        """
-       debut du jeu si c'est joueur 1 qui debute
-
-
-       j'envoie une liste (tapis) [de carte]
-        
-       
-       j'envoie jeton 
-       
-        envoie 
-        score partenaire
-        score adversaire
-
-
-       si c'est joueur qui doit jouer je suis dans cette
-        """
-
-        pass
-         
-    elif ETAPE ==552:
-        """
-       debut du jeu si c'est joueur 2 qui debute
-
-
-       j'envoie une liste (tapis) [de carte]
-
-       j'envoie jeton 
-        
-       
-       
-        envoie 
-        score partenaire
-        score adversaire
-
-       si c'est joueur qui doit jouer je suis dans cette
-        """
-
-        pass
-
-
-
-    elif ETAPE ==553:
-        """
-       debut du jeu si c'est joueur 3 qui debute
-
-
-       j'envoie une liste (tapis) [de carte]
-
-       j'envoie jeton 
-       
-       
-
-       
-       
-        envoie 
-        score partenaire
-        score adversaire
-
-
-       si c'est joueur qui doit jouer je suis dans cette
-        """
-
-        pass
-
-
-
-
-    elif ETAPE ==600:
-
-        """
-       debut du jeu si c'est joueur 3 qui debute
-
-
-       j'envoie une liste (tapis) [de carte]
-
-       j'envoie jeton 
-      
-      
-
-       
-       
-        envoie 
-        score partenaire
-        score adversaire
-
-
-       si c'est joueur qui doit jouer je suis dans cette
-        """
-
-        pass
-
-
-
-
-    elif ETAPE ==900:
-        
-        """
-        last tour
-        dernier tour de jeu
-
-        apres
-      
-      
-
-       
-       
-        envoie 
-        score partenaire
-        score adversaire
-
-
-       si c'est joueur qui doit jouer je suis dans cette
-        """
-
-        pass
-
-
-
-    elif ETAPE ==1000:
-        """
-        
-        plus de carte sur le tapis jeu finis
-      
-
-        score final partenaire
-        score final advaire
+            
     
-        game finish 
-        """
 
-        pass
 
+            
 
 
 
 
 
+    """
+    ------------------------------------------------------------------------------------
+    -----------------------------  FIN Boucle Principale   -----------------------------
+    ------------------------------------------------------------------------------------
+    """    
+ 
+    # Update the Display
+    pg.display.flip()
 
+    # Event Listen to Quit
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            run = False
 
-
-   
-         
-   
-
-
-        
-
-
-
-
-
-"""
-------------------------------------------------------------------------------------
------------------------------  FIN Boucle Principale   -----------------------------
-------------------------------------------------------------------------------------
-"""    
+# Quitting the game
+pg.quit()

@@ -9,8 +9,6 @@ from pathlib import Path
 GAME_WIDTH = 800
 GAME_HEIGHT = 600
 
-# Inital angle of the arrow
-#angle = 0
 timer = pg.time.Clock()
 
 # Atout array
@@ -376,7 +374,7 @@ def display_popup(card_image, image_path, atout):
                 if yes_button_rect.collidepoint(mouse_pos):
                     waiting_for_input = False
                     print(f'Atout is:{atout[0]}')
-                    return atout[0]
+                    return 2
                 elif no_button_rect.collidepoint(mouse_pos):
                     pg.draw.rect(game, BACKGROUND, no_button_rect)
                     atout_ch = draw_atout(popup_rect, button_width, button_height)
