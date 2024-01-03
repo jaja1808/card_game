@@ -119,26 +119,26 @@ while run:
             #ajouter la derniere carte au tapis pour choix attout
             # ajouter une carte sur le tapis
 
-            new_Game.choix_attout()
+            atout=new_Game.choix_attout()
 
-        """
+            """        
         renvoeyer la main du joueur 
         renvoyer la carte de choix d'atout 
-        choix atout= last_cards
 
 
         etape front etape 300
 
 
         attente front_etape 400
-        """
+            """
 
+            
  
-
-    elif ETAPE ==400:
-        """
+        elif etape ==400:
+            """
         etape choix atout
-        """
+            """
+  
 
         # mise a jour de la valeur choix de la part du frontend
         # new_Game.choix=xxxxxxxxxxxx
@@ -154,7 +154,7 @@ while run:
             new_Game.choix=0
 
                 #evolution du grafcet vers l'etape avant la redistribution
-                etape=450
+            etape=450
         
             #le joueur a choisit pass
             if new_Game.choix==2:
