@@ -471,7 +471,7 @@ def display_hand(hand, image_path):
         hand: the hand of the player from front end
     '''
     
-    total_card_width = sum(pg.image.load(str(image_path / card)).get_width()/12 for card in hand) # 12 from 6 of display card and 2 for half image
+    total_card_width = sum(pg.image.load(str(image_path / card.image)).get_width()/12 for card in hand) # 12 from 6 of display card and 2 for half image
     spacing = 10  # Adjust this value to control the spacing between cards
 
     x = ( GAME_WIDTH - (total_card_width + (spacing * len(hand))+ 42)) / 2  # Starting x-coordinate for centering 
@@ -479,7 +479,7 @@ def display_hand(hand, image_path):
     mouse_x, mouse_y = pg.mouse.get_pos()
 
     for card in hand:
-        card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card, image_path)
+        card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card.image, image_path)
 
         # Check if the mouse is over the scaled card
         scaled_rect = pg.Rect(x, GAME_HEIGHT - 135, card_rect.width/2, card_rect.height)
@@ -489,7 +489,7 @@ def display_hand(hand, image_path):
 
             for event in pg.event.get():
                 if event.type == pg.MOUSEBUTTONDOWN: # and angle == 270: # to be added later
-                    print(f'Clicked on: {card}')
+                    print(f'Clicked on: {card.name}')
                     hand.remove(card)
                     #display played cards
                     display_tapis(card, '10_of_diamonds.png', '10_of_clubs.png', '10_of_hearts.png')
