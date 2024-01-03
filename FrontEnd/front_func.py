@@ -1,4 +1,5 @@
 import pygame as pg
+from classes_commun import *
 
 #IMPORTANT VARIABLES (STRUCTURE)
 
@@ -30,10 +31,12 @@ game = pg.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 # Function to draw the centre arrow
 def draw_arrow(angle, image_path):
     ''' 
-        This function is for drawing Arrow pointing on the player to play in that instant
+    This function is for drawing Arrow pointing on the player to play in that instant
         the scale of reducing the size of Arrow picture in the game 10 and 12
-        angle: the angle of rotation of the arrow
-        image_path: the path to the images used in this game
+
+        Args:
+            angle: the angle of rotation of the arrow
+            image_path: the path to the images used in this game
     '''
     # Importing the image and reducing the size of the arrow
     arrow = pg.image.load(str(image_path / 'Arrow.png'))
@@ -55,10 +58,18 @@ def draw_arrow(angle, image_path):
 # Function to display back of the card in the size acceptable
 def display_card(pos_x, pos_y, card_image, image_path):
     '''
-        Pos_x: the position on the horizontal where you want to display the card 
-        pos_y: the position on the vertical where you want to display the card
-        card_image: image of the card
-        image_path: the path to the images used in this game
+    This is a fucntion to display any card used in this game
+
+        Args:
+            Pos_x: the position on the horizontal where you want to display the card 
+            pos_y: the position on the vertical where you want to display the card
+            card_image: image of the card
+            image_path: the path to the images used in this game
+        
+
+        Returns:
+            Scaled card: reduced in size to meet the game requirements 
+            Scaled card rectangle: the rectangle of the card
     '''
     # Loading the image
     back_card = pg.image.load(str(image_path / card_image))
@@ -75,10 +86,17 @@ def display_card(pos_x, pos_y, card_image, image_path):
 # Function
 def display_image(pos_x, pos_y, image, image_path):
     '''
-        Pos_x: the position on the horizontal where you want to display the image
-        pos_y: the position on the vertical where you want to display the image
-        image: image to be displayed
-        image_path: the path to the images used in this game
+    This is a function that can display the any image passed as an argument
+
+        Args:
+            Pos_x: the position on the horizontal where you want to display the image
+            pos_y: the position on the vertical where you want to display the image
+            image: image to be displayed
+            image_path: the path to the images used in this game
+
+        Returns:
+            Scaled card: reduced in size to meet the game requirements 
+            Scaled card rectangle: the rectangle of the card
     '''
     # Loading the image
     im = pg.image.load(str(image_path / image))
@@ -91,12 +109,15 @@ def display_image(pos_x, pos_y, image, image_path):
 # Function to draw the grid
 def draw_grid(screen , color, width, height, grid_width, grid_height):
     '''
-        screen: the surface of interest
-        color : background color 
-        width: width of the grid
-        height: height of the grid
-        grid_width: width of one grid rectangle
-        grid_height: height of one grid rectangle 
+    This function can draw a grid on a surface
+
+        Args:
+            screen: the surface of interest
+            color : background color 
+            width: width of the grid
+            height: height of the grid
+            grid_width: width of one grid rectangle
+            grid_height: height of one grid rectangle 
     '''
     # Drawing the grid 
     for x in range(0, width, grid_width):
@@ -114,10 +135,34 @@ def draw_div(pos_x, pos_y, width, height, color):
 
 ######################################################################################################################################
 
+# Function to arrange the atout starting from the given one
+def arrange_atout(atout, colours):
+    '''
+    This function is used to arrange the the colour of cards based on the given color
+
+    Args:
+        atout: the colour of atout card
+        colours: the array of all colours
+
+    Returns:
+        colours: arranges colours 
+    '''
+    # Reordering the colours list to start from the value in atout
+    if atout in colours:
+        index = colours.index(atout)
+        colours = colours[index:] + colours[:index]
+    
+    return colours
+######################################################################################################################################
+
 # Function to Display the 3 cards of other players
 def back_cards(image_path, names):
     '''
-        this function is for displaying the back of the cards of other players 
+    This function is for displaying the back of the cards of other players
+     
+        Args:
+            names: List of names of Players who are no the main player
+            image_path: the path to the images used in this game   
     '''
     # Display the back card at position of all players
     
@@ -130,37 +175,36 @@ def back_cards(image_path, names):
 
     # Render text surfaces for player names
     name_surfaces = [font.render(name, True, BEIGE) for name in names]
-
-    running = True
-    while running:
         
-        # Blit the cards and player names
-        game.blit(back_card_1, back_card_rect_1)
-        game.blit(back_card_2, back_card_rect_2)
-        game.blit(back_card_4, back_card_rect_4)
+    # Blit the cards and player names
+    game.blit(back_card_1, back_card_rect_1)
+    game.blit(back_card_2, back_card_rect_2)
+    game.blit(back_card_4, back_card_rect_4)
 
-        # Display player names above the cards
-        for i, name_surface in enumerate(name_surfaces):
-            card_rect = [back_card_rect_1, back_card_rect_2, back_card_rect_4][i]
+    # Display player names above the cards
+    for i, name_surface in enumerate(name_surfaces):
+        card_rect = [back_card_rect_1, back_card_rect_2, back_card_rect_4][i]
 
-            # Calculate the position to display the name above the card
-            text_x = card_rect.centerx - name_surface.get_width() // 2
-            text_y = card_rect.top - name_surface.get_height() - 2  # Place it above the card with a small margin
+        # Calculate the position to display the name above the card
+        text_x = card_rect.centerx - name_surface.get_width() // 2
+        text_y = card_rect.top - name_surface.get_height() - 2  # Place it above the card with a small margin
 
-            game.blit(name_surface, (text_x, text_y))
-        
-        pg.display.flip()
-
-        for event in pg.event.get():
-           if event.type == pg.QUIT:
-                running = False
+        game.blit(name_surface, (text_x, text_y))
+    
+    pg.display.flip()
 
 ######################################################################################################################################
 # Function to create div-like elements
 def first_page(image_path):
     '''
-        this will create the first page to start the new game with a click of the button
+    This will create the first page to start the new game with a click of the button
         the next step will be called 
+
+        Args:
+            image_path: the path to the images used in this game 
+        
+        Returns:
+            etape: the step of the game
     '''
     # fille the background with dark green
     game.fill(BACKGROUND)
@@ -213,8 +257,15 @@ def first_page(image_path):
 # Function to give the user input page and get their name as well
 def user_input(image_path):
     '''
-        This function will take the name of the user and give it back to the system
+    This function will take the name of the user and give it back to the system
         then call the next step
+        
+        Args:
+            image_path: the path to the images used in this game 
+        
+        Returns:
+            etape: the step of the game
+            user_text: the name of the user 
     ''' 
     # Fill the surface and declaring the variables
     game.fill(BACKGROUND)
@@ -306,13 +357,13 @@ def draw_atout(popup_rect, button_width, button_height, atout, image_path):
         atout: color of the cards proporsed 
     '''
     # loading the images of atout to be used in the game
-    spade_image = pg.image.load(str(image_path / atout[0])) 
+    spade_image = pg.image.load(str(image_path / (atout[0]+'.png'))) 
     space_resized = pg.transform.scale(spade_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image
-    heart_image = pg.image.load(str(image_path / atout[1]))
+    heart_image = pg.image.load(str(image_path / (atout[1]+'.png')))
     heart_resized = pg.transform.scale(heart_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image 
-    diamond_image = pg.image.load(str(image_path / atout[2])) 
+    diamond_image = pg.image.load(str(image_path / (atout[2]+'.png'))) 
     diamond_resized = pg.transform.scale(diamond_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image
-    club_image = pg.image.load(str(image_path / atout[3])) 
+    club_image = pg.image.load(str(image_path / (atout[3]+'.png'))) 
     club_resized = pg.transform.scale(club_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image
 
     # Creating the rectanges of the buttons 
@@ -374,7 +425,7 @@ def display_popup(card_image, image_path, atout):
     button_height = 25
 
     # loading the images of atout to be used in the game
-    atout_image = pg.image.load(str(image_path / atout[0])) #loading the atout images
+    atout_image = pg.image.load(str(image_path / (atout[0]+'.png'))) #loading the atout images
     atout_resized = pg.transform.scale(atout_image,(atout_image.get_width() // 2, atout_image.get_height() // 2)) # reducing the size of atout image
     
     # Creating the rectanges of the buttons  ()
@@ -403,10 +454,10 @@ def display_popup(card_image, image_path, atout):
                 if yes_button_rect.collidepoint(mouse_pos):
                     waiting_for_input = False
                     print(f'Atout is:{atout[0]}')
-                    return 2
+                    return atout[0]
                 elif no_button_rect.collidepoint(mouse_pos):
                     pg.draw.rect(game, BACKGROUND, no_button_rect)
-                    atout_ch = draw_atout(popup_rect, button_width, button_height)
+                    atout_ch = draw_atout(popup_rect, button_width, button_height, atout, image_path)
                     print(f'Atout is:{atout_ch}')
                     waiting_for_input = False
                     return atout_ch
@@ -420,7 +471,7 @@ def display_hand(hand, image_path):
         hand: the hand of the player from front end
     '''
     
-    total_card_width = sum(pg.image.load(str(image_path / card)).get_width()/12 for card in hand) # 12 from 6 of display card and 2 for half image
+    total_card_width = sum(pg.image.load(str(image_path / card.image)).get_width()/12 for card in hand) # 12 from 6 of display card and 2 for half image
     spacing = 10  # Adjust this value to control the spacing between cards
 
     x = ( GAME_WIDTH - (total_card_width + (spacing * len(hand))+ 42)) / 2  # Starting x-coordinate for centering 
@@ -428,7 +479,7 @@ def display_hand(hand, image_path):
     mouse_x, mouse_y = pg.mouse.get_pos()
 
     for card in hand:
-        card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card, image_path)
+        card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card.image, image_path)
 
         # Check if the mouse is over the scaled card
         scaled_rect = pg.Rect(x, GAME_HEIGHT - 135, card_rect.width/2, card_rect.height)
@@ -438,7 +489,7 @@ def display_hand(hand, image_path):
 
             for event in pg.event.get():
                 if event.type == pg.MOUSEBUTTONDOWN: # and angle == 270: # to be added later
-                    print(f'Clicked on: {card}')
+                    print(f'Clicked on: {card.name}')
                     hand.remove(card)
                     #display played cards
                     display_tapis(card, '10_of_diamonds.png', '10_of_clubs.png', '10_of_hearts.png')

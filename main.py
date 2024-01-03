@@ -106,8 +106,8 @@ while run:
 
         elif etape==300:
             
-            #names = [new_Game.player4.name_player, new_Game.player2.name_player, new_Game.player3.name_player]
-            #back_cards(image_path, names)
+            names = [new_Game.player4.name_player, new_Game.player2.name_player, new_Game.player3.name_player]
+            back_cards(image_path, names)
             
 
             # etape  qui consiste à distribuer a chaque joueur 5 cartes 
@@ -118,24 +118,33 @@ while run:
 
             #ajouter la derniere carte au tapis pour choix attout
             # ajouter une carte sur le tapis
-
             new_Game.choix_attout()
+            
+            # Getting the hand of the user
+            hand = new_Game.player1.hand
+            # Retrieving the card of atout
+            choix_atout = new_Game.choix.image
+            # Retreaving the colour of atout
+            atout_colour = new_Game.choix.colour
+            # Arranging the list of atouts
+            atouts = arrange_atout(atout_colour, colours)
 
             """        
-        renvoeyer la main du joueur 
-        renvoyer la carte de choix d'atout 
-
-
-        etape front etape 300
-
-        tu prend new_Game.choix
-
-
-        attente front_etape 400
+            renvoeyer la main du joueur 
+            renvoyer la carte de choix d'atout 
+            etape front etape 300
+            tu prend new_Game.choix
+            attente front_etape 400
             """
-
+            #Displaying the hand
+            display_hand(hand, image_path)
             
- 
+            # Displaying the atout
+            display_popup(choix_atout, image_path, atouts)
+
+            etape = 400
+    
+
         elif etape ==400:
             """
         tape choix atout
