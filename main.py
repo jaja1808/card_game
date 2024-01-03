@@ -156,22 +156,22 @@ while run:
         # new_Game._choix_attout=xxxxxxxxxxxx
 
             #le joueur a choisit passer le choix
-        if new_Game._choix_attout=='pass':
+        if new_Game.choix_attout_color=='pass':
             etape=401
            
 
-        if new_Game._choix_attout=='clubs':
+        if new_Game.choix_attout_color=='clubs':
             etape=450
             # mise a jour de _choix_attout
-        if new_Game._choix_attout=="diamonds":
+        if new_Game.choix_attout_color=="diamonds":
 
             #evolution du grafcet vers l'etape avant la redistribution
             etape=450
-        if new_Game._choix_attout=="hearts":       
+        if new_Game.choix_attout_color=="hearts":       
                 #evolution du grafcet vers l'etape avant la redistribution
             etape=450
 
-        if new_Game._choix_attout=="spades":       
+        if new_Game.choix_attout_color=="spades":       
                 #evolution du grafcet vers l'etape avant la redistribution
             etape=450    
         
