@@ -119,7 +119,7 @@ while run:
             #ajouter la derniere carte au tapis pour choix attout
             # ajouter une carte sur le tapis
 
-            atout=new_Game.choix_attout()
+            new_Game.choix_attout()
 
             """        
         renvoeyer la main du joueur 
@@ -127,6 +127,8 @@ while run:
 
 
         etape front etape 300
+
+        tu prend new_Game.choix
 
 
         attente front_etape 400

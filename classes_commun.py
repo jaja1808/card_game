@@ -238,14 +238,14 @@ class Game:
         
 
         # ajout du dernier element des cartes dans la variable atout
-        atout= self.cards[-1]
+        self.choix= self.cards[-1]
         
         #ajout de la variable dans tapis
-        self.add_card_tapis(atout)
+        self.add_card_tapis(self.choix)
 
         #mise à jour des cartes
         self.cards.pop()
-        return atout
+        
 
 #---------------------------------------------------------------------------------------------------------------------------------------
         
