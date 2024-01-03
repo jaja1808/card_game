@@ -23,9 +23,9 @@ class Game:
         self._cards=None
         self._tapis=None
 
-        # choix = card 
+        # choix = card
         self._choix=None
-
+        self._choix_attout_color=None
         # jeton du joueur
         #joueur1 =270
         #joueur2 =180
@@ -126,7 +126,14 @@ class Game:
     #property  sur l'attribut
     jeton=property(getter_jeton,setter_jeton)
 
-
+    def getter_choix_attout_color(self):
+        return self._choix_attout_color
+    
+    def setter_choix_attout_color(self,choix_attout_color):
+         self._choix_attout_color=choix_attout_color
+    
+    #property  sur l'attribut
+    choix_attout_color=property(getter_choix_attout_color,setter_choix_attout_color)
 
     # creation de toutes les cartes graces a la liste de 
     def Create_Cards(self):
@@ -227,7 +234,7 @@ class Game:
     #creation de tapis vide
     def creation_tapis(self):
         self.tapis = []
-        self.choix=0
+        
 
     # ajout de carte dans tapis
     def add_card_tapis(self,card):
@@ -250,6 +257,27 @@ class Game:
 
         #mise à jour des cartes
         self.cards.pop()
+
+     
+    def choix_atout_IA_first_row(self ,number_player):
+        
+        if not (1 <= number_player <= 4):
+            raise ValueError("Number of player must be between 1 and 4")
+
+    # creer une list au hazard
+    shuffled_suits = list(colours)
+    shuffled_suits.append("pass")
+    np.random.shuffle(shuffled_suits)
+
+    # Choose the atout based on the shuffled list
+    choix_attout_color = shuffled_suits[0]
+        
+        
+
+
+        
+
+
         
 
 #---------------------------------------------------------------------------------------------------------------------------------------

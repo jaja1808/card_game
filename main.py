@@ -143,25 +143,26 @@ while run:
   
 
         # mise a jour de la valeur choix de la part du frontend
-        # new_Game.choix=xxxxxxxxxxxx
+        # new_Game._choix_attout=xxxxxxxxxxxx
+        # new_Game._choix_attout=xxxxxxxxxxxx
 
             #le joueur a choisit passer le choix
-        if new_Game.choix=='pass':
+        if new_Game._choix_attout=='pass':
             etape=401
            
 
-        if new_Game.choix=='clubs':
+        if new_Game._choix_attout=='clubs':
             etape=450
-            # mise a jour de choix
-        if new_Game.choix=="diamonds":
+            # mise a jour de _choix_attout
+        if new_Game._choix_attout=="diamonds":
 
             #evolution du grafcet vers l'etape avant la redistribution
             etape=450
-        if new_Game.choix=="hearts":       
+        if new_Game._choix_attout=="hearts":       
                 #evolution du grafcet vers l'etape avant la redistribution
             etape=450
 
-        if new_Game.choix=="spades":       
+        if new_Game._choix_attout=="spades":       
                 #evolution du grafcet vers l'etape avant la redistribution
             etape=450    
         
@@ -176,27 +177,17 @@ while run:
             # mise a joueur jeton (valeur en angle )
 
             new_Game.jeton=270
+            etape= 402
+
             
-        # mise a jour de la valeur choix de la part du frontend
-        # new_Game.choix=xxxxxxxxxxxx
+        if etape ==402:
+            """
+            etape choix atout Joueur 2
+            """
+            new_Game.jeton=180
+            new_Game.choix_atout_IA_first_row(2)
 
 
-             #le joueur a choisit de valider le choix
-            if new_Game.choix==1:
-            
-            # mise a jour de choix
-                new_Game.choix=0
-
-            #evolution du grafcet vers l'etape avant la redistribution
-                etape=451
-    
-            #le joueur a choisit pass
-            if new_Game.choix==2:
-            # mise a jour de choix
-                new_Game.choix=0
-            
-                #evolution du grafcet vers l'etape avant la redistribution
-                etape=402
 
 
 
@@ -222,6 +213,13 @@ while run:
             """
             pass
 
+
+        elif etape ==450:
+            """
+            joueur  a valider son choix
+            """
+            
+            pass    
 
         elif etape ==500:
             """
