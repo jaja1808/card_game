@@ -84,7 +84,7 @@ while run:
                     if its the main player who is to play (geton = 0) i will send the card played as name and color'''
                 
                 else:
-                    newGame_page()
+                    first_page()
                     #user_input()
                     #final_score(score_array)
                     time.sleep(1)
@@ -97,7 +97,7 @@ while run:
     pg.display.flip()
 
     # Time rate
-    timer.tick(FRAME_RATE)
+    timer.tick(60)
 
     # Event Listen to Quit
     for event in pg.event.get():
