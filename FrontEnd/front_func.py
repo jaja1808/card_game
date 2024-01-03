@@ -30,10 +30,12 @@ game = pg.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
 # Function to draw the centre arrow
 def draw_arrow(angle, image_path):
     ''' 
-        This function is for drawing Arrow pointing on the player to play in that instant
+    This function is for drawing Arrow pointing on the player to play in that instant
         the scale of reducing the size of Arrow picture in the game 10 and 12
-        angle: the angle of rotation of the arrow
-        image_path: the path to the images used in this game
+
+        Args:
+            angle: the angle of rotation of the arrow
+            image_path: the path to the images used in this game
     '''
     # Importing the image and reducing the size of the arrow
     arrow = pg.image.load(str(image_path / 'Arrow.png'))
@@ -55,10 +57,18 @@ def draw_arrow(angle, image_path):
 # Function to display back of the card in the size acceptable
 def display_card(pos_x, pos_y, card_image, image_path):
     '''
-        Pos_x: the position on the horizontal where you want to display the card 
-        pos_y: the position on the vertical where you want to display the card
-        card_image: image of the card
-        image_path: the path to the images used in this game
+    This is a fucntion to display any card used in this game
+
+        Args:
+            Pos_x: the position on the horizontal where you want to display the card 
+            pos_y: the position on the vertical where you want to display the card
+            card_image: image of the card
+            image_path: the path to the images used in this game
+        
+
+        Returns:
+            Scaled card: reduced in size to meet the game requirements 
+            Scaled card rectangle: the rectangle of the card
     '''
     # Loading the image
     back_card = pg.image.load(str(image_path / card_image))
@@ -75,10 +85,17 @@ def display_card(pos_x, pos_y, card_image, image_path):
 # Function
 def display_image(pos_x, pos_y, image, image_path):
     '''
-        Pos_x: the position on the horizontal where you want to display the image
-        pos_y: the position on the vertical where you want to display the image
-        image: image to be displayed
-        image_path: the path to the images used in this game
+    This is a function that can display the any image passed as an argument
+
+        Args:
+            Pos_x: the position on the horizontal where you want to display the image
+            pos_y: the position on the vertical where you want to display the image
+            image: image to be displayed
+            image_path: the path to the images used in this game
+
+        Returns:
+            Scaled card: reduced in size to meet the game requirements 
+            Scaled card rectangle: the rectangle of the card
     '''
     # Loading the image
     im = pg.image.load(str(image_path / image))
@@ -91,12 +108,15 @@ def display_image(pos_x, pos_y, image, image_path):
 # Function to draw the grid
 def draw_grid(screen , color, width, height, grid_width, grid_height):
     '''
-        screen: the surface of interest
-        color : background color 
-        width: width of the grid
-        height: height of the grid
-        grid_width: width of one grid rectangle
-        grid_height: height of one grid rectangle 
+    This function can draw a grid on a surface
+
+        Args:
+            screen: the surface of interest
+            color : background color 
+            width: width of the grid
+            height: height of the grid
+            grid_width: width of one grid rectangle
+            grid_height: height of one grid rectangle 
     '''
     # Drawing the grid 
     for x in range(0, width, grid_width):
@@ -117,7 +137,11 @@ def draw_div(pos_x, pos_y, width, height, color):
 # Function to Display the 3 cards of other players
 def back_cards(image_path, names):
     '''
-        this function is for displaying the back of the cards of other players 
+    This function is for displaying the back of the cards of other players
+     
+        Args:
+            names: List of names of Players who are no the main player
+            image_path: the path to the images used in this game   
     '''
     # Display the back card at position of all players
     
@@ -159,8 +183,14 @@ def back_cards(image_path, names):
 # Function to create div-like elements
 def first_page(image_path):
     '''
-        this will create the first page to start the new game with a click of the button
+    This will create the first page to start the new game with a click of the button
         the next step will be called 
+
+        Args:
+            image_path: the path to the images used in this game 
+        
+        Returns:
+            etape: the step of the game
     '''
     # fille the background with dark green
     game.fill(BACKGROUND)
@@ -213,8 +243,15 @@ def first_page(image_path):
 # Function to give the user input page and get their name as well
 def user_input(image_path):
     '''
-        This function will take the name of the user and give it back to the system
+    This function will take the name of the user and give it back to the system
         then call the next step
+        
+        Args:
+            image_path: the path to the images used in this game 
+        
+        Returns:
+            etape: the step of the game
+            user_text: the name of the user 
     ''' 
     # Fill the surface and declaring the variables
     game.fill(BACKGROUND)

@@ -106,8 +106,8 @@ while run:
 
         elif etape==300:
             
-            #names = [new_Game.player4.name_player, new_Game.player2.name_player, new_Game.player3.name_player]
-            #back_cards(image_path, names)
+            names = [new_Game.player4.name_player, new_Game.player2.name_player, new_Game.player3.name_player]
+            back_cards(image_path, names)
             
 
             # etape  qui consiste à distribuer a chaque joueur 5 cartes 
@@ -130,6 +130,7 @@ while run:
             # hand = from backend
             # atout = from backend
             # choix atout = from backend
+            display_popup(new_Game.choix,)
 
             #Displaying the hand
             #display_hand(hand)
