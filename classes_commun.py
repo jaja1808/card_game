@@ -27,6 +27,11 @@ class Game:
         self._choix=None
 
         # jeton du joueur
+        #joueur1 =270
+        #joueur2 =180
+        #joueur3 =90
+        #joueur4 =0
+        
         self._jeton=None
 
 
