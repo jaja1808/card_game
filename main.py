@@ -121,11 +121,17 @@ while run:
 
             new_Game.choix_attout()
 
-            """
-            renvoeyer la main du joueur 
-            renvoyer la carte de choix d'atout 
-            choix atout= last_cards
-            attente front_etape 400
+            """        
+        renvoeyer la main du joueur 
+        renvoyer la carte de choix d'atout 
+
+
+        etape front etape 300
+
+        tu prend new_Game.choix
+
+
+        attente front_etape 400
             """
             # hand = from backend
             # atout = from backend
@@ -140,24 +146,25 @@ while run:
 
         elif etape ==400:
             """
-            etape choix atout
+        etape choix atout
             """
-            # Get the choice from the user
-            #choix = display_popup(choix_atout, image_path, atout)
-        
-            # mise a jour de la valeur choix de la part du frontend
-            # new_Game.choix= choix
+  
 
-                #le joueur a choisit de valider le choix
-            if new_Game.choix==1:
-                
-                #mise a jour des valeurs de score des toutes les cartes
-                
-                # mise a jour de choix
-                new_Game.choix=0
+        # mise a jour de la valeur choix de la part du frontend
+        # new_Game.choix=xxxxxxxxxxxx
+
+            #le joueur a choisit de valider le choix
+        if new_Game.choix==1:
+            
+            #mise a jour des valeurs de score des toutes les cartes
+               
+
+
+            # mise a jour de choix
+            new_Game.choix=0
 
                 #evolution du grafcet vers l'etape avant la redistribution
-                etape=450
+            etape=450
         
             #le joueur a choisit pass
             if new_Game.choix==2:

@@ -14,6 +14,30 @@ In our case the game is currently for one User as Player one. the teamate and op
 - **Game Logic:** Implementing the core game logic, including bidding, trick-taking, and scoring.
 - **Player Interaction:** Allowing user input and providing a user-friendly interface for playing the game.
 
+- See the point table for calculating scores :
+  
+# Belote Points Table
+
+## Non-Trump Cards (Non Atout)
+- Ace (A): 11 points
+- Ten (10): 10 points
+- King (K): 4 points
+- Queen (Q): 3 points
+- Jack (J): 2 points
+- Nine (9): 0 points
+- Eight (8): 0 points
+- Seven (7): 0 points
+
+## Trump Cards (Atout)
+- Jack (J): 20 points
+- Nine (9): 14 points
+- Ace (A): 11 points
+- Ten (10): 10 points
+- King (K): 4 points
+- Queen (Q): 3 points
+- Eight (8): 0 points
+- Seven (7): 0 points
+
 ## Getting Started
 
 Follow these steps to get the project up and running on your local machine:
