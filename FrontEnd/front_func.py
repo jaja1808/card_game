@@ -1,4 +1,5 @@
 import pygame as pg
+from classes_commun import *
 
 #IMPORTANT VARIABLES (STRUCTURE)
 
@@ -134,6 +135,26 @@ def draw_div(pos_x, pos_y, width, height, color):
 
 ######################################################################################################################################
 
+# Function to arrange the atout starting from the given one
+def arrange_atout(atout, colours):
+    '''
+    This function is used to arrange the the colour of cards based on the given color
+
+    Args:
+        atout: the colour of atout card
+        colours: the array of all colours
+
+    Returns:
+        colours: arranges colours 
+    '''
+    # Reordering the colours list to start from the value in atout
+    if atout in colours:
+        index = colours.index(atout)
+        colours = colours[index:] + colours[:index]
+    
+    return colours
+######################################################################################################################################
+
 # Function to Display the 3 cards of other players
 def back_cards(image_path, names):
     '''
@@ -154,30 +175,23 @@ def back_cards(image_path, names):
 
     # Render text surfaces for player names
     name_surfaces = [font.render(name, True, BEIGE) for name in names]
-
-    running = True
-    while running:
         
-        # Blit the cards and player names
-        game.blit(back_card_1, back_card_rect_1)
-        game.blit(back_card_2, back_card_rect_2)
-        game.blit(back_card_4, back_card_rect_4)
+    # Blit the cards and player names
+    game.blit(back_card_1, back_card_rect_1)
+    game.blit(back_card_2, back_card_rect_2)
+    game.blit(back_card_4, back_card_rect_4)
 
-        # Display player names above the cards
-        for i, name_surface in enumerate(name_surfaces):
-            card_rect = [back_card_rect_1, back_card_rect_2, back_card_rect_4][i]
+    # Display player names above the cards
+    for i, name_surface in enumerate(name_surfaces):
+        card_rect = [back_card_rect_1, back_card_rect_2, back_card_rect_4][i]
 
-            # Calculate the position to display the name above the card
-            text_x = card_rect.centerx - name_surface.get_width() // 2
-            text_y = card_rect.top - name_surface.get_height() - 2  # Place it above the card with a small margin
+        # Calculate the position to display the name above the card
+        text_x = card_rect.centerx - name_surface.get_width() // 2
+        text_y = card_rect.top - name_surface.get_height() - 2  # Place it above the card with a small margin
 
-            game.blit(name_surface, (text_x, text_y))
-        
-        pg.display.flip()
-
-        for event in pg.event.get():
-           if event.type == pg.QUIT:
-                running = False
+        game.blit(name_surface, (text_x, text_y))
+    
+    pg.display.flip()
 
 ######################################################################################################################################
 # Function to create div-like elements
@@ -343,13 +357,13 @@ def draw_atout(popup_rect, button_width, button_height, atout, image_path):
         atout: color of the cards proporsed 
     '''
     # loading the images of atout to be used in the game
-    spade_image = pg.image.load(str(image_path / atout[0])) 
+    spade_image = pg.image.load(str(image_path / (atout[0]+'.png'))) 
     space_resized = pg.transform.scale(spade_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image
-    heart_image = pg.image.load(str(image_path / atout[1]))
+    heart_image = pg.image.load(str(image_path / (atout[1]+'.png')))
     heart_resized = pg.transform.scale(heart_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image 
-    diamond_image = pg.image.load(str(image_path / atout[2])) 
+    diamond_image = pg.image.load(str(image_path / (atout[2]+'.png'))) 
     diamond_resized = pg.transform.scale(diamond_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image
-    club_image = pg.image.load(str(image_path / atout[3])) 
+    club_image = pg.image.load(str(image_path / (atout[3]+'.png'))) 
     club_resized = pg.transform.scale(club_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image
 
     # Creating the rectanges of the buttons 
@@ -411,7 +425,7 @@ def display_popup(card_image, image_path, atout):
     button_height = 25
 
     # loading the images of atout to be used in the game
-    atout_image = pg.image.load(str(image_path / atout[0])) #loading the atout images
+    atout_image = pg.image.load(str(image_path / (atout[0]+'.png'))) #loading the atout images
     atout_resized = pg.transform.scale(atout_image,(atout_image.get_width() // 2, atout_image.get_height() // 2)) # reducing the size of atout image
     
     # Creating the rectanges of the buttons  ()
@@ -440,10 +454,10 @@ def display_popup(card_image, image_path, atout):
                 if yes_button_rect.collidepoint(mouse_pos):
                     waiting_for_input = False
                     print(f'Atout is:{atout[0]}')
-                    return 2
+                    return atout[0]
                 elif no_button_rect.collidepoint(mouse_pos):
                     pg.draw.rect(game, BACKGROUND, no_button_rect)
-                    atout_ch = draw_atout(popup_rect, button_width, button_height)
+                    atout_ch = draw_atout(popup_rect, button_width, button_height, atout, image_path)
                     print(f'Atout is:{atout_ch}')
                     waiting_for_input = False
                     return atout_ch

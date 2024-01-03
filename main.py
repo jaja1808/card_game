@@ -118,28 +118,31 @@ while run:
 
             #ajouter la derniere carte au tapis pour choix attout
             # ajouter une carte sur le tapis
-
             new_Game.choix_attout()
+            
+            hand = new_Game.player1.hand
+            choix_atout = new_Game.choix.image
+            atout_colour = new_Game.choix.colour
+            atouts = arrange_atout(atout_colour, colours)
 
             """        
-        renvoeyer la main du joueur 
-        renvoyer la carte de choix d'atout 
+            renvoeyer la main du joueur 
+            renvoyer la carte de choix d'atout 
 
 
-        etape front etape 300
+            etape front etape 300
 
-        tu prend new_Game.choix
+            tu prend new_Game.choix
 
 
-        attente front_etape 400
+            attente front_etape 400
             """
-            # hand = from backend
             # atout = from backend
             # choix atout = from backend
-            display_popup(new_Game.choix,)
+            display_popup(choix_atout, image_path, atouts)
 
             #Displaying the hand
-            #display_hand(hand)
+            display_hand(hand)
 
             etape = 400
     
