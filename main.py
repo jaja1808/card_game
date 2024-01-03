@@ -147,16 +147,16 @@ while run:
 
         elif etape ==400:
             """
-        tape choix atout
+            tape choix atout
             """
   
-
         # mise a jour de la valeur choix de la part du frontend
-        # new_Game._choix_attout=xxxxxxxxxxxx
-        # new_Game._choix_attout=xxxxxxxxxxxx
+        # new_Game.choix_attout_color=xxxxxxxxxxxx
+        
+            new_Game.choix_attout_color="pass"
 
             #le joueur a choisit passer le choix
-            if new_Game.choix_attout_color=='pass':
+            if new_Game.choix_attout_color=="pass":
                 etape=401
            
 

@@ -267,7 +267,7 @@ class Game:
     # creer une list au hazard
     shuffled_suits=[]  
     # shuffled_suits = list(colours)
-    shuffled_suits.append(choix.color)
+    shuffled_suits.append(self._choix.color)
     shuffled_suits.append("pass")
     np.random.shuffle(shuffled_suits)
 
