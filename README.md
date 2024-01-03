@@ -15,7 +15,7 @@ In our case the game is currently for one User as Player one. the teamate and op
 - **Player Interaction:** Allowing user input and providing a user-friendly interface for playing the game.
 
 - See the point table for calculating scores :
-- 
+  
 # Belote Points Table
 
 ## Non-Trump Cards (Non Atout)
