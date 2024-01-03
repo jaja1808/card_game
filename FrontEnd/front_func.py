@@ -3,7 +3,7 @@ import numpy as np
 from pathlib import Path
 # from main import image_path
 
-#IMPORTANT VARIABLES 
+#IMPORTANT VARIABLES (STRUCTURE)
 
 # Size of the game window
 GAME_WIDTH = 800

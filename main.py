@@ -84,14 +84,21 @@ while run:
             name , ETAPE = user_input()
 
             #creation Joueur 1
-            new_Game.Create_PLayer(1,name,True,[],[])
+            new_Game.Create_PLayer(1, name, True, [], [])
             #creation Joueur 2
             new_Game.Create_PLayer(2,"Prince",False,[],[])
             #creation Joueur 3
             new_Game.Create_PLayer(3,"Brian",False,[],[])
             #creation Joueur 4
             new_Game.Create_PLayer(4,"Alain",False,[],[])
-            
+
+            #creation d'un tapis vide
+            new_Game.creation_tapis()
+        
+            # evolution 
+            # ETAPE=int(input(" rentrer la valeur 300 pour faire evoluer le programme    ") )
+            ETAPE=300
+        
 
         elif ETAPE==300:
             # etape  qui consiste à distribuer a chaque joueur 5 cartes 
@@ -132,16 +139,57 @@ while run:
             # mise a jour de la valeur choix de la part du frontend
             # new_Game.choix=xxxxxxxxxxxx
 
-
-
+                #le joueur a choisit de valider le choix
             if new_Game.choix==1:
-                #
                 
-                pass
+                #mise a jour des valeurs de score des toutes les cartes
                 
 
 
+                # mise a jour de choix
+                new_Game.choix=0
 
+                #evolution du grafcet vers l'etape avant la redistribution
+                ETAPE=450
+        
+            #le joueur a choisit pass
+            if new_Game.choix==2:
+                # mise a jour de choix
+                new_Game.choix=0
+                
+                #evolution du grafcet vers l'etape avant la redistribution
+                ETAPE=401
+            
+
+
+        elif ETAPE ==401:
+            """
+            etape choix atout Joeur 1
+            """
+
+            # mise a joueur jeton
+            new_Game.jeton=1
+            
+        # mise a jour de la valeur choix de la part du frontend
+        # new_Game.choix=xxxxxxxxxxxx
+
+
+             #le joueur a choisit de valider le choix
+            if new_Game.choix==1:
+            
+            # mise a jour de choix
+                new_Game.choix=0
+
+            #evolution du grafcet vers l'etape avant la redistribution
+                ETAPE=451
+    
+            #le joueur a choisit pass
+            if new_Game.choix==2:
+            # mise a jour de choix
+                new_Game.choix=0
+            
+                #evolution du grafcet vers l'etape avant la redistribution
+                ETAPE=402
 
 
 
@@ -165,9 +213,7 @@ while run:
             3   joueur à droite 
 
             """
-
             pass
-
 
 
         elif ETAPE ==500:
@@ -337,20 +383,6 @@ while run:
             pass
 
     # if __name__ == "__main__":
-
-
-
-
-
-
-
-    
-            
-    
-
-
-            
-
 
 
 

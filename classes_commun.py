@@ -236,6 +236,7 @@ class Game:
     def choix_attout(self):
     #dans cette fontion je rajoute une carte au tapis afin de choisir la carte de attout
         
+
         # ajout du dernier element des cartes dans la variable atout
         atout= self.cards[-1]
         
@@ -246,16 +247,8 @@ class Game:
         self.cards.pop()
     
 
-        
-
-
-
-
-
-
 #---------------------------------------------------------------------------------------------------------------------------------------
         
-
 class Card:
     
     def __init__(self):
@@ -315,41 +308,6 @@ class Card:
         if none_attributes:
             raise CardError(f"Card instance has None values for attributes: {none_attributes}")  
 
-  
-
-
-
-
-"""
-# définition de la classe carte  attout
-class Asset_card(Card):
-    def __init__():
-        super,().__init__()
-        self._score=None
-
-    def get_score(self):
-        return self._score
-    
-    def set_score(self, score):
-        self._score=score
-
-    # property de l'attribut score 
-    score=property(get_score,set_score)    
-
-
-# définition de la classe  non attouf(normal)
-class Normal_card(Card):
-    def __init__(self, card_name, colour, score):
-        super().__init__(card_name, colour)
-        self._score=score
-
-    def get_score(self):
-        return self._score
-    
-    def set_score(self,score):
-        self._score=score
-
-"""
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 
