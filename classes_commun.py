@@ -265,7 +265,9 @@ class Game:
             raise ValueError("Number of player must be between 1 and 4")
 
     # creer une list au hazard
-    shuffled_suits = list(colours)
+    shuffled_suits=[]  
+    # shuffled_suits = list(colours)
+    shuffled_suits.append(choix.color)
     shuffled_suits.append("pass")
     np.random.shuffle(shuffled_suits)
 
@@ -274,7 +276,21 @@ class Game:
         
         
 
+    def choix_atout_IA_second_row(self ,number_player):
+        
+        if not (1 <= number_player <= 4):
+            raise ValueError("Number of player must be between 1 and 4")
 
+    # creer une list au hazard
+    
+    shuffled_suits = list(colours)
+    #retirer la couleur du choix dans le nouveau choix
+    shuffled_suits.pop(choix.color)
+    shuffled_suits.append("pass")
+    np.random.shuffle(shuffled_suits)
+
+    # Choose the atout based on the shuffled list
+    choix_attout_color = shuffled_suits[0]
         
 
 

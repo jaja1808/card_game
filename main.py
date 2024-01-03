@@ -156,28 +156,14 @@ while run:
         # new_Game._choix_attout=xxxxxxxxxxxx
 
             #le joueur a choisit passer le choix
-        if new_Game.choix_attout_color=='pass':
-            etape=401
+            if new_Game.choix_attout_color=='pass':
+                etape=401
            
 
-        if new_Game.choix_attout_color=='clubs':
-            etape=450
+            else :
+                etape=450
             # mise a jour de _choix_attout
-        if new_Game.choix_attout_color=="diamonds":
-
-            #evolution du grafcet vers l'etape avant la redistribution
-            etape=450
-        if new_Game.choix_attout_color=="hearts":       
-                #evolution du grafcet vers l'etape avant la redistribution
-            etape=450
-
-        if new_Game.choix_attout_color=="spades":       
-                #evolution du grafcet vers l'etape avant la redistribution
-            etape=450    
         
-            
-
-
         elif etape ==401:
             """
             etape choix atout Joeur 1
@@ -196,10 +182,105 @@ while run:
             new_Game.jeton=180
             new_Game.choix_atout_IA_first_row(2)
 
+            if new_Game.choix_attout_color=='pass':
+                etape=403
+            # mise a jour de _choix_attout
+            else :
+                etape=450
+
+        if etape ==403:
+            """
+            etape choix atout Joueur 3
+            """
+            new_Game.jeton=90
+            new_Game.choix_atout_IA_first_row(3)
+
+            if new_Game.choix_attout_color=='pass':
+                etape=404
+            # mise a jour de _choix_attout
+            else :
+                etape=450      
+
+        if etape ==404:
+            """
+            etape choix atout Joueur 4
+            """
+            new_Game.jeton=0
+            new_Game.choix_atout_IA_first_row(4)
+
+            if new_Game.choix_attout_color=='pass':
+                etape=405
+            # mise a jour de _choix_attout
+            else :
+                etape=450
+
+        
+        if etape ==405:
+            """
+            etape choix atout Joueur 1 
+            apres que tout monde aie pass
+            """
+            new_Game.jeton=270
+
+            # attente frontend choix 
+            # new_Game.choix_attout_color=xxxxxxxxxxxxx
+            
+            
+            new_Game.choix_attout_color
+
+            if new_Game.choix_attout_color=='pass':
+                etape=406
+            # mise a jour de _choix_attout
+            else :
+                etape=450
+
+        if etape ==406:
+            """
+            etape choix atout Joueur 2 
+            apres que tout monde aie pass
+            """
+            new_Game.jeton=180
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(2)
+
+            if new_Game.choix_attout_color=='pass':
+                etape=407
+            # mise a jour de _choix_attout
+            else :
+                etape=450
+
+        if etape ==407:
+            """
+            etape choix atout Joueur 3 
+            apres que tout monde aie pass
+            """
+            new_Game.jeton=90
+
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(3)
+
+            if new_Game.choix_attout_color=='pass':
+                etape=408
+            # mise a jour de _choix_attout
+            else :
+                etape=450
 
 
+        if etape ==408:
+            """
+            etape choix atout Joueur 4 
+            apres que tout monde aie pass
+            """
+            new_Game.jeton=0
+
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(3)
+
+            if new_Game.choix_attout_color=='pass':
+                etape=1000
+            # mise a jour de _choix_attout
+            else :
+                etape=450
 
 
+                
             """
             attente de l'affichage de choix atout 
             attente
