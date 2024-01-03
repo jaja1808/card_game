@@ -85,7 +85,8 @@ while run:
             """
             # name of the user 
             name , etape = user_input(image_path)
-
+            print(name, etape)
+            
             #creation Joueur 1
             new_Game.Create_PLayer(1, name, True, [], [])
             #creation Joueur 2
@@ -100,7 +101,6 @@ while run:
         
             # evolution 
             # etape=int(input(" rentrer la valeur 300 pour faire evoluer le programme    ") )
-            etape=300
         
 
         elif etape==300:
@@ -111,7 +111,7 @@ while run:
             new_Game.Distribute(4)  #(Alain)
 
             # Display the back cards 
-            back_cards()
+            back_cards(image_path)
 
             #ajouter la derniere carte au tapis pour choix attout
             # ajouter une carte sur le tapis

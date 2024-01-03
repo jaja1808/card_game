@@ -1,7 +1,4 @@
 import pygame as pg
-import numpy as np
-from pathlib import Path
-# from main import image_path
 
 #IMPORTANT VARIABLES (STRUCTURE)
 
@@ -133,7 +130,6 @@ def back_cards(image_path):
     game.blit(back_card_4, back_card_rect_4)
 
 ######################################################################################################################################
-
 # Function to create div-like elements
 def first_page(image_path):
     '''
@@ -155,29 +151,36 @@ def first_page(image_path):
     pg.draw.rect(game, GREY, button_rect)
     # Creating the button surface
     button_surface = pg.Surface((button_rect.width, button_rect.height), pg.SRCALPHA)
-    # get the position of the mouse
-    mouse_p = pg.mouse.get_pos()
-    # checking the position of the mouse if it touches the button rectangle
-    if button_rect.collidepoint(mouse_p):
-        color = (0, 0, 0)
-
-    button_txt = font.render(button_text, True, color)
-
-    for event in pg.event.get():
-        if event.type == pg.MOUSEBUTTONDOWN:
-            if button_rect.collidepoint(event.pos):
-                return etape
     
-    # Calculate coordinates to center the text within the button
-    text_x = (button_rect.width - button_txt.get_width()) // 2
-    text_y = (button_rect.height - button_txt.get_height()) // 2
-    
-    button_surface.blit(button_txt, (text_x, text_y))  # Blit text onto button_surface at center
+    # Loop to handle events
+    running = True
+    while running:
+        # get the position of the mouse
+        mouse_pos = pg.mouse.get_pos()
 
-    game.blit(first_image,first_image_rect)
-    game.blit(button_surface, button_rect)
+        # checking the position of the mouse if it touches the button rectangle
+        if button_rect.collidepoint(mouse_pos):
+            color = (0, 0, 0)
+
+        button_txt = font.render(button_text, True, color)
+
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                running = False
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if button_rect.collidepoint(event.pos):
+                    return etape
     
-    pg.display.flip()
+        # Calculate coordinates to center the text within the button
+        text_x = (button_rect.width - button_txt.get_width()) // 2
+        text_y = (button_rect.height - button_txt.get_height()) // 2
+        
+        button_surface.blit(button_txt, (text_x, text_y))  # Blit text onto button_surface at center
+
+        game.blit(first_image,first_image_rect)
+        game.blit(button_surface, button_rect)
+    
+        pg.display.flip()
 
 ######################################################################################################################################
     
@@ -422,16 +425,16 @@ def display_hand(hand, image_path):
 ######################################################################################################################################
 
 # Function to display cards on the tapis
-def display_tapis(tapis): 
+def display_tapis(tapis, image_path): 
         '''
             This function will display the cards played by the 4 players
             tapis: array cards of the round played 
         '''
         # Display the cards at position of all players
-        card_1, card_rect_1 = display_card(440, 220, tapis[0])
-        card_2, card_rect_2 = display_card(360, 220, tapis[1])
-        card_3, card_rect_3 = display_card(360, 340, tapis[2])
-        card_4, card_rect_4 = display_card(440, 340, tapis[3])
+        card_1, card_rect_1 = display_card(440, 220, tapis[0], image_path)
+        card_2, card_rect_2 = display_card(360, 220, tapis[1], image_path)
+        card_3, card_rect_3 = display_card(360, 340, tapis[2], image_path)
+        card_4, card_rect_4 = display_card(440, 340, tapis[3], image_path)
         
         # Display the cards on the tapis
         game.blit(card_1, card_rect_1)
@@ -509,3 +512,5 @@ def final_score(score_array, image_path): # to be completed
     game.blit(table_surface, (table.x, table.y))
 
     pg.display.flip()
+
+#########################################################################################################################
