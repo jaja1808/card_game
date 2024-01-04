@@ -208,6 +208,10 @@ class Game:
                 #add_card_cards(Card)  erreeur car ne trouve la fonction
                 self.cards.append(card)
 
+        #melanger les cartes à la creation
+        rd.shuffle(self.cards)
+       
+
 
         
 # fonction de creation d'un joueur de la classe 
@@ -386,8 +390,12 @@ class Game:
             card.score = valeur_atout(card.name) if card.colour == colour_atout else valeur_non_atout(card.name)
 
 
+    def play(self,player,card):
         
-card_names = ("7","8","9","10","ace","jack","king","queen")
+        pass
+
+        
+
         
 
         
@@ -526,6 +534,9 @@ class Player:
         if none_attributes:
             raise PlayerError(f"Player instance has None values for attributes: {none_attributes}")
         
+
+
+    
 
 
 class PlayerError(Exception):
