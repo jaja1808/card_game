@@ -316,20 +316,37 @@ while run:
             if new_Game.jeton==270:
                 # joueur1 qui as fait le choix
                 new_Game.redistribute_card_player_atout(player=new_Game.player1)
+                new_Game.redistribute_card_player(player=new_Game.player2)
+                new_Game.redistribute_card_player(player=new_Game.player3)
+                new_Game.redistribute_card_player(player=new_Game.player4)
+                etape=500
 
             if new_Game.jeton==180:   
                 # joueur2 qui as fait le choix
                 new_Game.redistribute_card_player_atout(player=new_Game.player2)
+                new_Game.redistribute_card_player(player=new_Game.player1)
+                new_Game.redistribute_card_player(player=new_Game.player3)
+                new_Game.redistribute_card_player(player=new_Game.player4)
+                etape=500
 
 
             if new_Game.jeton==90:   
                 # 3 qui as fait le choix
                 new_Game.redistribute_card_player_atout(player=new_Game.player3)
+                new_Game.redistribute_card_player(player=new_Game.player1)
+                new_Game.redistribute_card_player(player=new_Game.player2)
+                new_Game.redistribute_card_player(player=new_Game.player4)
+                etape=500
 
 
             if new_Game.jeton==0:   
                 # 4 qui as fait le choix
                 new_Game.redistribute_card_player_atout(player=new_Game.player4)
+                new_Game.redistribute_card_player(player=new_Game.player1)
+                new_Game.redistribute_card_player(player=new_Game.player2)
+                new_Game.redistribute_card_player(player=new_Game.player3)
+
+                etape=500
                         
 
 

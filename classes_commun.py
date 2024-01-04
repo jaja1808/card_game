@@ -198,8 +198,8 @@ class Game:
         self.cards.append(Card)
 
     # fonction pour retirer une carte a la main du joueur
-    def remove_card_cards(self,Card):
-        self.cards.pop(Card)
+    def remove_card_cards(self):
+        self.cards.pop()
 
 
     #code pour verifier la creation des cartes  
@@ -285,7 +285,7 @@ class Game:
     
         shuffled_suits = list(colours)
         #retirer la couleur du choix dans le nouveau choix
-        shuffled_suits.pop(choix.colour)
+        shuffled_suits.pop(shuffled_suits.index(choix.colour))
         shuffled_suits.append("pass")
         np.random.shuffle(shuffled_suits)
 
@@ -294,11 +294,30 @@ class Game:
     
 
     def redistribute_card_player_atout(self,player):
-        #dans cette fonction je donne 2 card au joueur qui as choisit l'attout
+        #dans cette fonction je donne 3 cartes au joueur qui as choisit l'attout
+        
+        #la premiere c'est la carte qui est sur le tapis que je tranfert a la main du joueur
         player.add_card_Hand(self.tapis[0])
         self.remove_card_tapis()
-        player.add_card_Hand(self.cards[-2])
+        #ajouter 2 carte de Cards a la main du joueur ,
+        #je prend les deux dernière
+        player.add_card_Hand(self.cards[-1])
+        self.remove_card_cards()
+        player.add_card_Hand(self.cards[-1])
+        self.remove_card_cards()
 
+
+
+    def redistribute_card_player(self,player):
+        # Dans cette fonction, je donne 3 cartes au joueur.
+        # Ajouter 3 cartes à la main du joueur.
+        for _ in range(3):
+            if self.cards:
+                player.add_card_Hand(self.cards.pop())
+            else:
+                # Handle the case where there are not enough cards in the deck.
+                print("Not enough cards in the deck.")  
+            
 
         
 
