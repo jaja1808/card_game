@@ -472,8 +472,10 @@ def display_popup(card_image, image_path, atout):
 # Function to display a hand of cards
 def display_hand(hand, image_path):
     ''' 
-        This function will display the hand of the player and will handle the size and display as the game progress
-        hand: the hand of the player from front end
+    This function will display the hand of the player and handle mouse interactions with the cards.
+    hand: the player's hand containing card objects.
+    image_path: path to the folder containing card images.
+    Returns the selected card when clicked.
     '''
     
     total_card_width = sum(pg.image.load(str(image_path / card.image)).get_width()/12 for card in hand) # 12 from 6 of display card and 2 for half image
@@ -488,7 +490,7 @@ def display_hand(hand, image_path):
 
         # Check if the mouse is over the scaled card
         scaled_rect = pg.Rect(x, GAME_HEIGHT - 135, card_rect.width/2, card_rect.height)
-
+        
         if scaled_rect.collidepoint(mouse_x, mouse_y):
             card_image = pg.transform.scale(card_image, (int(card_rect.width * 1.1), int(card_rect.height * 1.1)))
 
@@ -496,14 +498,12 @@ def display_hand(hand, image_path):
                 if event.type == pg.MOUSEBUTTONDOWN: # and angle == 270: # to be added later
                     print(f'Clicked on: {card.name}')
                     hand.remove(card)
-                    #display played cards
-                    display_tapis(card, '10_of_diamonds.png', '10_of_clubs.png', '10_of_hearts.png')
+                    return card
 
         game.blit(card_image, (x, GAME_HEIGHT - 135))
         x += card_rect.width / 2 + spacing  # Adjust spacing between cards
 
     pg.display.flip()
-
 ######################################################################################################################################
 
 # Function to display cards on the tapis

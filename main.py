@@ -113,7 +113,7 @@ while run:
             new_Game.choix_attout()
             
             # Getting the hand of the user
-            hand = new_Game.player1.hand
+            hand_5 = new_Game.player1.hand
             # Retrieving the card of atout
             choix_atout = new_Game.choix.image
             # Retreaving the colour of atout
@@ -129,7 +129,7 @@ while run:
             attente front_etape 400
             """
             #Displaying the hand
-            display_hand(hand, image_path)
+            display_hand(hand_5, image_path)
             etape = 400
     
 
@@ -137,6 +137,7 @@ while run:
             """
             tape choix atout
             """
+            new_Game.jeton = 270
             # mise a jour de la valeur choix de la part du frontend
             # Displaying the atout
             new_Game.choix_attout_color = display_popup(choix_atout, image_path, atouts)
@@ -158,6 +159,7 @@ while run:
 
             new_Game.jeton = 180
             # Draw Jeton
+            pg.draw.rect(game, BACKGROUND, (359, 265, 83, 60))
             draw_arrow(new_Game.jeton, image_path)
             time.sleep(1)
 
@@ -179,6 +181,7 @@ while run:
 
             new_Game.jeton = 90
             # Draw Jeton
+            pg.draw.rect(game, BACKGROUND, (359, 265, 83, 60))
             draw_arrow(new_Game.jeton, image_path)
             time.sleep(1)
 
@@ -199,6 +202,7 @@ while run:
             
             new_Game.jeton = 0
             # Draw Jeton
+            pg.draw.rect(game, BACKGROUND, (359, 265, 83, 60))
             draw_arrow(new_Game.jeton, image_path)
             time.sleep(1)
 
@@ -253,77 +257,84 @@ while run:
 
             """
 
-        elif etape ==450:
+        elif etape == 450:
             """
             redistribution des cartes
             ici j'envoit toute les 3 autres cartes aux joueurs 
             j'envoie de jeton du premier qui vas joueur
             """
+            print('i am on step 450')
 
-            if new_Game.jeton==270:
+            if new_Game.jeton == 270:
                 # joueur1 qui as fait le choix
                 new_Game.redistribute_card_player_atout(player=new_Game.player1)
                 new_Game.redistribute_card_player(player=new_Game.player2)
                 new_Game.redistribute_card_player(player=new_Game.player3)
                 new_Game.redistribute_card_player(player=new_Game.player4)
-                etape=500
 
-            if new_Game.jeton==180:   
+                etape = 500
+
+            elif new_Game.jeton == 180:   
                 # joueur2 qui as fait le choix
                 new_Game.redistribute_card_player_atout(player=new_Game.player2)
                 new_Game.redistribute_card_player(player=new_Game.player1)
                 new_Game.redistribute_card_player(player=new_Game.player3)
                 new_Game.redistribute_card_player(player=new_Game.player4)
-                etape=500
+
+                etape = 500
 
 
-            if new_Game.jeton==90:   
+            elif new_Game.jeton == 90:   
                 # 3 qui as fait le choix
                 new_Game.redistribute_card_player_atout(player=new_Game.player3)
                 new_Game.redistribute_card_player(player=new_Game.player1)
                 new_Game.redistribute_card_player(player=new_Game.player2)
                 new_Game.redistribute_card_player(player=new_Game.player4)
-                etape=500
+
+                etape = 500
 
 
-            if new_Game.jeton==0:   
+            elif new_Game.jeton == 0:   
                 # 4 qui as fait le choix
                 new_Game.redistribute_card_player_atout(player=new_Game.player4)
                 new_Game.redistribute_card_player(player=new_Game.player1)
                 new_Game.redistribute_card_player(player=new_Game.player2)
                 new_Game.redistribute_card_player(player=new_Game.player3)
 
-                etape=500
+                etape = 500
                         
-
-
-
         elif etape ==500:
             """
-
-
             mise a jour des scores des differente cartes
-            
             """
+            # New hand of 8 cards
             new_Game.mise_a_jour_score_cards_player(new_Game.player1,new_Game.choix_attout_color)
             new_Game.mise_a_jour_score_cards_player(new_Game.player2,new_Game.choix_attout_color)
             new_Game.mise_a_jour_score_cards_player(new_Game.player3,new_Game.choix_attout_color)
             new_Game.mise_a_jour_score_cards_player(new_Game.player4,new_Game.choix_attout_color)
             
+            # New hand of Player 1
+            hand = new_Game.player1.hand
             # evolution etape
             etape=549
 
 
         elif etape ==549:
             
-            
+            game.fill(BACKGROUND)
+            back_cards(image_path, names)
             #premiee tour de jeu c'est le joeur 1 qui debute
             new_Game.jeton=270
+            draw_arrow(new_Game.jeton, image_path)
+
+            # Get the card played
+            jeux = None
+            while jeux == None:
+                jeux = display_hand(hand, image_path)
+
+            print(jeux.name)
             # evolution etape
             etape =550
-
-
-
         
         elif etape ==550:
             """
