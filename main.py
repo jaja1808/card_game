@@ -431,11 +431,7 @@ while run:
         elif etape ==551:
             """
         debut du jeu si c'est joueur 1 qui debute
-
-
         j'envoie une liste (tapis) [de carte]
-            
-        
         j'envoie jeton 
         
             envoie 
@@ -444,9 +440,22 @@ while run:
 
 
         si c'est joueur qui doit jouer je suis dans cette
+
+
             """
 
-            pass
+            #dans l'attente du frontend carte à jouer 
+            # new_Game.player1.play(xxxxxxxxxxxxxxxx)
+
+            #
+            new_Game.player1.play(card))
+
+
+
+
+
+
+            
             
         elif etape ==552:
             """

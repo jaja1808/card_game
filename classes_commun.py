@@ -386,8 +386,12 @@ class Game:
             card.score = valeur_atout(card.name) if card.colour == colour_atout else valeur_non_atout(card.name)
 
 
+    def play(self,player,card):
         
-card_names = ("7","8","9","10","ace","jack","king","queen")
+        pass
+
+        
+
         
 
         
@@ -526,6 +530,9 @@ class Player:
         if none_attributes:
             raise PlayerError(f"Player instance has None values for attributes: {none_attributes}")
         
+
+
+    
 
 
 class PlayerError(Exception):
