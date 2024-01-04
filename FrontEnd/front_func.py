@@ -597,19 +597,15 @@ def game_hand(hand, image_path):
 
     for card in hand:
         card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card.image, image_path)
-        scaled_rect = pg.Rect(x, GAME_HEIGHT - 135, card_rect.width / 2, card_rect.height)
+        #scaled_rect = pg.Rect(x, GAME_HEIGHT - 135, card_rect.width / 2, card_rect.height)
         
         game.blit(card_image, (x, GAME_HEIGHT - 135))
-        x += card_rect.width / 2 + spacing  # Adjust spacing between cards
         
         for event in pg.event.get():
-            print('im in for')
             mouse_pos = pg.mouse.get_pos()
-            print(f'mouse: {mouse_pos}')
-
-            if scaled_rect.collidepoint(mouse_pos):
-                print('ya')
+            if card_rect.collidepoint(mouse_pos):
                 if event.type == pg.MOUSEBUTTONDOWN:
-                    print('clicked')
                     return card
+                
+        x += card_rect.width / 2 + spacing  # Adjust spacing between cards
     pg.display.flip()              

@@ -348,11 +348,14 @@ while run:
                 hand = new_Game.player1.hand
                 # evolution etape
                 draw_arrow(new_Game.jeton, image_path)
+                
                 # Get the card played
-                jeux = game_hand(hand, image_path)
-
-                if jeux is not None:
-                    print(jeux.image)
+                motor = True
+                while motor:
+                    jeux = game_hand(hand, image_path)
+                    if jeux is not None:
+                        print(jeux.image)
+                        motor = False
                     
                     etape = 551
 
