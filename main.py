@@ -180,7 +180,7 @@ while run:
             draw_arrow(new_Game.jeton, image_path)
 
             # Display the choix attout
-            new_Game.choix_attout_color = draw_atout(atouts, image_path)
+            # new_Game.choix_attout_color = draw_atout(atouts, image_path)
             print(new_Game.choix_attout_color)
             etape= 402
 
@@ -466,7 +466,7 @@ while run:
             # new_Game.player1.play(xxxxxxxxxxxxxxxx)
 
             #
-            new_Game.player1.play(card))
+            # new_Game.player1.play(card))
 
 
 

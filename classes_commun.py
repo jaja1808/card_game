@@ -208,6 +208,10 @@ class Game:
                 #add_card_cards(Card)  erreeur car ne trouve la fonction
                 self.cards.append(card)
 
+        #melanger les cartes à la creation
+        rd.shuffle(self.cards)
+       
+
 
         
 # fonction de creation d'un joueur de la classe 
