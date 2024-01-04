@@ -395,31 +395,10 @@ while run:
             score partenaire
             score adversaire
 
+
         si c'est joueur qui doit jouer je suis dans cette
 
             """
-
-
-
-
-               
-            #dans l'attente du frontend carte à jouer 
-            # new_Game.player1.play(xxxxxxxxxxxxxxxx)
-            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
-
-
-
-            #choix au hazard des joueurs (IA)
-            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
-            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
-            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
-
-
-            # evolution 
-            etape=600
-            
-            
-
 
         elif etape ==552:
             """
@@ -501,10 +480,7 @@ while run:
         si c'est joueur qui doit jouer je suis dans cette
             """
 
-
-            # mise a jour du 
-
-            joueur_gagnant=new_Game.determine_gagnant_pli()
+            pass
 
         elif etape ==900:
             
