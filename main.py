@@ -407,9 +407,24 @@ while run:
             new_Game.play(new_Game.player1,card)
 
             #choix au hazard des joueurs (IA)
-            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
-            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
-            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
+
+
+            card2=new_Game.player2.random_card_hand()
+            if card2== None:
+                etape=1000
+            new_Game.play(new_Game.player2,card2)
+
+            
+            card3=new_Game.player2.random_card_hand()
+            if card3== None:
+                etape=1000
+            new_Game.play(new_Game.player3,card3)
+
+
+            card4=new_Game.player4.random_card_hand()
+            if card4== None:
+                etape=1000
+            new_Game.play(new_Game.player4,card4)
 
 
             # evolution 
@@ -439,9 +454,24 @@ while run:
             """
         #choix au hazard des joueurs (IA)
             # ordre de jeu sur le tapis 2 3 4 1
-            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
-            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
-            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
+
+            card2=new_Game.player2.random_card_hand()
+            if card2== None:
+                etape=1000
+            new_Game.play(new_Game.player2,card2)
+
+            
+            card3=new_Game.player2.random_card_hand()
+            if card3== None:
+                etape=1000
+            new_Game.play(new_Game.player3,card3)
+
+
+            card4=new_Game.player4.random_card_hand()
+            if card4== None:
+                etape=1000
+            new_Game.play(new_Game.player4,card4)
+
 
             # ordre de jeu sur le tapis
             # joueur 1 qui joue a la derniere position
@@ -491,11 +521,17 @@ while run:
             """
 
             # """""""""""""""""""""     ordre de jeu sur le tapis 3 4 1 2       """""""""""""""""""""""""""""""""""""""
-            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
-            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
+            
+            card3=new_Game.player2.random_card_hand()
+            if card3== None:
+                etape=1000
+            new_Game.play(new_Game.player3,card3)
+            
 
-
-
+            card4=new_Game.player4.random_card_hand()
+            if card4== None:
+                etape=1000
+            new_Game.play(new_Game.player4,card4)
 
 
             # joueur 1 qui joue a l'avant derniere position derniere position
@@ -524,7 +560,12 @@ while run:
 
 
             # ordre de jeu sur le tapis 3 4 1 2
-            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
+            card2=new_Game.player2.random_card_hand()
+            if card2== None:
+                etape=1000
+            new_Game.play(new_Game.player2,card2)
+
+            
 
         elif etape ==554:
             """
@@ -545,7 +586,10 @@ while run:
             """
 
             # ordre de jeu sur le tapis  4 1 2 3
-            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
+            card4=new_Game.player4.random_card_hand()
+            if card4== None:
+                etape=1000
+            new_Game.play(new_Game.player4,card4)
 
 
             #dans l'attente du frontend carte à jouer
@@ -575,8 +619,17 @@ while run:
             
             
             # ordre de jeu sur le tapis  4 1 2 3
-            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
-            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
+            card2=new_Game.player2.random_card_hand()
+            if card2== None:
+                etape=1000
+            new_Game.play(new_Game.player2,card2)
+
+
+
+            card3=new_Game.player2.random_card_hand()
+            if card3== None:
+                etape=1000
+            new_Game.play(new_Game.player3,card3)
 
                
 
