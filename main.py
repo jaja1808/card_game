@@ -713,6 +713,7 @@ while run:
             """
             # Display the final Score
             score = [score_partenaire, score_adversaire]
+            print(score)
             final_score(score, image_path)
 
             if (score_adversaire> score_partenaire):
