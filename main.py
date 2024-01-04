@@ -309,9 +309,12 @@ while run:
 
         elif etape ==450:
             """
-            joueur  a valider son choix
+            redistribution des cartes
+
+            ici j'envoit toute les 3 autres cartes aux joueurs 
+
+            j'envoie de jeton du premier qui vas joueur
             """
-            print("choix fait")
 
             if new_Game.jeton==270:
                 # joueur1 qui as fait le choix
@@ -353,14 +356,16 @@ while run:
 
         elif etape ==500:
             """
-            redistribution des cartes
 
-            ici j'envoit toute les 3 autres cartes aux joueurs 
 
-            j'envoie de jeton du premier qui vas joueur
+            mise a jour des scores des differente cartes
+            
             """
-
-            pass
+            new_Game.mise_a_jour_score_cards_player(new_Game.player1,new_Game.choix_attout_color)
+            new_Game.mise_a_jour_score_cards_player(new_Game.player2,new_Game.choix_attout_color)
+            new_Game.mise_a_jour_score_cards_player(new_Game.player3,new_Game.choix_attout_color)
+            new_Game.mise_a_jour_score_cards_player(new_Game.player4,new_Game.choix_attout_color)
+            
 
 
 
