@@ -9,18 +9,10 @@ GAME_HEIGHT = 600
 
 timer = pg.time.Clock()
 
-# Atout array
-#atout = ['spade.png','heart.png','diamond.png','club.png']
-# Score array
-#score_array = np.arange(6)
-
 # Colors
 GREY = (155, 155, 155)
 BACKGROUND = (0, 80, 20)
 BEIGE = (245, 245, 220)
-
-# Frames
-#FRAME_RATE = 60
 
 # GAME SIZE DISPLAY
 game = pg.display.set_mode((GAME_WIDTH, GAME_HEIGHT))
