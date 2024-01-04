@@ -329,10 +329,10 @@ while run:
 
             # Get the card played
             jeux = None
-            while jeux == None:
-                jeux = display_hand(hand, image_path)
+            # while jeux == None:
+                # jeux = display_hand(hand, image_path)
 
-            print(jeux.name)
+            # print(jeux.name)
             # evolution etape
             etape =550
         
@@ -392,7 +392,6 @@ while run:
             envoie 
             score partenaire
             score adversaire
-
 
         si c'est joueur qui doit jouer je suis dans cette
 
@@ -508,7 +507,10 @@ while run:
         si c'est joueur qui doit jouer je suis dans cette
             """
 
-            pass
+
+            # mise a jour du 
+
+            joueur_gagnant=new_Game.determine_gagnant_pli()
 
 
 
