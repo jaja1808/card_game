@@ -391,8 +391,15 @@ class Game:
 
 
     def play(self,player,card):
+
+            #on ajoute la carte au tapis
+            self.add_card_tapis(card)
+
+            # on retire la carte de la main du joueur
+            player.remove_card_Hand(card)
+
+
         
-        pass
 
         
 
@@ -524,7 +531,7 @@ class Player:
 
     # fonction pour retirer une carte a la main du joueur
     def remove_card_Hand(self,Card):
-        self.hand.pop(Card)
+        self.hand.remove(Card)
 
 
     # method de test pour voir si 
@@ -533,6 +540,18 @@ class Player:
     
         if none_attributes:
             raise PlayerError(f"Player instance has None values for attributes: {none_attributes}")
+        
+
+    def random_card_hand(self):
+        if self.hand:
+            # Utilisation de random.choice pour choisir une carte aléatoire dans la main
+            random_card = rd.choice(self.hand)
+            # Retirer la carte de la main
+            self.remove_card_Hand(random_card)
+            return random_card
+        else:
+            print("The player's hand is empty.")
+            return None    
         
 
 
