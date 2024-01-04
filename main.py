@@ -366,7 +366,17 @@ while run:
             new_Game.mise_a_jour_score_cards_player(new_Game.player3,new_Game.choix_attout_color)
             new_Game.mise_a_jour_score_cards_player(new_Game.player4,new_Game.choix_attout_color)
             
+            # evolution etape
+            etape=549
 
+
+        elif etape ==549:
+            
+            
+            #premiee tour de jeu c'est le joeur 1 qui debute
+            new_Game.jeton=270
+            # evolution etape
+            etape =550
 
 
 
@@ -386,7 +396,36 @@ while run:
         si c'est joueur qui doit jouer je suis dans cette
             """
 
-            pass
+
+            # controle du jeton 
+            if new_Game.jeton== 270:
+                # joueur 1
+                # evolution etape
+                etape =551
+
+
+            if new_Game.jeton== 180:
+                # joueur 2
+                # evolution etape
+                etape =552
+
+            if new_Game.jeton== 90:
+                # joueur 3
+                # evolution etape
+                etape =553
+
+
+            if new_Game.jeton== 0:
+                # joueur 4
+                # evolution etape
+                etape =554        
+
+            # mise a jour de jeton car premier tour de cycle
+            
+
+            
+
+
 
 
         elif etape ==551:
@@ -439,10 +478,7 @@ while run:
         j'envoie une liste (tapis) [de carte]
 
         j'envoie jeton 
-        
-        
 
-        
         
             envoie 
             score partenaire
@@ -454,7 +490,25 @@ while run:
 
             pass
 
+        elif etape ==554:
+            """
+        debut du jeu si c'est joueur 4 qui debute
 
+
+        j'envoie une liste (tapis) [de carte]
+
+        j'envoie jeton 
+
+        
+            envoie 
+            score partenaire
+            score adversaire
+
+
+        si c'est joueur qui doit jouer je suis dans cette
+            """
+
+            pass   
 
 
         elif etape ==600:
