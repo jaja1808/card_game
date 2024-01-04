@@ -16,9 +16,9 @@ In our case the game is currently for one User as Player one. the teamate and op
 
 - See the point table for calculating scores :
   
-# Belote Points Table
+## Belote Points Table
 
-## Non-Trump Cards (Non Atout)
+### Non-Trump Cards (Non Atout)
 - Ace (A): 11 points
 - Ten (10): 10 points
 - King (K): 4 points
@@ -28,7 +28,7 @@ In our case the game is currently for one User as Player one. the teamate and op
 - Eight (8): 0 points
 - Seven (7): 0 points
 
-## Trump Cards (Atout)
+### Trump Cards (Atout)
 - Jack (J): 20 points
 - Nine (9): 14 points
 - Ace (A): 11 points
