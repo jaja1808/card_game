@@ -343,24 +343,7 @@ while run:
 
             # controle du jeton 
             if new_Game.jeton == 270:
-                    # joueur 1
-                game.fill(BACKGROUND)
-                back_cards(image_path, names)
-                # New hand of Player 1
-                hand = new_Game.player1.hand
-                # evolution etape
-                draw_arrow(new_Game.jeton, image_path)
-                
-                # Get the card played
-                motor = True
-                while motor:
-                    card = game_hand(hand, image_path)
-                    if card is not None:
-                        print(card.image)
-                        motor = False
-
-                #new_Game.player1.play(xxxxxxxxxxxxxxxx)
-                # new_Game.player1.play(card)
+                # joueur 1
                 etape = 551
 
             if new_Game.jeton == 180:
@@ -401,14 +384,23 @@ while run:
         si c'est joueur qui doit jouer je suis dans cette
 
             """
-
+            #dans l'attente du frontend carte à jouer
+            game.fill(BACKGROUND)
+            back_cards(image_path, names)
+            # New hand of Player 1
+            hand = new_Game.player1.hand
+            # evolution etape
+            draw_arrow(new_Game.jeton, image_path)
             
-               
-            #dans l'attente du frontend carte à jouer 
+            # Get the card played
+            motor = True
+            while motor:
+                card = game_hand(hand, image_path)
+                if card is not None:
+                    print(card.image)
+                    motor = False 
             # new_Game.player1.play(xxxxxxxxxxxxxxxx)
-            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
-
-
+            new_Game.play(new_Game.player1,card)
 
             #choix au hazard des joueurs (IA)
             new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
