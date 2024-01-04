@@ -352,7 +352,10 @@ def user_input(image_path):
 def draw_atout(atout, image_path):
     '''
         This function is to display the atout and  displaying the options to the user who will then respond and make a choice
-        atout: color of the cards proporsed 
+        Args:
+            atout: color of the cards proporsed
+        Returns:
+            atout[i]: the player's choice
     '''
     # size of the pop-up
     popup_width = 150
@@ -411,8 +414,12 @@ def draw_atout(atout, image_path):
 def display_popup(card_image, image_path, atout):
     '''
         This function is for displaying the whole atout and proposed card step where the user will make a choice for the progrss of the game
-        card_image: the card proposed by the back end as atout
-        atout: the list of card color of the game
+        
+        Args:
+            card_image: the card proposed by the back end as atout
+            atout: the list of card color of the game
+        Returns:
+            pass or atout: choice of the player
     '''
     # size of the pop-up
     popup_width = 150
@@ -473,9 +480,11 @@ def display_popup(card_image, image_path, atout):
 def display_hand(hand, image_path):
     ''' 
     This function will display the hand of the player and handle mouse interactions with the cards.
-    hand: the player's hand containing card objects.
-    image_path: path to the folder containing card images.
-    Returns the selected card when clicked.
+    Args:
+        hand: the player's hand containing card objects.
+        image_path: path to the folder containing card images.
+    Returns: 
+        the selected card when clicked.
     '''
     
     total_card_width = sum(pg.image.load(str(image_path / card.image)).get_width()/12 for card in hand) # 12 from 6 of display card and 2 for half image
@@ -496,7 +505,8 @@ def display_hand(hand, image_path):
 def display_tapis(tapis, image_path): 
         '''
             This function will display the cards played by the 4 players
-            tapis: array cards of the round played 
+            Args:
+                tapis: array cards of the round played 
         '''
         # Display the cards at position of all players
         card_1, card_rect_1 = display_card(440, 220, tapis[0].image, image_path)
@@ -517,8 +527,9 @@ def display_tapis(tapis, image_path):
 def display_score(us, them):
     '''
         This function will display the score as the game progresses
-        us: score of the user and his partner
-        them: the score of the opposing team
+        Args:
+            us: score of the user and his partner
+            them: the score of the opposing team
     '''
     # Positions
     position_x  = 10
@@ -543,7 +554,8 @@ def display_score(us, them):
 def final_score(score_array, image_path): # to be completed
     '''
         This function will display the final page with the total scores and the verdict of the game
-        score array: belote score '''
+        Args:
+            score array: belote score '''
 
     score = pg.Rect(10, 10, 530, 270)
     table = pg.Rect(500, 350, 280, 200)
@@ -595,9 +607,11 @@ def final_score(score_array, image_path): # to be completed
 def game_hand(hand, image_path):
     ''' 
     This function will display the hand of the player and handle mouse interactions with the cards.
-    hand: the player's hand containing card objects.
-    image_path: path to the folder containing card images.
-    Returns the selected card when clicked.
+    Args:
+        hand: the player's hand containing card objects.
+        image_path: path to the folder containing card images.
+    Returns: 
+        the selected card when clicked.
     '''
     total_card_width = sum(pg.image.load(str(image_path / card.image)).get_width()/12 for card in hand) # 12 from 6 of display card and 2 for half image
     spacing = 10  # Adjust this value to control the spacing between cards
