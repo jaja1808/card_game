@@ -313,28 +313,15 @@ while run:
             new_Game.mise_a_jour_score_cards_player(new_Game.player3,new_Game.choix_attout_color)
             new_Game.mise_a_jour_score_cards_player(new_Game.player4,new_Game.choix_attout_color)
             
-            # New hand of Player 1
-            hand = new_Game.player1.hand
             # evolution etape
             etape=549
 
+        elif etape == 549:
 
-        elif etape ==549:
-            
-            game.fill(BACKGROUND)
-            back_cards(image_path, names)
             #premiee tour de jeu c'est le joeur 1 qui debute
-            new_Game.jeton=270
-            draw_arrow(new_Game.jeton, image_path)
-
-            # Get the card played
-            jeux = None
-            # while jeux == None:
-                # jeux = display_hand(hand, image_path)
-
-            # print(jeux.name)
+            new_Game.jeton = 270
             # evolution etape
-            etape =550
+            etape = 550
         
         elif etape ==550:
             """
@@ -353,13 +340,28 @@ while run:
 
 
             # controle du jeton 
-            if new_Game.jeton== 270:
-                # joueur 1
+            if new_Game.jeton == 270:
+                    # joueur 1
+                game.fill(BACKGROUND)
+                back_cards(image_path, names)
+                # New hand of Player 1
+                hand = new_Game.player1.hand
                 # evolution etape
-                etape =551
+                draw_arrow(new_Game.jeton, image_path)
+                
+                # Get the card played
+                motor = True
+                while motor:
+                    card = game_hand(hand, image_path)
+                    if card is not None:
+                        print(card.image)
+                        motor = False
 
+                #new_Game.player1.play(xxxxxxxxxxxxxxxx)
+                new_Game.player1.play(card)
+                etape = 551
 
-            if new_Game.jeton== 180:
+            if new_Game.jeton == 180:
                 # joueur 2
                 # evolution etape
                 etape =552
@@ -395,33 +397,8 @@ while run:
 
         si c'est joueur qui doit jouer je suis dans cette
 
-
             """
-            
-            #dans l'attente du frontend carte à jouer 
-            # new_Game.player1.play(xxxxxxxxxxxxxxxx)
-            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
 
-
-
-            #choix au hazard des joueurs (IA)
-            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
-            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
-            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
-
-
-            # evolution 
-            etape=600
-            
-            
-
-
-
-
-
-
-            
-            
         elif etape ==552:
             """
         debut du jeu si c'est joueur 2 qui debute
@@ -431,8 +408,6 @@ while run:
 
         j'envoie jeton 
             
-        
-        
             envoie 
             score partenaire
             score adversaire
@@ -494,10 +469,7 @@ while run:
         j'envoie une liste (tapis) [de carte]
 
         j'envoie jeton 
-        
-        
 
-        
         
             envoie 
             score partenaire
@@ -512,9 +484,6 @@ while run:
 
             joueur_gagnant=new_Game.determine_gagnant_pli()
 
-
-
-
         elif etape ==900:
             
             """
@@ -522,11 +491,7 @@ while run:
             dernier tour de jeu
 
             apres
-        
-        
-
-        
-        
+    
             envoie 
             score partenaire
             score adversaire
