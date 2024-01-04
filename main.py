@@ -341,7 +341,7 @@ while run:
 
             # controle du jeton 
             if new_Game.jeton == 270:
-                # joueur 1
+                    # joueur 1
                 game.fill(BACKGROUND)
                 back_cards(image_path, names)
                 # New hand of Player 1
@@ -352,14 +352,16 @@ while run:
                 # Get the card played
                 motor = True
                 while motor:
-                    jeux = game_hand(hand, image_path)
-                    if jeux is not None:
-                        print(jeux.image)
+                    card = game_hand(hand, image_path)
+                    if card is not None:
+                        print(card.image)
                         motor = False
-                    
-                    etape = 551
 
-            if new_Game.jeton== 180:
+                #new_Game.player1.play(xxxxxxxxxxxxxxxx)
+                new_Game.player1.play(card)
+                etape = 551
+
+            if new_Game.jeton == 180:
                 # joueur 2
                 # evolution etape
                 etape =552
@@ -396,22 +398,8 @@ while run:
 
         si c'est joueur qui doit jouer je suis dans cette
 
-
             """
 
-            #dans l'attente du frontend carte à jouer 
-            # new_Game.player1.play(xxxxxxxxxxxxxxxx)
-
-            #
-            # new_Game.player1.play(card))
-
-
-
-
-
-
-            
-            
         elif etape ==552:
             """
         debut du jeu si c'est joueur 2 qui debute
@@ -421,8 +409,6 @@ while run:
 
         j'envoie jeton 
             
-        
-        
             envoie 
             score partenaire
             score adversaire
@@ -484,10 +470,7 @@ while run:
         j'envoie une liste (tapis) [de carte]
 
         j'envoie jeton 
-        
-        
 
-        
         
             envoie 
             score partenaire
@@ -499,9 +482,6 @@ while run:
 
             pass
 
-
-
-
         elif etape ==900:
             
             """
@@ -509,11 +489,7 @@ while run:
             dernier tour de jeu
 
             apres
-        
-        
-
-        
-        
+    
             envoie 
             score partenaire
             score adversaire
