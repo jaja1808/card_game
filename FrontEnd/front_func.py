@@ -349,13 +349,19 @@ def user_input(image_path):
 ######################################################################################################################################
 
 #  Function to draw buttons in the pop-up div
-def draw_atout(popup_rect, button_width, button_height, atout, image_path):
+def draw_atout(atout, image_path):
     '''
         This function is to display the atout and  displaying the options to the user who will then respond and make a choice
-        popup_rect: canvas rectangle to be drawn on
-        button width and height: the width and height of the buttons as the user chooses
         atout: color of the cards proporsed 
     '''
+    # size of the pop-up
+    popup_width = 150
+    popup_height = 200
+    popup_rect = pg.Rect((GAME_WIDTH - popup_width) // 2, (GAME_HEIGHT - popup_height) // 2, popup_width, popup_height)
+    # Display buttons
+    button_width = 50
+    button_height = 25
+
     # loading the images of atout to be used in the game
     spade_image = pg.image.load(str(image_path / (atout[0]+'.png'))) 
     space_resized = pg.transform.scale(spade_image,(spade_image.get_width() // 2, spade_image.get_height() // 2)) # reducing the size of atout image
@@ -453,14 +459,13 @@ def display_popup(card_image, image_path, atout):
                 mouse_pos = pg.mouse.get_pos()
                 if yes_button_rect.collidepoint(mouse_pos):
                     waiting_for_input = False
-                    print(f'Atout is:{atout[0]}')
                     return atout[0]
                 elif no_button_rect.collidepoint(mouse_pos):
                     pg.draw.rect(game, BACKGROUND, no_button_rect)
-                    atout_ch = draw_atout(popup_rect, button_width, button_height, atout, image_path)
-                    print(f'Atout is:{atout_ch}')
                     waiting_for_input = False
-                    return atout_ch
+                    return 'pass'
+                else:
+                    print('Choose between atout and pass')
 
 ######################################################################################################################################
 
