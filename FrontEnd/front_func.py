@@ -499,10 +499,10 @@ def display_tapis(tapis, image_path):
             tapis: array cards of the round played 
         '''
         # Display the cards at position of all players
-        card_1, card_rect_1 = display_card(440, 220, tapis[0], image_path)
-        card_2, card_rect_2 = display_card(360, 220, tapis[1], image_path)
-        card_3, card_rect_3 = display_card(360, 340, tapis[2], image_path)
-        card_4, card_rect_4 = display_card(440, 340, tapis[3], image_path)
+        card_1, card_rect_1 = display_card(440, 220, tapis[0].image, image_path)
+        card_2, card_rect_2 = display_card(360, 220, tapis[1].image, image_path)
+        card_3, card_rect_3 = display_card(360, 340, tapis[2].image, image_path)
+        card_4, card_rect_4 = display_card(440, 340, tapis[3].image, image_path)
         
         # Display the cards on the tapis
         game.blit(card_1, card_rect_1)

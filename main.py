@@ -387,6 +387,10 @@ while run:
             #dans l'attente du frontend carte à jouer
             game.fill(BACKGROUND)
             back_cards(image_path, names)
+
+            # Display the score
+            display_score(score_partenaire, score_adversaire)
+
             # New hand of Player 1
             hand = new_Game.player1.hand
             # evolution etape
@@ -399,6 +403,7 @@ while run:
                 if card is not None:
                     print(card.image)
                     motor = False 
+
             # new_Game.player1.play(xxxxxxxxxxxxxxxx)
             new_Game.play(new_Game.player1,card)
 
@@ -441,7 +446,27 @@ while run:
 
             # ordre de jeu sur le tapis
             # joueur 1 qui joue a la derniere position
-            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
+            game.fill(BACKGROUND)
+            back_cards(image_path, names)
+
+            # Display the score
+            display_score(score_partenaire, score_adversaire)
+
+            # New hand of Player 1
+            hand = new_Game.player1.hand
+            # evolution etape
+            draw_arrow(new_Game.jeton, image_path)
+            
+            # Get the card played
+            motor = True
+            while motor:
+                card = game_hand(hand, image_path)
+                if card is not None:
+                    print(card.image)
+                    motor = False 
+
+            # new_Game.player1.play(xxxxxxxxxxxxxxxx)
+            new_Game.play(new_Game.player1,card)
 
 
             pass
@@ -475,7 +500,27 @@ while run:
 
 
             # joueur 1 qui joue a l'avant derniere position derniere position
-            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
+            game.fill(BACKGROUND)
+            back_cards(image_path, names)
+
+            # Display the score
+            display_score(score_partenaire, score_adversaire)
+
+            # New hand of Player 1
+            hand = new_Game.player1.hand
+            # evolution etape
+            draw_arrow(new_Game.jeton, image_path)
+            
+            # Get the card played
+            motor = True
+            while motor:
+                card = game_hand(hand, image_path)
+                if card is not None:
+                    print(card.image)
+                    motor = False 
+
+            # new_Game.player1.play(xxxxxxxxxxxxxxxx)
+            new_Game.play(new_Game.player1,card)
             
 
 
@@ -504,7 +549,28 @@ while run:
             new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
 
 
-            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
+            #dans l'attente du frontend carte à jouer
+            game.fill(BACKGROUND)
+            back_cards(image_path, names)
+
+            # Display the score
+            display_score(score_partenaire, score_adversaire)
+
+            # New hand of Player 1
+            hand = new_Game.player1.hand
+            # evolution etape
+            draw_arrow(new_Game.jeton, image_path)
+            
+            # Get the card played
+            motor = True
+            while motor:
+                card = game_hand(hand, image_path)
+                if card is not None:
+                    print(card.image)
+                    motor = False 
+
+            # new_Game.player1.play(xxxxxxxxxxxxxxxx)
+            new_Game.play(new_Game.player1,card)
             
             
             
@@ -536,6 +602,9 @@ while run:
             """
 
             joueur_gagnant=new_Game.determine_gagnant_pli()
+
+            # Display tapis
+            display_tapis(new_Game.tapis, image_path)
 
             if joueur_gagnant==new_Game.player1:
                 #c'est le joueur  qui as gangé le plis
