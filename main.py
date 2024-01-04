@@ -395,7 +395,6 @@ while run:
             score partenaire
             score adversaire
 
-
         si c'est joueur qui doit jouer je suis dans cette
 
             """
@@ -480,7 +479,10 @@ while run:
         si c'est joueur qui doit jouer je suis dans cette
             """
 
-            pass
+
+            # mise a jour du 
+
+            joueur_gagnant=new_Game.determine_gagnant_pli()
 
         elif etape ==900:
             

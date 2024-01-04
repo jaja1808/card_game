@@ -400,7 +400,39 @@ class Game:
 
 
 
-        
+    def determine_gagnant_pli(self):
+        # Vérifie si le tapis contient 4 cartes (indiquant un pli complet)
+        if len(self.tapis) == 4:
+            couleur_attout = self.tapis[0].colour  # La couleur principale est la couleur de la première carte jouée
+            # Vérifie si la couleur principale est une couleur d'atout
+            
+            # Détermine le gagnant en fonction de la carte de plus grand score
+            carte_gagnante = self.tapis[0]
+            for carte in self.tapis[1:]:
+                if (carte.colour == couleur_attout ):
+                    if(carte_gagnante.score <):
+                    carte_gagnante = carte
+                if(carte.colour == couleur_attout ):
+
+                    carte_gagnante = carte
+                if():
+
+            # Détermine le joueur gagnant en fonction de la carte gagnante
+            if carte_gagnante == self.tapis[0]:
+                return self.player1
+            elif carte_gagnante == self.tapis[1]:
+                return self.player2
+            elif carte_gagnante == self.tapis[2]:
+                return self.player3
+            elif carte_gagnante == self.tapis[3]:
+                return self.player4
+            else:
+                # Gère une égalité ou une situation inattendue
+                return None
+        else:
+            # Gère le cas où le pli n'est pas complet
+            return None
+
 
         
 
