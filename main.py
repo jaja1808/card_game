@@ -715,28 +715,32 @@ while run:
             score = [score_partenaire, score_adversaire]
             print(score)
             final_score(score, image_path)
-            time.sleep(3)
+            time.sleep(5)
             
             if (score_adversaire> score_partenaire):
                 print ("les adversaires ont gagné")
                 print ("score adversaire =",score_partenaire)
                 print ("score partenaire =",score_adversaire)
+                etape =0
+                run=False
             
             elif (score_adversaire== score_partenaire):
                 print ("matchs nulles")
                 print ("score adversaire =",score_adversaire)
                 print ("score partenaire =",score_adversaire)
+                etape =0
+                run=False
 
             
             else:
                 print ("nous avons gagnés")    
                 print ("score adversaire =",score_adversaire)
                 print ("score partenaire =",score_adversaire)
-
+                etape =0
+                run=False
 
             # mise a jour et evolution etape
-            etape =0
-            run=False   
+            
 
 
     """
