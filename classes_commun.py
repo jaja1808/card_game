@@ -403,7 +403,12 @@ class Game:
            
             self.add_card_tapis(card)
             # on retire la carte de la main du joueur
-            player.remove_card_Hand(card)
+            if card in player.hand:
+                player.remove_card_Hand(card)
+            else:
+                print(f"La carte {card} n'est pas dans la main du joueur.")    
+                
+              
 
 
 
