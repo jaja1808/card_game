@@ -561,7 +561,7 @@ def final_score(score_array, image_path): # to be completed
     bacG, bacG_rect = display_image(10, 10, 'back_gound_score.png', image_path)
     score_surface.blit(bacG, bacG_rect)
     
-    if score_array[0] > score_array[2]:
+    if score_array[0] > score_array[1]:
         color = (0, 255, 0)
         sentence = 'WIN'
     else:
