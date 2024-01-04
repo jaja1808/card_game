@@ -482,30 +482,14 @@ def display_hand(hand, image_path):
     spacing = 10  # Adjust this value to control the spacing between cards
 
     x = ( GAME_WIDTH - (total_card_width + (spacing * len(hand))+ 42)) / 2  # Starting x-coordinate for centering 
-
-    mouse_x, mouse_y = pg.mouse.get_pos()
-
-    chosen_card = None
    
     for card in hand:
         card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card.image, image_path)
 
-        # Check if the mouse is over the scaled card
-        scaled_rect = pg.Rect(x, GAME_HEIGHT - 135, card_rect.width/2, card_rect.height)
-        
-        if scaled_rect.collidepoint(mouse_x, mouse_y):
-            card_image = pg.transform.scale(card_image, (int(card_rect.width * 1.1), int(card_rect.height * 1.1)))
-
-            for event in pg.event.get():
-                if event.type == pg.MOUSEBUTTONDOWN: # and angle == 270: # to be added later
-                    print(f'Clicked on: {card.name}')
-                    chosen_card = card
-
         game.blit(card_image, (x, GAME_HEIGHT - 135))
         x += card_rect.width / 2 + spacing  # Adjust spacing between cards
-    print('i am reaching here')
+        
     pg.display.flip()
-    return chosen_card
 ######################################################################################################################################
 
 # Function to display cards on the tapis
@@ -598,3 +582,34 @@ def final_score(score_array, image_path): # to be completed
     pg.display.flip()
 
 #########################################################################################################################
+# Show final Hand
+def game_hand(hand, image_path):
+    ''' 
+    This function will display the hand of the player and handle mouse interactions with the cards.
+    hand: the player's hand containing card objects.
+    image_path: path to the folder containing card images.
+    Returns the selected card when clicked.
+    '''
+    total_card_width = sum(pg.image.load(str(image_path / card.image)).get_width()/12 for card in hand) # 12 from 6 of display card and 2 for half image
+    spacing = 10  # Adjust this value to control the spacing between cards
+
+    x = ( GAME_WIDTH - (total_card_width + (spacing * len(hand))+ 42)) / 2  # Starting x-coordinate for centering 
+
+    for card in hand:
+        card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card.image, image_path)
+        scaled_rect = pg.Rect(x, GAME_HEIGHT - 135, card_rect.width / 2, card_rect.height)
+        
+        game.blit(card_image, (x, GAME_HEIGHT - 135))
+        x += card_rect.width / 2 + spacing  # Adjust spacing between cards
+        
+        for event in pg.event.get():
+            print('im in for')
+            mouse_pos = pg.mouse.get_pos()
+            print(f'mouse: {mouse_pos}')
+
+            if scaled_rect.collidepoint(mouse_pos):
+                print('ya')
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    print('clicked')
+                    return card
+    pg.display.flip()              

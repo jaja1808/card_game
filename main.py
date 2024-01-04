@@ -313,30 +313,15 @@ while run:
             new_Game.mise_a_jour_score_cards_player(new_Game.player3,new_Game.choix_attout_color)
             new_Game.mise_a_jour_score_cards_player(new_Game.player4,new_Game.choix_attout_color)
             
-            # New hand of Player 1
-            hand = new_Game.player1.hand
             # evolution etape
             etape=549
 
+        elif etape == 549:
 
-        elif etape ==549:
-            
-            game.fill(BACKGROUND)
-            back_cards(image_path, names)
             #premiee tour de jeu c'est le joeur 1 qui debute
-            new_Game.jeton=270
-            draw_arrow(new_Game.jeton, image_path)
-
-            # Get the card played
-            running = True
-            while running:
-                jeux = display_hand(hand, image_path)
-
-                if jeux is not None:
-                    running = False
-
+            new_Game.jeton = 270
             # evolution etape
-            etape =550
+            etape = 550
         
         elif etape ==550:
             """
@@ -355,11 +340,21 @@ while run:
 
 
             # controle du jeton 
-            if new_Game.jeton== 270:
+            if new_Game.jeton == 270:
                 # joueur 1
+                game.fill(BACKGROUND)
+                back_cards(image_path, names)
+                # New hand of Player 1
+                hand = new_Game.player1.hand
                 # evolution etape
-                etape =551
+                draw_arrow(new_Game.jeton, image_path)
+                # Get the card played
+                jeux = game_hand(hand, image_path)
 
+                if jeux is not None:
+                    print(jeux.image)
+                    
+                    etape = 551
 
             if new_Game.jeton== 180:
                 # joueur 2
