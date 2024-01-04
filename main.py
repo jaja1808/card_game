@@ -2,7 +2,7 @@ import pygame as pg
 from classes_commun import *
 from pathlib import Path
 from FrontEnd.front_func import *
-# from classes_backend import *
+import time
 
 # image path
 image_path = Path.cwd() / 'images'
@@ -38,9 +38,9 @@ while run:
 
     etape = 100
 
-    while etape!=0:
+    while etape != 0:
         
-        if etape==100:
+        if etape == 100:
             # etape 100 debut de la partie
             # creation d'une instance game()
             new_Game=Game()
@@ -56,16 +56,11 @@ while run:
 
             # The page of clicking new game button to launch the game
             etape = first_page(image_path)
-            print(etape)
             """
             c'est dans cette etape que l'on initialise le jeu
             """
 
-            # afficher les cartes crées
-            # evolution 
-            # etape=int(input(" rentrer la valeur 200 pour faire evoluer le programme ") )
-
-        elif etape==200:
+        elif etape == 200:
             # etape 200 creation des 4 joueurs
             """
             front-end
@@ -85,7 +80,6 @@ while run:
             """
             # name of the user 
             name , etape = user_input(image_path)
-            print(name, etape)
             
             #creation Joueur 1
             new_Game.Create_PLayer(1, name, True, [], [])
@@ -100,16 +94,14 @@ while run:
             new_Game.creation_tapis()
         
             # evolution 
-            # etape=int(input(" rentrer la valeur 300 pour faire evoluer le programme    ") )
             game.fill(BACKGROUND)
         
 
-        elif etape==300:
+        elif etape == 300:
             
             names = [new_Game.player4.name_player, new_Game.player2.name_player, new_Game.player3.name_player]
             back_cards(image_path, names)
             
-
             # etape  qui consiste à distribuer a chaque joueur 5 cartes 
             new_Game.Distribute(1)  #joueur 1(papi)
             new_Game.Distribute(2)  #(prince)
@@ -138,39 +130,96 @@ while run:
             """
             #Displaying the hand
             display_hand(hand, image_path)
-            
-            # Displaying the atout
-            new_Game.choix_attout_color = display_popup(choix_atout, image_path, atouts)
-
-            print(new_Game.choix_attout_color)
-
             etape = 400
     
 
-        elif etape ==400:
+        elif etape == 400:
             """
             tape choix atout
             """
-  
-        # mise a jour de la valeur choix de la part du frontend
-        # new_Game.choix_attout_color=xxxxxxxxxxxx
-        
-            #new_Game.choix_attout_color="pass"
+            # mise a jour de la valeur choix de la part du frontend
+            # Displaying the atout
+            new_Game.choix_attout_color = display_popup(choix_atout, image_path, atouts)
 
             #le joueur a choisit passer le choix
-            if new_Game.choix_attout_color=="pass":
-                etape=401
+            if new_Game.choix_attout_color == "pass":
+                etape = 401
 
             else :
-                etape=450
+                etape = 450
                 # mise a jour de _choix_attout
                 '''attout presente est prise'''
         
         elif etape == 401:
             """
-            etape choix atout Joeur 1
+            etape choix atout Joueur 2
             """
             print("etape 401")
+
+            new_Game.jeton = 180
+            # Draw Jeton
+            draw_arrow(new_Game.jeton, image_path)
+            time.sleep(1)
+
+            new_Game.choix_attout_color = new_Game.choix_atout_IA_first_row(2,new_Game.choix)
+            print(new_Game.choix_attout_color)
+            
+            if new_Game.choix_attout_color == 'pass':
+                etape = 402
+            # mise a jour de _choix_attout
+            else :
+                etape = 450
+
+            
+        elif etape == 402:
+            """
+            etape choix atout Joueur 3
+            """
+            print("etape 402")
+
+            new_Game.jeton = 90
+            # Draw Jeton
+            draw_arrow(new_Game.jeton, image_path)
+            time.sleep(1)
+
+            new_Game.choix_attout_color = new_Game.choix_atout_IA_first_row(3,new_Game.choix)
+            print(new_Game.choix_attout_color)
+
+            if new_Game.choix_attout_color == 'pass':
+                etape = 403
+            # mise a jour de _choix_attout
+            else :
+                etape = 450  
+
+        elif etape == 403:
+            """
+            etape choix atout Joueur 4
+            """
+            print("etape 403")
+            
+            new_Game.jeton = 0
+            # Draw Jeton
+            draw_arrow(new_Game.jeton, image_path)
+            time.sleep(1)
+
+            new_Game.choix_attout_color = new_Game.choix_atout_IA_first_row(4,new_Game.choix)
+            print(new_Game.choix_attout_color)
+
+            if new_Game.choix_attout_color == 'pass':
+                etape = 404
+            # mise a jour de _choix_attout
+            else :
+                etape = 450    
+        
+        elif etape == 404:
+            """
+            etape choix atout Joueur 1 
+            apres que tout monde aie pass
+            """
+            new_Game.jeton = 270
+
+            # attente frontend choix 
+            print("etape 404")
 
             # mise a joueur jeton (valeur en angle )
             new_Game.jeton=270
@@ -180,141 +229,22 @@ while run:
             draw_arrow(new_Game.jeton, image_path)
 
             # Display the choix attout
-            # new_Game.choix_attout_color = draw_atout(atouts, image_path)
-            print(new_Game.choix_attout_color)
-            etape= 402
-
-            
-        elif etape ==402:
-            """
-            etape choix atout Joueur 2
-            """
-            new_Game.jeton=180
-            # Draw Jeton
-            draw_arrow(new_Game.jeton, image_path)
-
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(2,new_Game.choix)
-
-            if new_Game.choix_attout_color=='pass':
-                etape=403
-            # mise a jour de _choix_attout
-            else :
-                etape=450
-
-        elif etape ==403:
-            """
-            etape choix atout Joueur 3
-            """
-            new_Game.jeton=90
-            # Draw Jeton
-            draw_arrow(new_Game.jeton, image_path)
-            
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(3,new_Game.choix)
-
-            if new_Game.choix_attout_color=='pass':
-                etape=404
-            # mise a jour de _choix_attout
-            else :
-                etape=450      
-
-        elif etape ==404:
-            """
-            etape choix atout Joueur 4
-            """
-            new_Game.jeton=0
-            # Draw Jeton
-            draw_arrow(new_Game.jeton, image_path)
-            
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(4,new_Game.choix)
-           
-
-            if new_Game.choix_attout_color=='pass':
-                etape=405
-            # mise a jour de _choix_attout
-            else :
-                etape=450
-
-        
-        elif etape ==405:
-            """
-            etape choix atout Joueur 1 
-            apres que tout monde aie pass
-            """
-            new_Game.jeton=270
-
-            # attente frontend choix 
             # new_Game.choix_attout_color=xxxxxxxxxxxxx
-            
-            
-            
+            new_Game.choix_attout_color = draw_atout(atouts, image_path)
+            print(new_Game.choix_attout_color)
 
-            if new_Game.choix_attout_color=='pass':
-                etape=406
-            # mise a jour de _choix_attout
-            else :
-                etape=450
-
-        elif etape ==406:
-            """
-            etape choix atout Joueur 2 
-            apres que tout monde aie pass
-            """
-            new_Game.jeton=180
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(2,new_Game.choix)
-
-            if new_Game.choix_attout_color=='pass':
-                etape=407
-            # mise a jour de _choix_attout
-            else :
-                etape=450
-
-        elif etape ==407:
-            """
-            etape choix atout Joueur 3 
-            apres que tout monde aie pass
-            """
-            new_Game.jeton=90
-
-
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(3,new_Game.choix)
-
-            if new_Game.choix_attout_color=='pass':
-                etape=408
-            # mise a jour de _choix_attout
-            else :
-                etape=450
-
-
-        elif etape ==408:
-            """
-            etape choix atout Joueur 4 
-            apres que tout monde aie pass
-            """
-            new_Game.jeton=0
-
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(4,new_Game.choix)
-
-            if new_Game.choix_attout_color=='pass':
-                etape=1000
-            # mise a jour de _choix_attout
-            else :
-                etape=450
-
-
+            etape = 450
                 
             """
             attente de l'affichage de choix atout 
             attente
     
-            choix=0 
-            choix=1 oui 
-            choix=2 pass
-            
+            choix=1 colour 
+            choix=2 pass            
                 
             ici j'envoie l'etat du jeton 
             et le choix de chacun des joueurs
 
-            
             jeton 
             #joueur1 =270
             #joueur2 =180
@@ -322,15 +252,11 @@ while run:
             #joueur4 =0
 
             """
-            pass
-
 
         elif etape ==450:
             """
             redistribution des cartes
-
             ici j'envoit toute les 3 autres cartes aux joueurs 
-
             j'envoie de jeton du premier qui vas joueur
             """
 
