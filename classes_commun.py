@@ -410,8 +410,8 @@ class Game:
             carte_gagnante = self.tapis[0]
             for carte in self.tapis[1:]:
                 if (carte.colour == couleur_attout ):
-                    if(carte_gagnante.score <):
-                    carte_gagnante = carte
+                    if(carte_gagnante.score <carte.score):
+                        carte_gagnante = carte
                 if(carte.colour == couleur_attout ):
 
                     carte_gagnante = carte
