@@ -339,28 +339,27 @@ while run:
 
         si c'est joueur qui doit jouer je suis dans cette
             """
+            if new_Game.player1.hand:
 
-
-            # controle du jeton 
-            if new_Game.jeton == 270:
-                # joueur 1
-                etape = 551
-
-            if new_Game.jeton == 180:
-                # joueur 2
-                # evolution etape
-                etape =552
-
-            if new_Game.jeton== 90:
-                # joueur 3
-                # evolution etape
-                etape =553
-
-
-            if new_Game.jeton== 0:
-                # joueur 4
-                # evolution etape
-                etape =554        
+                # controle  jeton 
+                if new_Game.jeton == 270:
+                    # joueur 1
+                    etape = 551
+                if new_Game.jeton == 180:
+                    # joueur 2
+                    # evolution etape
+                    etape =552
+                if new_Game.jeton== 90:
+                    # joueur 3
+                    # evolution etape
+                    etape =553
+                if new_Game.jeton== 0:
+                    # joueur 4
+                    # evolution etape
+                    etape =554        
+            else:
+                #main joueur 1 vide
+                etape= 1000
 
             # mise a jour de jeton car premier tour de cycle
             
@@ -579,32 +578,6 @@ while run:
                 
                 
 
-
-
-        elif etape ==900:
-            
-           
-           
-           
-           
-            """
-            last tour
-            dernier tour de jeu
-
-            apres
-    
-            envoie 
-            score partenaire
-            score adversaire
-
-
-        si c'est joueur qui doit jouer je suis dans cette
-            """
-
-            pass
-
-
-
         elif etape ==1000:
             """
             
@@ -617,7 +590,31 @@ while run:
             game finish 
             """
 
-            pass
+
+
+
+
+
+            if (score_adversaire> score_partenaire):
+                print ("les adversaires ont gagné")
+                print ("score adversaire =",score_partenaire)
+                print ("score partenaire =",score_adversaire)
+            
+            elif (score_adversaire== score_partenaire):
+                print ("matchs nulles")
+                print ("score adversaire =",score_adversaire)
+                print ("score partenaire =",score_adversaire)
+
+            
+            else:
+                print ("nous avons gagnés")    
+                print ("score adversaire =",score_adversaire)
+                print ("score partenaire =",score_adversaire)
+
+
+            # mise a jour et evolution etape
+            etape =0
+            run=False   
 
     # if __name__ == "__main__":
 
