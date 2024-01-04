@@ -259,38 +259,55 @@ class Game:
         self.cards.pop()
 
      
-    def choix_atout_IA_first_row(self ,number_player):
+    def choix_atout_IA_first_row(self ,number_player,choix):
+        if not (1 <= number_player <= 4):
+            raise ValueError("Number of player must be between 1 and 4")
+
+        # creer une list au hazard
+        shuffled_suits=[]  
+        # shuffled_suits = list(colours)
+        colour=choix.colour
+        shuffled_suits.append(colour)
+        shuffled_suits.append("pass")
+        np.random.shuffle(shuffled_suits)
+
+        # Choose the atout based on the shuffled list
+        return shuffled_suits[0]
+        
+        
+
+    def choix_atout_IA_second_row(self ,number_player,choix):
         
         if not (1 <= number_player <= 4):
             raise ValueError("Number of player must be between 1 and 4")
 
-    # creer une list au hazard
-    shuffled_suits=[]  
-    # shuffled_suits = list(colours)
-    shuffled_suits.append(self._choix.color)
-    shuffled_suits.append("pass")
-    np.random.shuffle(shuffled_suits)
-
-    # Choose the atout based on the shuffled list
-    choix_attout_color = shuffled_suits[0]
-        
-        
-
-    def choix_atout_IA_second_row(self ,number_player):
-        
-        if not (1 <= number_player <= 4):
-            raise ValueError("Number of player must be between 1 and 4")
-
-    # creer une list au hazard
+     # creer une list au hazard
     
-    shuffled_suits = list(colours)
-    #retirer la couleur du choix dans le nouveau choix
-    shuffled_suits.pop(choix.color)
-    shuffled_suits.append("pass")
-    np.random.shuffle(shuffled_suits)
+        shuffled_suits = list(colours)
+        #retirer la couleur du choix dans le nouveau choix
+        shuffled_suits.pop(choix.colour)
+        shuffled_suits.append("pass")
+        np.random.shuffle(shuffled_suits)
 
-    # Choose the atout based on the shuffled list
-    choix_attout_color = shuffled_suits[0]
+        # Choose the atout based on the shuffled list
+        return shuffled_suits[0]
+    
+
+    def redistribute_card_player_atout(self,player):
+        #dans cette fonction je donne 2 card au joueur qui as choisit l'attout
+        player.add_card_Hand(self.tapis[0])
+        self.remove_card_tapis()
+        player.add_card_Hand(self.cards[-2])
+
+
+        
+
+
+
+
+
+    def mise_a_jour_score_cards_player(self):
+        pass
         
 
 

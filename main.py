@@ -164,10 +164,11 @@ while run:
                 etape=450
             # mise a jour de _choix_attout
         
-        elif etape ==401:
+        elif etape == 401:
             """
             etape choix atout Joeur 1
             """
+            print("etape 401")
 
             # mise a joueur jeton (valeur en angle )
 
@@ -175,12 +176,12 @@ while run:
             etape= 402
 
             
-        if etape ==402:
+        elif etape ==402:
             """
             etape choix atout Joueur 2
             """
             new_Game.jeton=180
-            new_Game.choix_atout_IA_first_row(2)
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(2,new_Game.choix)
 
             if new_Game.choix_attout_color=='pass':
                 etape=403
@@ -188,12 +189,12 @@ while run:
             else :
                 etape=450
 
-        if etape ==403:
+        elif etape ==403:
             """
             etape choix atout Joueur 3
             """
             new_Game.jeton=90
-            new_Game.choix_atout_IA_first_row(3)
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(3,new_Game.choix)
 
             if new_Game.choix_attout_color=='pass':
                 etape=404
@@ -201,12 +202,13 @@ while run:
             else :
                 etape=450      
 
-        if etape ==404:
+        elif etape ==404:
             """
             etape choix atout Joueur 4
             """
             new_Game.jeton=0
-            new_Game.choix_atout_IA_first_row(4)
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(4,new_Game.choix)
+           
 
             if new_Game.choix_attout_color=='pass':
                 etape=405
@@ -215,7 +217,7 @@ while run:
                 etape=450
 
         
-        if etape ==405:
+        elif etape ==405:
             """
             etape choix atout Joueur 1 
             apres que tout monde aie pass
@@ -226,7 +228,7 @@ while run:
             # new_Game.choix_attout_color=xxxxxxxxxxxxx
             
             
-            new_Game.choix_attout_color
+            
 
             if new_Game.choix_attout_color=='pass':
                 etape=406
@@ -234,13 +236,13 @@ while run:
             else :
                 etape=450
 
-        if etape ==406:
+        elif etape ==406:
             """
             etape choix atout Joueur 2 
             apres que tout monde aie pass
             """
             new_Game.jeton=180
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(2)
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(2,new_Game.choix)
 
             if new_Game.choix_attout_color=='pass':
                 etape=407
@@ -248,14 +250,15 @@ while run:
             else :
                 etape=450
 
-        if etape ==407:
+        elif etape ==407:
             """
             etape choix atout Joueur 3 
             apres que tout monde aie pass
             """
             new_Game.jeton=90
 
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(3)
+
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(3,new_Game.choix)
 
             if new_Game.choix_attout_color=='pass':
                 etape=408
@@ -264,14 +267,14 @@ while run:
                 etape=450
 
 
-        if etape ==408:
+        elif etape ==408:
             """
             etape choix atout Joueur 4 
             apres que tout monde aie pass
             """
             new_Game.jeton=0
 
-            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(3)
+            new_Game.choix_attout_color=new_Game.choix_atout_IA_second_row(4,new_Game.choix)
 
             if new_Game.choix_attout_color=='pass':
                 etape=1000
@@ -308,8 +311,28 @@ while run:
             """
             joueur  a valider son choix
             """
-            
-            pass    
+            print("choix fait")
+
+            if new_Game.jeton==270:
+                # joueur1 qui as fait le choix
+                new_Game.redistribute_card_player_atout(player=new_Game.player1)
+
+            if new_Game.jeton==180:   
+                # joueur2 qui as fait le choix
+                new_Game.redistribute_card_player_atout(player=new_Game.player2)
+
+
+            if new_Game.jeton==90:   
+                # 3 qui as fait le choix
+                new_Game.redistribute_card_player_atout(player=new_Game.player3)
+
+
+            if new_Game.jeton==0:   
+                # 4 qui as fait le choix
+                new_Game.redistribute_card_player_atout(player=new_Game.player4)
+                        
+
+
 
         elif etape ==500:
             """
