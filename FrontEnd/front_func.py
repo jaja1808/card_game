@@ -585,8 +585,8 @@ def final_score(score_array, image_path): # to be completed
     game.blit(table_surface, (table.x, table.y))
 
     # Calculate positions within the grid to display the scores
-    us_score_position = (table.x + 20, table.y + 20)
-    them_score_position = (table.x + 20, table.y + 80)
+    us_score_position = (table.x + 20, table.y + 18)
+    them_score_position = (table.x + 10, table.y + 60)
 
     # Blit the scores onto the table_surface in their respective positions
     game.blit(tot_score_us, us_score_position)
