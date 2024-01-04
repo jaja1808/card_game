@@ -716,30 +716,50 @@ while run:
             print(score)
             final_score(score, image_path)
             time.sleep(5)
+<<<<<<< HEAD
+            
+=======
 
+>>>>>>> 0a9820d6b2d390dd40037ed047ba4d8ad964f202
             if (score_adversaire> score_partenaire):
                 print ("les adversaires ont gagné")
                 print ("score adversaire =",score_partenaire)
                 print ("score partenaire =",score_adversaire)
                 etape =0
+<<<<<<< HEAD
+                run=False
+=======
                 run=False                 
+>>>>>>> 0a9820d6b2d390dd40037ed047ba4d8ad964f202
             
             elif (score_adversaire== score_partenaire):
                 print ("matchs nulles")
                 print ("score adversaire =",score_adversaire)
                 print ("score partenaire =",score_adversaire)
                 etape =0
+<<<<<<< HEAD
+                run=False
+
+=======
                 run=False 
+>>>>>>> 0a9820d6b2d390dd40037ed047ba4d8ad964f202
             
             else:
                 print ("nous avons gagnés")    
                 print ("score adversaire =",score_adversaire)
                 print ("score partenaire =",score_adversaire)
                 etape =0
+<<<<<<< HEAD
+                run=False
+
+            # mise a jour et evolution etape
+            
+=======
                 run=False 
 
             # mise a jour et evolution etape
   
+>>>>>>> 0a9820d6b2d390dd40037ed047ba4d8ad964f202
 
 
     """
