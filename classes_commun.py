@@ -59,6 +59,13 @@ def valeur_atout(nom_carte):
       
     
 
+def calcul_score_tapis(tapis):
+    score=0
+    for card in tapis:
+        score =score + card.score
+
+    return score    
+
 
 
 
@@ -607,7 +614,6 @@ class PlayerError(Exception):
 class CardError(Exception):
     pass
     
-
 
 
 

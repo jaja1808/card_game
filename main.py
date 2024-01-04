@@ -59,6 +59,8 @@ while run:
             """
             c'est dans cette etape que l'on initialise le jeu
             """
+            score_adversaire=0
+            score_partenaire=0
 
         elif etape == 200:
             # etape 200 creation des 4 joueurs
@@ -358,7 +360,7 @@ while run:
                         motor = False
 
                 #new_Game.player1.play(xxxxxxxxxxxxxxxx)
-                new_Game.player1.play(card)
+                # new_Game.player1.play(card)
                 etape = 551
 
             if new_Game.jeton == 180:
@@ -400,6 +402,29 @@ while run:
 
             """
 
+            
+               
+            #dans l'attente du frontend carte à jouer 
+            # new_Game.player1.play(xxxxxxxxxxxxxxxx)
+            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
+
+
+
+            #choix au hazard des joueurs (IA)
+            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
+            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
+            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
+
+
+            # evolution 
+            etape=600
+            
+            
+
+
+
+
+
         elif etape ==552:
             """
         debut du jeu si c'est joueur 2 qui debute
@@ -414,7 +439,18 @@ while run:
             score adversaire
 
         si c'est joueur qui doit jouer je suis dans cette
+
             """
+        #choix au hazard des joueurs (IA)
+            # ordre de jeu sur le tapis 2 3 4 1
+            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
+            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
+            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
+
+            # ordre de jeu sur le tapis
+            # joueur 1 qui joue a la derniere position
+            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
+
 
             pass
 
@@ -438,7 +474,21 @@ while run:
         si c'est joueur qui doit jouer je suis dans cette
             """
 
-            pass
+            # """""""""""""""""""""     ordre de jeu sur le tapis 3 4 1 2       """""""""""""""""""""""""""""""""""""""
+            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
+            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
+
+
+
+
+
+            # joueur 1 qui joue a l'avant derniere position derniere position
+            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
+            
+
+
+            # ordre de jeu sur le tapis 3 4 1 2
+            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
 
         elif etape ==554:
             """
@@ -458,7 +508,20 @@ while run:
         si c'est joueur qui doit jouer je suis dans cette
             """
 
-            pass   
+            # ordre de jeu sur le tapis  4 1 2 3
+            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
+
+
+            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
+            
+            
+            
+            
+            # ordre de jeu sur le tapis  4 1 2 3
+            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
+            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
+
+               
 
 
         elif etape ==600:
@@ -473,17 +536,65 @@ while run:
 
         
             envoie 
-            score partenaire
-            score adversaire
+            score_partenaire
+            score_adversaire
 
 
         si c'est joueur qui doit jouer je suis dans cette
             """
 
-            pass
+            joueur_gagnant=new_Game.determine_gagnant_pli()
+
+            if joueur_gagnant==new_Game.player1:
+                #c'est le joueur  qui as gangé le plis
+                new_Game.jeton=270
+                #mise a jour du score de l'equipe 1
+                score_partenaire=score_partenaire + calcul_score_tapis(new_Game.tapis)
+                # nettoyer tapis
+                new_Game.tapis.clear()
+                # evolution
+                etape=550
+
+            if joueur_gagnant==new_Game.player2:
+                #c'est le joueur  qui as gangé le plis
+                new_Game.jeton=180
+                #mise a jour du score de l'equipe 2
+                score_adversaire=score_adversaire + calcul_score_tapis(new_Game.tapis)
+                new_Game.tapis.clear()
+                # evolution
+                etape=550
+
+            if joueur_gagnant==new_Game.player3:
+                #c'est le joueur  qui as gangé le plis
+                new_Game.jeton=90
+                #mise a jour du score de l'equipe 1
+                score_partenaire=score_partenaire + calcul_score_tapis(new_Game.tapis)               
+                # nettoyer tapis
+                new_Game.tapis.clear()
+                # evolution
+                etape=550
+
+            if joueur_gagnant==new_Game.player4:
+                #c'est le joueur  qui as gangé le plis
+                new_Game.jeton=0
+                #mise a jour du score de l'equipe 2
+                score_adversaire=score_adversaire + calcul_score_tapis(new_Game.tapis)
+                # nettoyer tapis
+                new_Game.tapis.clear()
+                # evolution
+                etape=550
+                
+                
+                
+
+
 
         elif etape ==900:
             
+           
+           
+           
+           
             """
             last tour
             dernier tour de jeu
