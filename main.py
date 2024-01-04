@@ -328,11 +328,13 @@ while run:
             draw_arrow(new_Game.jeton, image_path)
 
             # Get the card played
-            jeux = None
-            while jeux == None:
+            running = True
+            while running:
                 jeux = display_hand(hand, image_path)
 
-            print(jeux.name)
+                if jeux is not None:
+                    running = False
+
             # evolution etape
             etape =550
         
@@ -398,23 +400,12 @@ while run:
 
 
             """
-            
+
             #dans l'attente du frontend carte à jouer 
             # new_Game.player1.play(xxxxxxxxxxxxxxxx)
-            new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
 
-
-
-            #choix au hazard des joueurs (IA)
-            new_Game.play(new_Game.player2,new_Game.player2.random_card_hand())
-            new_Game.play(new_Game.player3,new_Game.player3.random_card_hand())
-            new_Game.play(new_Game.player4,new_Game.player4.random_card_hand())
-
-
-            # evolution 
-            etape=600
-            
-            
+            #
+            # new_Game.player1.play(card))
 
 
 

@@ -485,6 +485,8 @@ def display_hand(hand, image_path):
 
     mouse_x, mouse_y = pg.mouse.get_pos()
 
+    chosen_card = None
+   
     for card in hand:
         card_image, card_rect = display_card(x, GAME_HEIGHT - 135, card.image, image_path)
 
@@ -497,13 +499,13 @@ def display_hand(hand, image_path):
             for event in pg.event.get():
                 if event.type == pg.MOUSEBUTTONDOWN: # and angle == 270: # to be added later
                     print(f'Clicked on: {card.name}')
-                    hand.remove(card)
-                    return card
+                    chosen_card = card
 
         game.blit(card_image, (x, GAME_HEIGHT - 135))
         x += card_rect.width / 2 + spacing  # Adjust spacing between cards
-
+    print('i am reaching here')
     pg.display.flip()
+    return chosen_card
 ######################################################################################################################################
 
 # Function to display cards on the tapis
