@@ -556,7 +556,7 @@ def final_score(score_array, image_path): # to be completed
     bacG, bacG_rect = display_image(10, 10, 'back_gound_score.png', image_path)
     score_surface.blit(bacG, bacG_rect)
     
-    if score_array[1] > score_array[2]:
+    if score_array[0] > score_array[2]:
         color = (0, 255, 0)
         sentence = 'WIN'
     else:
@@ -569,8 +569,8 @@ def final_score(score_array, image_path): # to be completed
     # Creating the font for Score
     font = pg.font.SysFont('Arial',34) # Arial font
     word = font.render(sentence, True, color) # the win message
-    tot_score_us = font.render('US: '+str(score_array[1]), True, (0, 0, 0))
-    tot_score_them = font.render('THEM: '+str(score_array[2]), True, (0, 0, 0))
+    tot_score_us = font.render('US: '+str(score_array[0]), True, (0, 0, 0))
+    tot_score_them = font.render('THEM: '+str(score_array[1]), True, (0, 0, 0))
 
     # Creating the grid in Table
     draw_grid(table_surface, (0, 0, 0), table.width, table.height, 140, 50)

@@ -659,10 +659,7 @@ while run:
             game finish 
             """
 
-
-
-
-
+            final_score([score_partenaire, score_adversaire], image_path)
 
             if (score_adversaire> score_partenaire):
                 print ("les adversaires ont gagné")
