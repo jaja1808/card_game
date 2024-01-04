@@ -140,7 +140,9 @@ while run:
             display_hand(hand, image_path)
             
             # Displaying the atout
-            display_popup(choix_atout, image_path, atouts)
+            new_Game.choix_attout_color = display_popup(choix_atout, image_path, atouts)
+
+            print(new_Game.choix_attout_color)
 
             etape = 400
     
@@ -153,16 +155,16 @@ while run:
         # mise a jour de la valeur choix de la part du frontend
         # new_Game.choix_attout_color=xxxxxxxxxxxx
         
-            new_Game.choix_attout_color="pass"
+            #new_Game.choix_attout_color="pass"
 
             #le joueur a choisit passer le choix
             if new_Game.choix_attout_color=="pass":
                 etape=401
-           
 
             else :
                 etape=450
-            # mise a jour de _choix_attout
+                # mise a jour de _choix_attout
+                '''attout presente est prise'''
         
         elif etape == 401:
             """
@@ -171,8 +173,15 @@ while run:
             print("etape 401")
 
             # mise a joueur jeton (valeur en angle )
-
             new_Game.jeton=270
+            # Hide part of the card 
+            pg.draw.rect(game, BACKGROUND, (359, 265, 83, 60))
+            # Draw Jeton
+            draw_arrow(new_Game.jeton, image_path)
+
+            # Display the choix attout
+            new_Game.choix_attout_color = draw_atout(atouts, image_path)
+            print(new_Game.choix_attout_color)
             etape= 402
 
             
@@ -181,6 +190,9 @@ while run:
             etape choix atout Joueur 2
             """
             new_Game.jeton=180
+            # Draw Jeton
+            draw_arrow(new_Game.jeton, image_path)
+
             new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(2,new_Game.choix)
 
             if new_Game.choix_attout_color=='pass':
@@ -194,6 +206,9 @@ while run:
             etape choix atout Joueur 3
             """
             new_Game.jeton=90
+            # Draw Jeton
+            draw_arrow(new_Game.jeton, image_path)
+            
             new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(3,new_Game.choix)
 
             if new_Game.choix_attout_color=='pass':
@@ -207,6 +222,9 @@ while run:
             etape choix atout Joueur 4
             """
             new_Game.jeton=0
+            # Draw Jeton
+            draw_arrow(new_Game.jeton, image_path)
+            
             new_Game.choix_attout_color=new_Game.choix_atout_IA_first_row(4,new_Game.choix)
            
 
