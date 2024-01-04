@@ -443,7 +443,7 @@ while run:
             new_Game.play(new_Game.player1,new_Game.player1.random_card_hand())
 
 
-            pass
+        
 
 
 
