@@ -599,7 +599,6 @@ while run:
 
         si c'est joueur qui doit jouer je suis dans cette
             """
-
             joueur_gagnant=new_Game.determine_gagnant_pli()
 
             # Display tapis
@@ -658,7 +657,7 @@ while run:
         
             game finish 
             """
-
+            # Display the final Score
             final_score([score_partenaire, score_adversaire], image_path)
 
             if (score_adversaire> score_partenaire):
