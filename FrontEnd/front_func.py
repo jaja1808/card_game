@@ -510,6 +510,7 @@ def display_tapis(tapis, image_path):
         game.blit(card_3, card_rect_3)
         game.blit(card_4, card_rect_4)
 
+        pg.display.flip()
 ######################################################################################################################################
 
 # Function to Display the score board

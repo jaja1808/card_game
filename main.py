@@ -603,6 +603,7 @@ while run:
 
             # Display tapis
             display_tapis(new_Game.tapis, image_path)
+            time.sleep(2)
 
             if joueur_gagnant==new_Game.player1:
                 #c'est le joueur  qui as gangé le plis
@@ -658,7 +659,8 @@ while run:
             game finish 
             """
             # Display the final Score
-            final_score([score_partenaire, score_adversaire], image_path)
+            score = [score_partenaire, score_adversaire]
+            final_score(score, image_path)
 
             if (score_adversaire> score_partenaire):
                 print ("les adversaires ont gagné")
