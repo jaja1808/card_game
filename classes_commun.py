@@ -5,6 +5,62 @@ import random as rd
 colours = ("spades","hearts","diamonds","clubs")
 card_names = ("7","8","9","10","ace","jack","king","queen")
 
+#---------------------------------------------------------------------------------------------------------------------------------------
+
+def valeur_non_atout(nom_carte):
+
+    if nom_carte== "7":
+        return 0
+   
+    if nom_carte== "8":
+        return 0
+    
+    if nom_carte== "9":
+        return 0
+
+    if nom_carte== "10":
+        return 10
+    
+    if nom_carte== "ace":
+        return 11
+
+    if nom_carte== "jack":
+        return 2
+    
+    if nom_carte== "king":
+        return 4
+    if nom_carte== "queen":
+        return 3
+   
+def valeur_atout(nom_carte):
+
+    if nom_carte== "7":
+        return 0
+   
+    if nom_carte== "8":
+        return 0
+    
+    if nom_carte== "9":
+        return 14
+
+    if nom_carte== "10":
+        return 10
+    
+    if nom_carte== "ace":
+        return 11
+
+    if nom_carte== "jack":
+        return 20
+    
+    if nom_carte== "king":
+        return 4
+    if nom_carte== "queen":
+        return 3
+      
+    
+
+
+
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -301,12 +357,12 @@ class Game:
         self.remove_card_tapis()
         #ajouter 2 carte de Cards a la main du joueur ,
         #je prend les deux dernière
-        player.add_card_Hand(self.cards[-1])
-        self.remove_card_cards()
-        player.add_card_Hand(self.cards[-1])
-        self.remove_card_cards()
-
-
+        for _ in range(2):
+            if self.cards:
+                player.add_card_Hand(self.cards.pop())
+            else:
+                # Handle the case where there are not enough cards in the deck.
+                print("Not enough cards in the deck.")  
 
     def redistribute_card_player(self,player):
         # Dans cette fonction, je donne 3 cartes au joueur.
@@ -325,10 +381,14 @@ class Game:
 
 
 
-    def mise_a_jour_score_cards_player(self):
-        pass
-        
+    def mise_a_jour_score_cards_player(self,player,colour_atout):
+        for card in player.hand:
+            card.score = valeur_atout(card.name) if card.colour == colour_atout else valeur_non_atout(card.name)
 
+
+        
+card_names = ("7","8","9","10","ace","jack","king","queen")
+        
 
         
 
